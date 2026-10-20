@@ -169,7 +169,7 @@ function checkDist(dir) {
   const hrefs = [...markup.matchAll(/\s(?:href|src|action|formaction)\s*=\s*"([^"]*)"/gi)].map(m => m[1].replace(/&amp;/g, "&"));
   const AL = args.allowlist ? loadAllowlist(args.allowlist) : null;
   for (const h of hrefs) {
-    if (h.startsWith("#") || ["guide.json", "guide.md", "llms.txt", "favicon.svg"].includes(h)) continue;
+    if (h.startsWith("#") || ["guide.json", "guide.md", "llms.txt"].includes(h)) continue;
     if (/^https:\/\/fonts\.(googleapis|gstatic)\.com(\/|$)/.test(h)) continue; // remove once fonts are self-hosted
     let x; try { x = new URL(h); } catch (e) { err("dist href", "unparseable: " + h.slice(0, 80)); continue; }
     if (x.protocol !== "https:") { err("dist href", "non-https link in built page: " + h.slice(0, 80)); continue; }

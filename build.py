@@ -106,7 +106,7 @@ headpart, bodypart = page[:split], page[split:]
 doc = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<meta name="theme-color" content="#0a6b5b">\n'
-       '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n'
+       '<link rel="icon" href="' + SITE_URL + '/favicon.svg" type="image/svg+xml">\n'
        + headpart.replace("<!--SEO-->", seo(SITE_URL + "/", SITE_URL + "/og-image.png"), 1)
        + "</head>\n<body>\n" + bodypart + "\n</body>\n</html>\n")
 doc = doc.replace(ARTIFACT_URL, SITE_URL + "/")
