@@ -266,7 +266,7 @@
       if (l.getAttribute("href") === "#" + name) l.setAttribute("aria-current", "page"); else l.removeAttribute("aria-current");
     });
     document.title = (name === "overview" ? "" : VIEWS[name] + " · ") + "Alabama Ballot Guide 2026";
-    if (topic !== "all") applyTopic(); else setScrollPad();
+    if (topic !== "all" && (name === "state" || name === "congress")) applyTopic(); else setScrollPad();
   }
 
   // Go to a tab ("state"), a race or step inside a tab ("governor", "absentee"), or a district ("al-2")
@@ -285,7 +285,9 @@
       if (mine.house && String(mine.house) !== dm[1]) { showAllHouse = true; applyMine(); }
       var t = document.getElementById("tab-al" + dm[1]); if (t) selectTab(t, false);
     }
-    try { history.replaceState(null, "", "#" + (token === "content" ? current : token)); } catch (e) {}
+    var hash = "#" + (token === "content" ? current : token);
+    try { if (focus && location.hash !== hash) history.pushState(null, "", hash); else history.replaceState(null, "", hash); } catch (e) {}
+    routed = location.hash;
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
     if (focus) {
       var target = el || document.querySelector("#view-" + view + " h1, #view-" + view + " h2");
@@ -447,8 +449,11 @@
     var t = n && document.getElementById("tab-al" + n);
     if (t) selectTab(t, false);
   })();
+  var routed = "";
+  function route() { if (location.hash !== routed) go(location.hash.slice(1) || "overview", false); }
   go(location.hash.slice(1) || "overview", false);
-  window.addEventListener("hashchange", function () { go(location.hash.slice(1) || "overview", false); });
+  window.addEventListener("hashchange", route);
+  window.addEventListener("popstate", route);
   setScrollPad();
   window.addEventListener("resize", setScrollPad);
 
@@ -484,7 +489,7 @@
       if (picks[r] && picks[r].name === pick.dataset.name) { delete picks[r]; announce(pick.dataset.name + " removed from your picks."); }
       else {
         picks[r] = { office: pick.dataset.office, name: pick.dataset.name, party: pick.dataset.party, target: pick.dataset.target };
-        announce(pick.dataset.name + " saved as your pick for " + pick.dataset.office + ". " + Object.keys(picks).length + " picks.");
+        announce(pick.dataset.name + " saved as your pick for " + pick.dataset.office + ". " + Object.keys(picks).length + (Object.keys(picks).length === 1 ? " pick." : " picks."));
       }
       save("al-guide-picks-2026", picks); refreshPicks(); return;
     }
