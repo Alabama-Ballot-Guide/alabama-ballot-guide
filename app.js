@@ -233,12 +233,20 @@
           "</article>";
       }).join("") + "</div></div></section></div>";
 
+    // Application vs. ballot, by mail vs. by hand: four deadlines side by side
+    function deadlineTable(t) {
+      return '<div class="deadlines"><table><caption>' + esc(t.caption) + "</caption><thead><tr><td></td>" +
+        t.cols.map(function (c) { return '<th scope="col">' + esc(c) + "</th>"; }).join("") + "</tr></thead><tbody>" +
+        t.rows.map(function (r) { return '<tr><th scope="row">' + esc(r.h) + "</th>" + r.c.map(function (c, i) { return '<td data-label="' + esc(t.cols[i].split(" (")[0]) + '">' + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
+        "</tbody></table>" + (t.note ? '<p class="note">' + esc(t.note) + "</p>" : "") + "</div>";
+    }
     html += '<div class="view" data-view="vote" id="view-vote"><section class="group" id="vote"><div class="wrap"><h2>How to vote</h2>' +
       '<p class="group-intro">' + esc(G.voteIntro) + '</p><div class="steps">' +
       G.vote.map(function (s) {
         return '<div class="step' + (s.wide ? " wide" : "") + '"' + (s.id ? ' id="' + esc(s.id) + '"' : "") + "><h3>" + esc(s.h) + "</h3>" +
           (s.p ? "<p>" + esc(s.p) + "</p>" : "") +
           (s.list ? "<ul>" + s.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
+          (s.deadlines ? deadlineTable(s.deadlines) : "") +
           (s.ol ? '<p class="steps-h">Steps</p><ol>' + s.ol.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" : "") +
           (s.after ? "<p>" + esc(s.after) + "</p>" : "") +
           (s.links ? '<p class="links">' + s.links.map(function (l) { return ext(l.url, esc(l.label) + " ↗"); }).join("") + "</p>" : "") +

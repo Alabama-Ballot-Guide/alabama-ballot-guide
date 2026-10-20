@@ -106,7 +106,9 @@ headpart, bodypart = page[:split], page[split:]
 doc = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<meta name="theme-color" content="#0a6b5b">\n'
+       '<link rel="icon" href="' + SITE_URL + '/favicon-32.png" sizes="32x32" type="image/png">\n'
        '<link rel="icon" href="' + SITE_URL + '/favicon.svg" type="image/svg+xml">\n'
+       '<link rel="apple-touch-icon" href="' + SITE_URL + '/apple-touch-icon.png">\n'
        + headpart.replace("<!--SEO-->", seo(SITE_URL + "/", SITE_URL + "/og-image.png"), 1)
        + "</head>\n<body>\n" + bodypart + "\n</body>\n</html>\n")
 doc = doc.replace(ARTIFACT_URL, SITE_URL + "/")
@@ -151,12 +153,31 @@ const { chromium } = require('playwright');
 """)
 subprocess.check_call(["node", str(og), str(d / "og-card.html"), str(dist / "og-image.png")], env=env)
 og.unlink()
-# Tab icon (the header's ballot-oval mark, ink on light tabs and light on dark ones)
+# Tab icon: Alabama's shape in the guide's green (lighter on dark tab bars), plus PNGs for
+# browsers without SVG icons and for phone home screens
+AL_PATH = ("M7.1 2.4L50.7 2.6L58 45L61.7 54L60 62.4L58.6 70.4L60.2 80.4L61 82.4L17.2 82.4L20.2 92.8L18.5 96.8"
+           "L11.3 97.8L11.8 91.4L10.4 88.8L9.4 92L8.8 95L3.7 95L2.5 64.4L7.1 10.4L8.8 4.6Z")
 (dist / "favicon.svg").write_text(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><style>.m{fill:#111715;stroke:#111715}'
-    '@media (prefers-color-scheme: dark){.m{fill:#e8eeeb;stroke:#e8eeeb}}</style>'
-    '<ellipse class="m" cx="16" cy="16" rx="14" ry="9" style="fill:none" stroke-width="3"/>'
-    '<ellipse class="m" cx="16" cy="16" rx="9" ry="4.5" style="stroke:none"/></svg>\n')
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16.5 1.5 97 97"><style>path{fill:#0a6b5b}'
+    '@media (prefers-color-scheme: dark){path{fill:#5fcfb4}}</style>'
+    '<path d="' + AL_PATH + '" stroke-linejoin="round"/></svg>\n')
+icons = d / "_icons.js"
+icons.write_text("""
+const { chromium } = require('playwright');
+(async () => {
+  const [, , pathD, outDir] = process.argv;
+  const b = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium' });
+  for (const [name, size, bg, pad] of [['favicon-32.png', 32, 'transparent', 1], ['apple-touch-icon.png', 180, '#ffffff', 26]]) {
+    const p = await (await b.newContext({ viewport: { width: size, height: size } })).newPage();
+    await p.setContent('<body style="margin:0;background:' + bg + '"><svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size +
+      '" viewBox="-16.5 1.5 97 97" style="display:block;padding:' + pad + 'px;box-sizing:border-box"><path fill="#0a6b5b" d="' + pathD + '"/></svg></body>');
+    await p.screenshot({ path: outDir + '/' + name, omitBackground: bg === 'transparent' });
+  }
+  await b.close();
+})();
+""")
+subprocess.check_call(["node", str(icons), AL_PATH, str(dist)], env=env)
+icons.unlink()
 # Not-found page that leads back to the guide instead of GitHub's stock 404
 (dist / "404.html").write_text("""<!doctype html>
 <html lang="en">

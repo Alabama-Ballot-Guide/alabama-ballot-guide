@@ -60,7 +60,7 @@ window.GUIDE = {
     {
       "k": "Apply absentee by mail",
       "v": "Tue, Oct 27",
-      "s": "Application must arrive by this date",
+      "s": "Your mailed application must arrive by this date",
       "iso": "2026-10-27",
       "pastNote": "Mail deadline has passed",
       "target": "absentee"
@@ -68,15 +68,15 @@ window.GUIDE = {
     {
       "k": "Apply absentee in person",
       "v": "Thu, Oct 29",
-      "s": "Last day to apply at your county’s absentee office",
+      "s": "Last day to hand in an application at your county’s absentee office",
       "iso": "2026-10-29",
       "pastNote": "In-person deadline has passed",
       "target": "absentee"
     },
     {
-      "k": "Return absentee ballot",
+      "k": "Absentee ballot due back",
       "v": "Mon, Nov 2",
-      "s": "By hand before your county office closes. By mail, it must arrive by noon Nov 3.",
+      "s": "By hand: before your county office closes. By mail: it must arrive by noon Nov 3.",
       "iso": "2026-11-02",
       "pastNote": "Hand delivery has closed. A mailed ballot counts only if it arrives by noon Nov 3.",
       "target": "absentee"
@@ -3588,6 +3588,30 @@ window.GUIDE = {
         "You’re caring for a family member who is confined at home",
         "You’re a poll worker at a polling place other than your own"
       ],
+      "deadlines": {
+        "caption": "Absentee deadlines for Nov. 3",
+        "cols": [
+          "Application (asking for a ballot)",
+          "Ballot (sending it back filled in)"
+        ],
+        "rows": [
+          {
+            "h": "By mail (it must arrive by)",
+            "c": [
+              "Tue, Oct 27",
+              "Noon Tue, Nov 3"
+            ]
+          },
+          {
+            "h": "By hand (at your county’s absentee office)",
+            "c": [
+              "Thu, Oct 29",
+              "Mon, Nov 2, before the office closes (5 p.m. at the latest)"
+            ]
+          }
+        ],
+        "note": "The mail and hand deadlines flip: a mailed application is due first, but a mailed ballot is due last."
+      },
       "ol": [
         "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
         "Return it yourself with a copy of your photo ID: by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
