@@ -2,7 +2,7 @@
   document.documentElement.lang = "en";
   var G = window.GUIDE;
   var PARTY = { R: "Republican", D: "Democrat", L: "Libertarian", I: "Independent" };
-  var main = document.getElementById("top");
+  var main = document.getElementById("content");
   var live = document.getElementById("live");
   var picks = load("al-guide-picks-2026", {});
   var topic = "all";
@@ -17,7 +17,14 @@
   }
   function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-  function today() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function today() {
+    var d = new Date();
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", year: "numeric", month: "numeric", day: "numeric" }).formatToParts(d);
+      var get = function (t) { return +parts.filter(function (x) { return x.type === t; })[0].value; };
+      return new Date(get("year"), get("month") - 1, get("day"));
+    } catch (e) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  }
   function parseISO(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
   // Only https: links and the guide's own data files may become hrefs; anything else is neutralized.
   function safeUrl(u) {
@@ -121,15 +128,15 @@
     }).join("");
     var panels = r.districts.map(function (d, i) {
       var name = "U.S. House, District " + d.n;
-      return '<div class="panel" role="tabpanel" id="panel-al' + esc(d.n) + '" aria-labelledby="tab-al' + esc(d.n) + '"' + (i ? " hidden" : "") + ">" +
-        '<p class="district-area"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</p>" + differBox(d) +
+      return '<div class="panel"' + (STATIC ? "" : ' role="tabpanel" aria-labelledby="tab-al' + esc(d.n) + '"') + ' id="panel-al' + esc(d.n) + '"' + (i && !STATIC ? " hidden" : "") + ">" +
+        '<h3 class="district-area" id="al-' + esc(d.n) + '"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</h3>" + differBox(d) +
         '<div class="cands">' + d.candidates.map(function (c) { return card(c, "house", name, "al" + d.n); }).join("") + "</div>" +
         raceFoot(Object.assign({ debate: G.defaultDebate }, d)) + "</div>";
     }).join("");
     return '<section class="race" id="' + esc(r.id) + '" data-kind="districts">' + raceHead(r) +
       '<p class="find">' + esc(r.findText) + " " + ext(r.findLink.url, esc(r.findLink.label)) + "</p>" +
       (STATIC ? "" : '<p class="mine-note" id="houseNote" hidden></p>') +
-      '<div class="tabs" role="tablist" aria-label="Congressional districts">' + tabs + "</div>" + panels +
+      (STATIC ? "" : '<div class="tabs" role="tablist" aria-label="Congressional districts">' + tabs + "</div>") + panels +
       raceFoot(r) + "</section>";
   }
 
@@ -226,12 +233,20 @@
           "</article>";
       }).join("") + "</div></div></section></div>";
 
+    // Application vs. ballot, by mail vs. by hand: four deadlines side by side
+    function deadlineTable(t) {
+      return '<div class="deadlines"><table><caption>' + esc(t.caption) + "</caption><thead><tr><td></td>" +
+        t.cols.map(function (c) { return '<th scope="col">' + esc(c) + "</th>"; }).join("") + "</tr></thead><tbody>" +
+        t.rows.map(function (r) { return '<tr><th scope="row">' + esc(r.h) + "</th>" + r.c.map(function (c, i) { return '<td data-label="' + esc(t.cols[i].split(" (")[0]) + '">' + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
+        "</tbody></table>" + (t.note ? '<p class="note">' + esc(t.note) + "</p>" : "") + "</div>";
+    }
     html += '<div class="view" data-view="vote" id="view-vote"><section class="group" id="vote"><div class="wrap"><h2>How to vote</h2>' +
       '<p class="group-intro">' + esc(G.voteIntro) + '</p><div class="steps">' +
       G.vote.map(function (s) {
         return '<div class="step' + (s.wide ? " wide" : "") + '"' + (s.id ? ' id="' + esc(s.id) + '"' : "") + "><h3>" + esc(s.h) + "</h3>" +
           (s.p ? "<p>" + esc(s.p) + "</p>" : "") +
           (s.list ? "<ul>" + s.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
+          (s.deadlines ? deadlineTable(s.deadlines) : "") +
           (s.ol ? '<p class="steps-h">Steps</p><ol>' + s.ol.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" : "") +
           (s.after ? "<p>" + esc(s.after) + "</p>" : "") +
           (s.links ? '<p class="links">' + s.links.map(function (l) { return ext(l.url, esc(l.label) + " ↗"); }).join("") + "</p>" : "") +
@@ -240,13 +255,21 @@
 
     main.innerHTML = html;
 
+    // Newest three updates show; the rest fold away so the list stays short as corrections accumulate
+    function updatesList() {
+      var item = function (x) {
+        return "<li><b>" + esc(parseISO(x.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })) + ":</b> " + esc(x.text) + "</li>";
+      };
+      var older = G.updates.slice(3);
+      return '<ul class="updates">' + G.updates.slice(0, 3).map(item).join("") + "</ul>" +
+        (older.length ? '<details class="updates-more"><summary>Earlier updates (' + older.length + ")</summary>" +
+          '<ul class="updates">' + older.map(item).join("") + "</ul></details>" : "");
+    }
     document.getElementById("about").innerHTML = '<div class="wrap"><h2>About this guide</h2><div class="about-grid">' + G.about.map(function (a) {
       return "<div><h3>" + esc(a.h) + "</h3><p>" + esc(a.p) +
         (a.links ? " " + a.links.map(function (l) { return '<a href="' + esc(safeUrl(l.url)) + '" type="' + esc(l.type) + '">' + esc(l.label) + "</a>"; }).join(", ") + "." : "") + "</p></div>";
     }).join("") + "</div>" +
-      '<h3 class="updates-h">Updates</h3><ul class="updates">' + G.updates.map(function (x) {
-        return "<li><b>" + esc(parseISO(x.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })) + ":</b> " + esc(x.text) + "</li>";
-      }).join("") + "</ul></div>";
+      '<h3 class="updates-h">Updates</h3>' + updatesList() + "</div>";
 
     var cd = document.getElementById("countdown");
     cd.textContent = days > 1 ? "Election Day in " + days + " days" : days === 1 ? "Election Day is tomorrow" : days === 0 ? "Election Day is today" : "Election held Nov 3";
@@ -462,6 +485,7 @@
   function disarm() { clearTimeout(armTimer); clearBtn.dataset.armed = ""; clearBtn.textContent = "Clear all"; }
   function toggleSheet(open, returnFocus) {
     sheet.hidden = !open; scrim.hidden = !open; btn.setAttribute("aria-expanded", String(open));
+    document.querySelectorAll("body > .skip, body > header, body > main, body > footer").forEach(function (el) { el.inert = open; });
     if (open) { sheet.setAttribute("tabindex", "-1"); sheet.focus(); }
     else { disarm(); if (returnFocus !== false) btn.focus(); }
   }
@@ -506,6 +530,16 @@
     }
   });
   document.addEventListener("keydown", function (e) {
+    if (e.key === "Tab" && !sheet.hidden) {
+      // Keep keyboard focus inside My picks while it's open
+      var f = Array.prototype.slice.call(sheet.querySelectorAll("a[href], button:not([disabled])"));
+      if (f.length) {
+        var first = f[0], last = f[f.length - 1], at = document.activeElement;
+        if (e.shiftKey && (at === first || at === sheet)) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && (at === last || !sheet.contains(at))) { e.preventDefault(); first.focus(); }
+      }
+      return;
+    }
     var tab = e.target.closest && e.target.closest(".tab");
     if (tab && ["ArrowRight", "ArrowLeft", "Home", "End"].indexOf(e.key) > -1) {
       var tabs = Array.prototype.slice.call(tab.parentElement.querySelectorAll(".tab"));

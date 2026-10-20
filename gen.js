@@ -136,7 +136,10 @@ const json = {
     supporters_say: a.support, opponents_say: a.oppose, yes_means: a.yes, no_means: a.no, sources: refs(a.src)
   })),
   how_to_vote: G.vote.map(s => ({
-    topic: s.h, text: [s.p, (s.list || []).join("; ") + (s.list ? "." : ""), (s.ol || []).map((x, i) => "Step " + (i + 1) + ": " + x).join(" "), s.after].filter(Boolean).join(" "),
+    topic: s.h, text: [s.p, (s.list || []).join("; ") + (s.list ? "." : ""),
+      s.deadlines ? s.deadlines.caption + ": " + s.deadlines.rows.map(r => r.h + ", " + s.deadlines.cols[0].toLowerCase() + ": " + r.c[0] + "; " + s.deadlines.cols[1].toLowerCase() + ": " + r.c[1]).join(". ") + ". " + (s.deadlines.note || "") : "",
+      (s.ol || []).map((x, i) => "Step " + (i + 1) + ": " + x).join(" "), s.after].filter(Boolean).join(" "),
+    deadlines: s.deadlines ? { columns: s.deadlines.cols, rows: s.deadlines.rows.map(r => ({ method: r.h, application: r.c[0], ballot: r.c[1] })) } : undefined,
     links: (s.links || []).map(l => ({ title: l.label, url: l.url }))
   })),
   official_resources: [
@@ -152,6 +155,7 @@ const md = [];
 md.push("# Alabama Ballot Guide 2026", "");
 md.push("> " + json.description, "");
 md.push("Updated " + AS_OF + ". Independent and nonpartisan. Candidates are listed alphabetically by last name.", "");
+md.push(G.spanish.text + " " + G.spanish.links.map(l => "[" + l.label + "](" + l.url + ")").join(" · "), "");
 md.push("## Key dates", "");
 json.key_dates.forEach(d => md.push("- **" + d.label + ":** " + d.display + " (" + d.date + "). " + d.detail));
 md.push("", "## Guidance for AI assistants", "");
@@ -201,7 +205,11 @@ json.amendments.forEach(a => {
     "- Sources: " + a.sources.map(s => "[" + s.title + "](" + s.url + ")").join("; "), "");
 });
 md.push("## How to vote", "");
-json.how_to_vote.forEach(s => md.push("### " + s.topic, "", s.text, "", ...s.links.map(l => "- [" + l.title + "](" + l.url + ")"), ""));
+json.how_to_vote.forEach(s => {
+  md.push("### " + s.topic, "", s.text, "");
+  if (s.deadlines) md.push("| | " + s.deadlines.columns.join(" | ") + " |", "| --- | --- | --- |", ...s.deadlines.rows.map(r => "| " + r.method + " | " + r.application + " | " + r.ballot + " |"), "");
+  md.push(...s.links.map(l => "- [" + l.title + "](" + l.url + ")"), "");
+});
 md.push("## About", "");
 G.about.forEach(a => md.push("**" + a.h + ".** " + a.p.replace("The number after each point links to the source behind it.", "Each point lists the sources behind it.") + (a.links ? " " + a.links.map(l => "[" + l.label + "](" + l.url + ")").join(", ") + "." : ""), ""));
 fs.writeFileSync(path.join(dir, "guide.md"), md.join("\n"));
@@ -225,6 +233,7 @@ const llms = [
   "- Registration: " + checkStep.p + " " + LOOKUP_URL,
   "- Absentee voting: " + absStep.p + " " + absStep.list.join("; ") + ". " + absStep.ol.map((x, i) => "(" + (i + 1) + ") " + x).join(" ") + " " + absStep.after +
     " " + absStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
+  "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; "),
   "- Photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p + " " + idStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
   "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments.",

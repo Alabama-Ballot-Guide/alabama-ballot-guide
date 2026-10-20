@@ -5,6 +5,7 @@ _*.png
 _preview.html
 _prerender.*
 _og.js
+_icons.js
 # unreviewed drafts and one-off editing scripts
 data.backup.js
 data.pre-*.js

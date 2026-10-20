@@ -58,19 +58,27 @@ window.GUIDE = {
       "target": "check"
     },
     {
-      "k": "Absentee by mail",
+      "k": "Apply absentee by mail",
       "v": "Tue, Oct 27",
-      "s": "Application must arrive by this date",
+      "s": "Your mailed application must arrive by this date",
       "iso": "2026-10-27",
       "pastNote": "Mail deadline has passed",
       "target": "absentee"
     },
     {
-      "k": "Absentee in person",
+      "k": "Apply absentee in person",
       "v": "Thu, Oct 29",
-      "s": "Last day to apply at your county’s absentee office",
+      "s": "Last day to hand in an application at your county’s absentee office",
       "iso": "2026-10-29",
       "pastNote": "In-person deadline has passed",
+      "target": "absentee"
+    },
+    {
+      "k": "Absentee ballot due back",
+      "v": "Mon, Nov 2",
+      "s": "By hand: before your county office closes. By mail: it must arrive by noon Nov 3.",
+      "iso": "2026-11-02",
+      "pastNote": "Hand delivery has closed. A mailed ballot counts only if it arrives by noon Nov 3.",
       "target": "absentee"
     },
     {
@@ -1404,7 +1412,7 @@ window.GUIDE = {
                 {
                   "topic": "energy",
                   "h": "Extend the rate freeze",
-                  "d": "Wants to lower rates to 12 cents per kilowatt-hour and extend the base-rate freeze, now set to end in 2029, to 2030.",
+                  "d": "Wants to lower rates to 12 cents per kilowatt-hour and extend the freeze on Alabama Power’s base rates, now set to end in 2029, to 2030.",
                   "s": [
                     1
                   ]
@@ -1444,7 +1452,7 @@ window.GUIDE = {
           "differ": [
             {
               "k": "Power bills",
-              "v": "Gentry wants a full comparison of Alabama’s rates with other states; Gordon calls for cutting Alabama Power bills about 25% and extending the base-rate freeze to 2030."
+              "v": "Gentry wants a full comparison of Alabama’s rates with other states; Gordon calls for cutting Alabama Power bills about 25% and extending the freeze on Alabama Power’s base rates to 2030."
             },
             {
               "k": "Both",
@@ -2131,7 +2139,7 @@ window.GUIDE = {
                     {
                       "topic": "government",
                       "h": "Ethics rules for Congress",
-                      "d": "Supports banning stock trading by members of Congress and their families, congressional term limits, and overturning Citizens United.",
+                      "d": "Supports banning stock trading by members of Congress and their families, congressional term limits, and overturning Citizens United, the 2010 Supreme Court ruling that let corporations and unions spend unlimited amounts on independent political ads.",
                       "s": [
                         3,
                         4
@@ -2162,7 +2170,7 @@ window.GUIDE = {
                     },
                     {
                       "label": "Ballotpedia: District 1 election",
-                      "url": "https://ballotpedia.org/Alabama's_1st_Congressional_District_election,_2026"
+                      "url": "https://ballotpedia.org/Alabama%27s_1st_Congressional_District_election,_2026"
                     },
                     {
                       "label": "Jones campaign: issues",
@@ -2423,7 +2431,7 @@ window.GUIDE = {
                 }
               ],
               "debate": "None scheduled. Figures accepted several invitations; Marques said he does not plan to debate.",
-              "note": "Compared with the court-drawn map used in 2024, the reinstated map moves Mobile out of District 2 and adds the Wiregrass counties. In September, Sabato’s Crystal Ball rated the race Lean Republican, the most competitive rating of any Alabama House race.",
+              "note": "Compared with the court-drawn map used in 2024, the reinstated map moves Mobile out of District 2 and adds the Wiregrass counties. In September, the University of Virginia’s Sabato’s Crystal Ball forecast rated the race Lean Republican, meaning competitive but favoring the Republican, the most competitive rating of any Alabama House race.",
               "noteSrc": [
                 {
                   "label": "Alabama Political Reporter: Sabato rating (Sep 11, 2026)",
@@ -3421,7 +3429,7 @@ window.GUIDE = {
     {
       "n": "Statewide Amendment 1",
       "title": "Filling a lieutenant governor vacancy",
-      "summary": "Today, if the lieutenant governor’s office becomes vacant, it stays empty until the next regular election for the office. This amendment would fill a vacancy that occurs in the first two years of a term by election, if it occurs more than 60 days before the next general election. It also lets the Legislature set pay for the lieutenant governor and legislative officers by joint resolution, and requires an elected officer of each chamber to approve legislators’ travel spending.",
+      "summary": "Today, if the lieutenant governor’s office becomes vacant, it stays empty until the next regular election for the office. This amendment would fill a vacancy that occurs in the first two years of a term by election, if it occurs more than 60 days before the next general election. It also lets the Legislature set pay for the lieutenant governor and legislative officers through a resolution passed by both chambers, and requires an elected officer of each chamber to approve legislators’ travel spending.",
       "vote": "Passed unanimously in both chambers.",
       "support": "Supporters say voters should fill a vacancy that comes early in a term.",
       "oppose": "No organized opposition was found.",
@@ -3527,11 +3535,21 @@ window.GUIDE = {
     {
       "id": "election-day",
       "h": "Vote on Election Day",
-      "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. Alabama has no early voting. Some polling places near the Georgia line may run on Eastern Time (7 a.m. to 7 p.m. Eastern); check with your county if unsure. If you moved, look up your polling place again.",
+      "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. If you’re in line by 7 p.m., you can vote.",
+      "list": [
+        "Alabama has no early voting. Voting before Election Day means voting absentee, which requires a qualifying reason.",
+        "Some polling places near the Georgia line may run on Eastern Time (7 a.m. to 7 p.m. Eastern). Check with your county if unsure.",
+        "Moved within your county since you registered? Go to the polling place for your new address, update your registration there, and vote a provisional ballot.",
+        "Moved to another county? Call your county Board of Registrars before Election Day."
+      ],
       "links": [
         {
           "label": "Alabama Votes",
           "url": "https://www.alabamavotes.gov"
+        },
+        {
+          "label": "2026 Voter Guide (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/election-2026/2026-VoterGuide.pdf"
         }
       ]
     },
@@ -3539,9 +3557,10 @@ window.GUIDE = {
       "h": "Bring a photo ID",
       "list": [
         "Alabama driver’s license or nondriver ID",
-        "Free Alabama Photo Voter ID card",
+        "Free Alabama Photo Voter ID card, available from your county Board of Registrars, even on Election Day",
         "U.S. passport, military ID, or tribal ID",
-        "Photo ID from another state or the federal government, or a federal or Alabama government employee ID",
+        "Other photo ID issued by Alabama, another state or the federal government, such as a pistol permit or a Department of Corrections release ID",
+        "Employee photo ID from the federal government or from an Alabama state, county or city government",
         "Student or employee ID from an Alabama college, or from a public college in another state"
       ],
       "after": "Bring the physical card; digital IDs, including Alabama’s digital driver’s license, are no longer accepted. A license expired less than 60 days still counts.",
@@ -3549,6 +3568,10 @@ window.GUIDE = {
         {
           "label": "Full list of valid IDs",
           "url": "https://www.sos.alabama.gov/alabama-votes/photo-voter-id/valid-ids"
+        },
+        {
+          "label": "No digital IDs (Secretary of State)",
+          "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-voters-photo-id-requirements-ahead-upcoming-elections"
         }
       ],
       "id": "photo-id"
@@ -3565,13 +3588,37 @@ window.GUIDE = {
         "You’re caring for a family member who is confined at home",
         "You’re a poll worker at a polling place other than your own"
       ],
+      "deadlines": {
+        "caption": "Absentee deadlines for Nov. 3",
+        "cols": [
+          "Application (asking for a ballot)",
+          "Ballot (sending it back filled in)"
+        ],
+        "rows": [
+          {
+            "h": "By mail (it must arrive by)",
+            "c": [
+              "Tue, Oct 27",
+              "Noon Tue, Nov 3"
+            ]
+          },
+          {
+            "h": "By hand (at your county’s absentee office)",
+            "c": [
+              "Thu, Oct 29",
+              "Mon, Nov 2, before the office closes (5 p.m. at the latest)"
+            ]
+          }
+        ],
+        "note": "The mail and hand deadlines flip: a mailed application is due first, but a mailed ballot is due last."
+      },
       "ol": [
         "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
         "Return it yourself with a copy of your photo ID: by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
         "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted.",
         "Return the ballot yourself: by hand before your county’s absentee office closes on Mon, Nov 2 (5 p.m. at the latest), or by mail or a carrier such as FedEx or UPS so it arrives by noon Tue, Nov 3. Except in a medical emergency, no one else may return it for you."
       ],
-      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Military and overseas voters have different rules, including a later deadline to return their ballots.",
+      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Had a medical emergency, or an unexpected work trip out of your county, after the deadline? You may qualify for an emergency absentee ballot. Ask your county’s absentee election manager right away: work-trip applications close at 5 p.m. Mon, Nov 2, and medical-emergency ballots are due by noon Tue, Nov 3. Military and overseas voters apply by the same dates, but their ballots count if postmarked by Nov 3 and received by noon Tue, Nov 10.",
       "links": [
         {
           "label": "Application forms by county",
@@ -3586,6 +3633,10 @@ window.GUIDE = {
           "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-alabamians-november-3-general-election-absentee"
         },
         {
+          "label": "Emergency absentee law (Ala. Code § 17-11-3)",
+          "url": "https://law.justia.com/codes/alabama/title-17/chapter-11/section-17-11-3/"
+        },
+        {
           "label": "Military and overseas voters",
           "url": "https://www.fvap.gov/alabama"
         }
@@ -3593,7 +3644,7 @@ window.GUIDE = {
     },
     {
       "h": "If you forget your ID",
-      "p": "Two poll workers who know you can sign a sworn statement identifying you, and you can vote a regular ballot. Otherwise, you can vote a provisional ballot; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
+      "p": "Two poll workers who know you can sign a sworn statement identifying you, and you can vote a regular ballot. Otherwise, you can vote a provisional ballot, which counts once officials confirm you’re eligible; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
       "links": [
         {
           "label": "Photo ID law",
@@ -3685,17 +3736,21 @@ window.GUIDE = {
     {
       "until": "2026-11-03",
       "title": "Voting on Tuesday, Nov. 3",
-      "text": "The deadline to apply for an absentee ballot has passed. Vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. A medical emergency or unexpected work trip may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
       "cta": "Election Day details"
     }
   ],
   "idCard": {
     "title": "Bring a photo ID",
-    "text": "A physical photo ID, such as a driver’s license or a free Alabama Photo Voter ID. No ID? Two poll workers who know you can vouch for you, or you can vote a provisional ballot and show ID by 5 p.m. Fri, Nov. 6.",
+    "text": "A physical photo ID, such as a driver’s license or a free Alabama Photo Voter ID. No ID? Two poll workers who know you can sign a statement identifying you, or you can vote a provisional ballot and show ID by 5 p.m. Fri, Nov. 6.",
     "cta": "Valid IDs and rules",
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-10-20",
+      "text": "Added the absentee ballot return date to Key dates, emergency absentee ballots, ballot dates for military and overseas voters, steps for voters who moved, the full list of accepted IDs, and plainer wording in several places. Fixed a broken source link for Clyde Jones Jr."
+    },
     {
       "date": "2026-10-20",
       "text": "Correction: an independent check of the Congress and amendment sources found every recorded vote correct, and we fixed claims the cited sources didn’t support. Mercer’s entry wrongly said he called the Voting Rights Act central to his campaign and wants to end military action against Iran. The Amendment 2 entry wrongly said no organized opposition was found, and the Amendment 4 entry misattributed a critic’s objection."

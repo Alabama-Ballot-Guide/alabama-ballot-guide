@@ -109,6 +109,7 @@ function checkUrl(p, u, AL) {
   if (typeof u !== "string") return err(p, "url must be a string");
   if (RELATIVE_URL_OK[np]) { if (!RELATIVE_URL_OK[np].has(u)) err(p, "relative link must be one of " + [...RELATIVE_URL_OK[np]].join(", ")); return; }
   if (/\s|[\u0000-\u001f\u007f-\u009f]/.test(u)) return err(p, "url contains whitespace or control characters");
+  if (/["'<>]/.test(u)) return err(p, "url contains a quote or angle bracket, which the page refuses to link; percent-encode it (' is %27): " + u);
   let x; try { x = new URL(u); } catch (e) { return err(p, "url does not parse: " + u); }
   if (x.protocol !== "https:") return err(p, "url must use https: (got " + x.protocol + ") " + u);
   if (x.username || x.password) return err(p, "url must not contain credentials: " + u);

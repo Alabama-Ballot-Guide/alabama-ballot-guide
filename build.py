@@ -81,7 +81,7 @@ const { chromium } = require('playwright');
   await p.route(/fonts\\.(googleapis|gstatic)\\.com/, r => r.abort());
   await p.addInitScript(() => { window.__PRERENDER = true; });
   await p.goto('file://' + process.argv[2]);
-  const out = await p.evaluate(() => ({ main: document.getElementById('top').innerHTML, about: document.getElementById('about').innerHTML }));
+  const out = await p.evaluate(() => ({ main: document.getElementById('content').innerHTML, about: document.getElementById('about').innerHTML }));
   out.errs = errs;
   process.stdout.write(JSON.stringify(out));
   await b.close();
@@ -89,7 +89,7 @@ const { chromium } = require('playwright');
 """)
 res = json.loads(subprocess.check_output(["node", str(js), str(tmp)], text=True, env=env))
 assert not res["errs"], res["errs"]
-page = page.replace('<main id="top"></main>', '<main id="top">' + res["main"] + "</main>", 1)
+page = page.replace('<main id="content"></main>', '<main id="content">' + res["main"] + "</main>", 1)
 page = page.replace('<footer class="about" id="about"></footer>', '<footer class="about" id="about">' + res["about"] + "</footer>", 1)
 for f in (tmp, js):
     f.unlink()
@@ -106,6 +106,9 @@ headpart, bodypart = page[:split], page[split:]
 doc = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<meta name="theme-color" content="#0a6b5b">\n'
+       '<link rel="icon" href="' + SITE_URL + '/favicon-32.png" sizes="32x32" type="image/png">\n'
+       '<link rel="icon" href="' + SITE_URL + '/favicon.svg" type="image/svg+xml">\n'
+       '<link rel="apple-touch-icon" href="' + SITE_URL + '/apple-touch-icon.png">\n'
        + headpart.replace("<!--SEO-->", seo(SITE_URL + "/", SITE_URL + "/og-image.png"), 1)
        + "</head>\n<body>\n" + bodypart + "\n</body>\n</html>\n")
 doc = doc.replace(ARTIFACT_URL, SITE_URL + "/")
@@ -150,6 +153,59 @@ const { chromium } = require('playwright');
 """)
 subprocess.check_call(["node", str(og), str(d / "og-card.html"), str(dist / "og-image.png")], env=env)
 og.unlink()
+# Tab icon: Alabama's shape in the guide's green (lighter on dark tab bars), plus PNGs for
+# browsers without SVG icons and for phone home screens
+AL_PATH = ("M7.1 2.4L50.7 2.6L58 45L61.7 54L60 62.4L58.6 70.4L60.2 80.4L61 82.4L17.2 82.4L20.2 92.8L18.5 96.8"
+           "L11.3 97.8L11.8 91.4L10.4 88.8L9.4 92L8.8 95L3.7 95L2.5 64.4L7.1 10.4L8.8 4.6Z")
+(dist / "favicon.svg").write_text(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16.5 1.5 97 97"><style>path{fill:#0a6b5b}'
+    '@media (prefers-color-scheme: dark){path{fill:#5fcfb4}}</style>'
+    '<path d="' + AL_PATH + '" stroke-linejoin="round"/></svg>\n')
+icons = d / "_icons.js"
+icons.write_text("""
+const { chromium } = require('playwright');
+(async () => {
+  const [, , pathD, outDir] = process.argv;
+  const b = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium' });
+  for (const [name, size, bg, pad] of [['favicon-32.png', 32, 'transparent', 1], ['apple-touch-icon.png', 180, '#ffffff', 26]]) {
+    const p = await (await b.newContext({ viewport: { width: size, height: size } })).newPage();
+    await p.setContent('<body style="margin:0;background:' + bg + '"><svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size +
+      '" viewBox="-16.5 1.5 97 97" style="display:block;padding:' + pad + 'px;box-sizing:border-box"><path fill="#0a6b5b" d="' + pathD + '"/></svg></body>');
+    await p.screenshot({ path: outDir + '/' + name, omitBackground: bg === 'transparent' });
+  }
+  await b.close();
+})();
+""")
+subprocess.check_call(["node", str(icons), AL_PATH, str(dist)], env=env)
+icons.unlink()
+# Not-found page that leads back to the guide instead of GitHub's stock 404
+(dist / "404.html").write_text("""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found · Alabama Ballot Guide 2026</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root { --bg: #ffffff; --fg: #111715; --muted: #56625d; --accent: #0a6b5b; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0d1110; --fg: #e8eeeb; --muted: #a3afaa; --accent: #5fcfb4; color-scheme: dark; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 1.06rem/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 18vh 20px 40px; }
+main { max-width: 32rem; margin: 0 auto; }
+h1 { font: 600 2rem/1.15 Georgia, serif; margin: 0 0 12px; }
+p { color: var(--muted); margin: 0 0 20px; }
+a { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<h1>Page not found</h1>
+<p>That page isn’t part of the Alabama Ballot Guide. The guide covers every race and amendment on Alabama’s Nov. 3, 2026 ballot.</p>
+<p><a href="/">Go to the Alabama Ballot Guide</a></p>
+</main>
+</body>
+</html>
+""")
 # GitHub Pages custom domain
 (dist / "CNAME").write_text(SITE_URL.split("://", 1)[1] + "\n")
 print("wrote dist/ for", SITE_URL)
