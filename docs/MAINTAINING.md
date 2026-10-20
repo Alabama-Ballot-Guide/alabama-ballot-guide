@@ -2,7 +2,9 @@
 
 The guide's value is trust, so updates follow one rule: **agents propose, checks verify, a person approves.** Nothing an agent writes reaches the live site without a human sign-off.
 
-## The update loop (run daily until Nov. 3, plus after major events)
+## The update loop (daily at 6:45 a.m. Central, Oct. 21 to Nov. 2)
+
+A scheduled Claude Code task starts a fresh session each morning and does steps 1 to 3. If it finds nothing that meets the rules below, it opens nothing. If a voting rule itself seems to have changed, it opens an issue instead of editing, because locked facts need a human-made PR. Run it by hand after major events.
 
 1. **Research (agents).** For each race, an agent looks for news since the last update: new candidate statements, debates (the lieutenant governor debate is Oct. 28), votes, court rulings, withdrawals, rule changes. It does not edit the site. It writes *change proposals*: candidate, topic, proposed wording, sources with dates, and evidence strength (candidate's own words, recorded vote, news report).
 2. **Verification (a different agent).** A second model checks each proposal against its sources and rejects anything that is:
@@ -12,14 +14,20 @@ The guide's value is trust, so updates follow one rule: **agents propose, checks
    - stronger than its source
    It enforces the house rules below.
 3. **Editorial review (agent).** An agent applying national-newsroom standards reviews only the proposed changes for fairness, attribution and precision, the same way the launch review worked.
-4. **Automated checks (scripts).** These run on every build:
-   - every position cites a source, and every source is cited
-   - a balance report: positions per candidate, by topic and party
-   - the page renders on phone and desktop with no errors or sideways scrolling
-   - the content is present without JavaScript
-   - the structured data parses
-   - **regression test:** AI agents (Haiku, Sonnet, Opus) answer the standard 14 voter questions from the updated guide and are graded against the answer key. A score drop blocks the release.
-5. **Human approval.** The editor reads a one-page summary: what changed, why, sources, review notes. They approve or send it back. On GitHub this is a pull request, and merging publishes.
+4. **Automated checks (scripts).** The `validate` check runs on every pull request:
+   - data.js is parsed as JSON, never run, and must be in canonical form
+   - every position cites a source, and every link is https on an allowlisted domain
+   - locked voting facts can't change, and candidates can't be added or removed
+   - agent PRs (from the GitHub App, or from any branch named `agent/…`) may change only data.js, may not add fields, and are capped at 60 changed values
+   - the site is built, and every link on the built page is checked
+
+   After publishing, the live-site monitor compares the live files with the build every 30 minutes.
+
+   **Not automated:** these ran by hand before launch. Rerun them before any large change:
+   - the balance report (positions per candidate, by topic and party)
+   - the phone, desktop and no-JavaScript render test
+   - the AI-assistant quiz: the standard 14 voter questions, graded against the answer key
+5. **Human approval.** The editor reads a one-page summary: what changed, why, sources, review notes. They approve or send it back. On GitHub this is a pull request, and merging publishes. A daily-check PR always comes from a branch named `agent/…` and changes only data.js. If one changes any other file, don't merge it.
 6. **Publish and log.** Add a dated line to the Updates list on the site. Corrections are labeled "Correction" and say what changed.
 
 ## House rules agents must follow

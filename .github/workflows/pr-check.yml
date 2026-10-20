@@ -25,6 +25,9 @@ jobs:
     env:
       AGENT_LOGIN: alabama-guide-agent[bot]   # login of the GitHub App the AI pipeline uses
       PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+      # the daily research task opens PRs under the editor's account from agent/* branches;
+      # those get agent rules too (stricter only: a branch name can't loosen anything)
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
       BASE_SHA: ${{ github.event.pull_request.base.sha }}
       SITE_URL: https://alabamaballotguide.org   # keep in step with deploy.yml
       CHROMIUM_PATH: /usr/bin/google-chrome
@@ -42,12 +45,15 @@ jobs:
       - name: Load the rules from main
         run: |
           R="$RUNNER_TEMP/main"; mkdir -p "$R"
+          IS_AGENT=false
+          if [ "$PR_AUTHOR" = "$AGENT_LOGIN" ] || [[ "$HEAD_REF" == agent/* ]]; then IS_AGENT=true; fi
+          echo "IS_AGENT=$IS_AGENT" >> "$GITHUB_ENV"
           git show "$BASE_SHA:data.js" > "$R/base-data.js"
           git diff --name-only "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed.txt"
           for f in scripts/validate-data.js security/source-domains.json security/facts.lock.json; do
             if ! git show "$BASE_SHA:$f" > "$R/$(basename "$f")" 2>/dev/null; then
               # first PR that adds the checks: only a human PR may bootstrap them
-              [ "$PR_AUTHOR" != "$AGENT_LOGIN" ] || { echo "::error::$f missing on main"; exit 1; }
+              [ "$IS_AGENT" = false ] || { echo "::error::$f missing on main"; exit 1; }
               cp "$f" "$R/$(basename "$f")"
             fi
           done
@@ -55,7 +61,7 @@ jobs:
       - name: Validate data.js (parsed as JSON, never executed)
         run: |
           R="$RUNNER_TEMP/main"
-          if [ "$PR_AUTHOR" = "$AGENT_LOGIN" ]; then
+          if [ "$IS_AGENT" = true ]; then
             # agents: rules from main, and only data.js may change
             ARGS=(--agent --allowlist "$R/source-domains.json" --lock "$R/facts.lock.json")
           else
@@ -65,7 +71,7 @@ jobs:
           fi
           node "$R/validate-data.js" --base "$R/base-data.js" --new data.js \
             --changed-files "$RUNNER_TEMP/changed.txt" "${ARGS[@]}" | tee "$RUNNER_TEMP/validate.txt"
-          { echo "## Data check (author: $PR_AUTHOR)"; echo '```'; cat "$RUNNER_TEMP/validate.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          { echo "## Data check (author: $PR_AUTHOR, agent rules: $IS_AGENT)"; echo '```'; cat "$RUNNER_TEMP/validate.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Install pinned build tools
         run: npm ci --ignore-scripts
