@@ -59,8 +59,9 @@ jobs:
             # agents: rules from main, and only data.js may change
             ARGS=(--agent --allowlist "$R/source-domains.json" --lock "$R/facts.lock.json")
           else
-            # humans: the PR's own allowlist/lock, which CODEOWNERS makes a human review
-            ARGS=(--allowlist security/source-domains.json --lock security/facts.lock.json)
+            # humans: the PR's own allowlist/lock, which CODEOWNERS makes a human review, and a larger
+            # change budget so an editor can approve a full correction pass in one PR
+            ARGS=(--max-changes 600 --allowlist security/source-domains.json --lock security/facts.lock.json)
           fi
           node "$R/validate-data.js" --base "$R/base-data.js" --new data.js \
             --changed-files "$RUNNER_TEMP/changed.txt" "${ARGS[@]}" | tee "$RUNNER_TEMP/validate.txt"
