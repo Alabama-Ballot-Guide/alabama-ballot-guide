@@ -3444,7 +3444,7 @@ window.GUIDE = {
     {
       "id": "election-day",
       "h": "Vote on Election Day",
-      "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. Alabama has no early voting. If you moved, look up your polling place again.",
+      "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. Alabama has no early voting. Some polling places near the Georgia line may run on Eastern Time (7 a.m. to 7 p.m. Eastern); check with your county if unsure. If you moved, look up your polling place again.",
       "links": [
         {
           "label": "Alabama Votes",
@@ -3458,10 +3458,10 @@ window.GUIDE = {
         "Alabama driver’s license or nondriver ID",
         "Free Alabama Photo Voter ID card",
         "U.S. passport, military ID, or tribal ID",
-        "Other state, federal, or government employee photo ID",
+        "Photo ID from another state or the federal government, or a federal or Alabama government employee ID",
         "Student or employee ID from an Alabama college, or from a public college in another state"
       ],
-      "after": "Bring the physical card; digital IDs are not accepted. A license expired less than 60 days still counts.",
+      "after": "Bring the physical card; digital IDs, including Alabama’s digital driver’s license, are no longer accepted. A license expired less than 60 days still counts.",
       "links": [
         {
           "label": "Full list of valid IDs",
@@ -3486,9 +3486,9 @@ window.GUIDE = {
         "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
         "Return it yourself with a copy of your photo ID: by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
         "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted.",
-        "Return the ballot yourself: by hand by 5 p.m. Mon, Nov 2, or by mail so it arrives by noon Tue, Nov 3. No one else may return it for you."
+        "Return the ballot yourself: by hand before your county’s absentee office closes on Mon, Nov 2 (5 p.m. at the latest), or by mail or a carrier such as FedEx or UPS so it arrives by noon Tue, Nov 3. Except in a medical emergency, no one else may return it for you."
       ],
-      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Military and overseas voters have different rules and later deadlines.",
+      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Military and overseas voters have different rules, including a later deadline to return their ballots.",
       "links": [
         {
           "label": "Application forms by county",
@@ -3520,7 +3520,7 @@ window.GUIDE = {
     },
     {
       "h": "Questions",
-      "p": "Call the Secretary of State’s Elections Division at 334‑242‑7210, or your county Board of Registrars."
+      "p": "Call the Secretary of State’s Elections Division at 334‑242‑7210 (toll-free 1‑800‑274‑8683), or your county Board of Registrars."
     }
   ],
   "about": [
@@ -3613,6 +3613,10 @@ window.GUIDE = {
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-10-20",
+      "text": "Clarified How to vote after checking it against the Secretary of State: when hand-delivered absentee ballots are due, returning ballots by carrier, Eastern Time polling places, and which IDs are accepted."
+    },
     {
       "date": "2026-10-20",
       "text": "First published, with candidate positions as of Oct. 20."
