@@ -39,8 +39,8 @@ const PARTY_CODES = new Set(["R", "D", "L", "I"]);
 // ids the app itself uses for getElementById / views; data ids must not collide with these
 const RESERVED_IDS = new Set(["top", "about", "live", "sheet", "scrim", "countdown", "picksSlot", "picksBtn", "picksN", "picksList",
   "filter", "filterLabel", "filterStatus", "find", "findH", "myHouse", "myBoe", "fbStatus", "houseNote", "boeNote", "races",
-  "content", "showAll", "clearPicks", "closeSheet", "sheetTitle", "overview", "congress", "amendments", "vote"]);
-const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|al-?\d)/;
+  "content", "showAll", "clearPicks", "closeSheet", "sheetTitle", "overview", "congress", "amendments", "vote", "laws", "lawsH", "lawTip"]);
+const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|law-|al-?\d)/;
 const ID_RE = /^[a-z][a-z0-9-]{0,40}$/;
 const TOPIC_RE = /^[a-z]{2,20}$/;
 const ISO_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -260,11 +260,12 @@ const addId = (p, id) => {
   });
 });
 (G.vote || []).forEach((s, i) => { if (s.id !== undefined) addId("vote[" + i + "].id", s.id); });
-// law ids become in-page anchors (#law-<race>-<id>); each law needs at least one phrase to find in candidate text
+// law ids become in-page anchors (#law-<id>); each law needs a phrase to find in candidate text and a hover summary
 (G.laws || []).forEach((l, i) => {
   addId("laws[" + i + "].id", l.id);
   if (!Array.isArray(l.match) || !l.match.length || l.match.some(m => typeof m !== "string" || m.length < 3)) err("laws[" + i + "].match", "needs one or more phrases of 3+ characters");
   if (!(l.src || []).length) err("laws[" + i + "]", "law description has no source");
+  if (typeof l.short !== "string" || l.short.length < 20 || l.short.length > 160) err("laws[" + i + "].short", "needs a one-line summary (20-160 characters) for the hover tip");
 });
 const known = new Set([...ids.keys(), "overview", "state", "congress", "amendments", "vote", "find"]);
 (G.dates || []).forEach((d, i) => {
