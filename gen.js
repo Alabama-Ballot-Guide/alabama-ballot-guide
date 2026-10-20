@@ -98,6 +98,18 @@ G.groups.forEach(g => g.races.forEach(r => {
   }
 }));
 
+// Laws and bills: one neutral description each (G.laws), and which races mention them (same matching as app.js)
+const lawRes = (G.laws || []).map(l => ({ l, res: (l.match || []).map(m =>
+  new RegExp("(^|[^A-Za-z0-9])" + m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?![A-Za-z0-9])", "i")) }));
+races.forEach(r => {
+  const t = [r.notes || "", ...r.key_differences.map(k => k.text), ...r.candidates.flatMap(c => c.positions.flatMap(p => [p.headline, p.summary]))].join("\n");
+  r.laws_mentioned = lawRes.filter(x => x.res.some(re => re.test(t))).map(x => x.l.term);
+});
+const laws = lawRes.map(({ l }) => ({
+  id: l.id, name: l.term, kind: l.kind, description: l.d, sources: refs(l.src),
+  mentioned_in: races.filter(r => r.laws_mentioned.indexOf(l.term) > -1).map(r => r.office)
+}));
+
 // Topic index: for each topic, which candidates in which races have a stated position, and who doesn't
 const topicIndex = {};
 Object.keys(G.topics).forEach(t => {
@@ -131,6 +143,7 @@ const json = {
   topic_index: topicIndex,
   races,
   judicial_and_board_races: otherRaces,
+  laws,
   amendments: G.amendments.map(a => ({
     number: a.n, title: a.title, summary: a.summary, legislative_vote: a.vote,
     supporters_say: a.support, opponents_say: a.oppose, yes_means: a.yes, no_means: a.no, sources: refs(a.src)
@@ -177,6 +190,7 @@ function mdRace(r) {
   if (r.debates) md.push("Debates: " + r.debates, "");
   if (r.notes) md.push(r.notes, "");
   if (r.note_sources.length) md.push("Sources for these notes: " + r.note_sources.map(s => "[" + s.title + "](" + s.url + ")").join("; "), "");
+  if (r.laws_mentioned.length) md.push("Laws and bills mentioned: " + r.laws_mentioned.join("; ") + ". Each is described under \"Laws and bills mentioned\" below.", "");
 }
 md.push("## Positions by topic", "", "Who has a stated position on each issue. Candidates listed as not covered had no statement on it in the sources reviewed.", "");
 Object.keys(topicIndex).forEach(t => {
@@ -205,6 +219,13 @@ json.amendments.forEach(a => {
     "- A yes vote: " + a.yes_means, "- A no vote: " + a.no_means,
     "- Sources: " + a.sources.map(s => "[" + s.title + "](" + s.url + ")").join("; "), "");
 });
+if (laws.length) {
+  md.push("## Laws and bills mentioned", "", "Neutral descriptions of the laws and bills that candidates' entries mention.", "");
+  laws.forEach(l => md.push("- **" + l.name + "** (" + l.kind + "): " + l.description +
+    (l.sources.length ? " Sources: " + l.sources.map(s => "[" + s.title + "](" + s.url + ")").join("; ") + "." : "") +
+    (l.mentioned_in.length ? " Mentioned in: " + l.mentioned_in.join("; ") + "." : "")));
+  md.push("");
+}
 md.push("## How to vote", "");
 json.how_to_vote.forEach(s => {
   md.push("### " + s.topic, "", s.text, "");
@@ -242,6 +263,8 @@ const llms = [
   "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; ") + (G.spanishGuide ? ". A Spanish summary of the dates and rules is in guide.md (\"" + G.spanishGuide.title + "\")." : ""),
   "- Photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p + " " + idStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
+  ...(laws.length ? ["- Laws and bills: candidates' entries mention " + laws.length + " laws and bills, such as the " + laws.filter(l => l.name.indexOf("(") < 0).slice(0, 3).map(l => l.name).join(", the ").replace(/, the ([^,]*)$/, " and the $1") +
+    ". guide.md (\"Laws and bills mentioned\") and guide.json (laws) describe each one neutrally, with sources."] : []),
   "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments.",
   "",
   "## Data",

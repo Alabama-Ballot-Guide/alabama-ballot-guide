@@ -40,6 +40,42 @@
   function partyLabel(c) { return c.partyName || PARTY[c.party] || c.party; }
   function announce(msg) { live.textContent = ""; setTimeout(function () { live.textContent = msg; }, 30); }
 
+  // ---------- laws and bills ----------
+  // Each law is described once in G.laws; a race lists the ones its text mentions, and the first
+  // mention in each position or differ line links to that list. No lookbehind: older Safari lacks it.
+  var LAWS = (G.laws || []).map(function (l) {
+    return { law: l, res: (l.match || []).map(function (m) {
+      return new RegExp("(^|[^A-Za-z0-9])(" + m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![A-Za-z0-9])", "i");
+    }) };
+  });
+  function lawId(scope, l) { return "law-" + scope + "-" + l.id; }
+  // html is already escaped; law names contain none of the characters esc() changes
+  function linkLaws(html, scope, seen) {
+    LAWS.forEach(function (x) {
+      if (seen[x.law.id]) return;
+      for (var i = 0; i < x.res.length; i++) {
+        if (!x.res[i].test(html)) continue;
+        html = html.replace(x.res[i], function (all, pre, t) { return pre + '<a class="law" href="#' + esc(lawId(scope, x.law)) + '">' + t + "</a>"; });
+        seen[x.law.id] = 1;
+        return;
+      }
+    });
+    return html;
+  }
+  function lawsBox(o, scope) {
+    var text = [o.note || ""];
+    (o.differ || []).forEach(function (x) { text.push(x.v); });
+    (o.candidates || []).forEach(function (c) { (c.positions || []).forEach(function (p) { text.push(p.h, p.d); }); });
+    text = text.join("\n");
+    var found = LAWS.filter(function (x) { return x.res.some(function (re) { return re.test(text); }); });
+    if (!found.length) return "";
+    return '<div class="laws"><p class="laws-h">Laws and bills mentioned</p><dl>' + found.map(function (x) {
+      var l = x.law;
+      return '<dt id="' + esc(lawId(scope, l)) + '">' + esc(l.term) + ' <span class="kind">' + esc(l.kind) + "</span></dt><dd>" + esc(l.d) +
+        ((l.src || []).length ? ' <span class="law-src">Sources: ' + l.src.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</span>" : "") + "</dd>";
+    }).join("") + "</dl></div>";
+  }
+
   // ---------- render pieces ----------
   function card(c, raceId, raceName, target) {
     var on = picks[raceId] && picks[raceId].name === c.name;
@@ -50,8 +86,9 @@
         var s = srcs[n - 1]; if (!s) return "";
         return '<a href="' + esc(safeUrl(s.url)) + '" target="_blank" rel="noopener" aria-label="Source ' + n + ": " + esc(s.label) + ' (opens in new tab)">' + n + sep(" (source: " + esc(s.label) + ")") + "</a>";
       }).join("");
+      var seen = {};
       return '<li data-topics="' + esc(ts.join(" ")) + '"><span class="t">' + esc(ts.map(function (t) { return G.topics[t] || t; }).join(" · ")) + "</span>" + sep(": ") +
-        "<strong>" + esc(p.h) + "</strong>" + sep(". ") + "<p>" + esc(p.d) + (refs ? ' <span class="refs">' + refs + "</span>" : "") + "</p></li>";
+        "<strong>" + linkLaws(esc(p.h), target, seen) + "</strong>" + sep(". ") + "<p>" + linkLaws(esc(p.d), target, seen) + (refs ? ' <span class="refs">' + refs + "</span>" : "") + "</p></li>";
     }).join("");
     var src = srcs.map(function (s) { return "<li>" + ext(s.url, esc(s.label)) + "</li>"; }).join("");
     return '<article class="cand">' +
@@ -70,11 +107,11 @@
       "</article>";
   }
 
-  function differBox(x) {
+  function differBox(x, scope) {
     if (!x.differ || !x.differ.length) return "";
     return '<div class="differ"><p class="differ-h">Where they differ</p><ul>' + x.differ.map(function (i) {
       var both = i.k === "Both";
-      return "<li><b>" + esc(both ? "Where they agree" : i.k) + ":</b> " + esc(both ? "Both " + i.v.charAt(0).toLowerCase() + i.v.slice(1) : i.v) + "</li>";
+      return "<li><b>" + esc(both ? "Where they agree" : i.k) + ":</b> " + linkLaws(esc(both ? "Both " + i.v.charAt(0).toLowerCase() + i.v.slice(1) : i.v), scope, {}) + "</li>";
     }).join("") + "</ul></div>";
   }
   var mine = load("al-guide-mine", {});
@@ -98,9 +135,9 @@
 
   function fullRace(r) {
     return '<section class="race" id="' + esc(r.id) + '" data-kind="full" aria-labelledby="h-' + esc(r.id) + '">' +
-      raceHead(r).replace('<h3 class="office">', '<h3 class="office" id="h-' + esc(r.id) + '">') + differBox(r) +
+      raceHead(r).replace('<h3 class="office">', '<h3 class="office" id="h-' + esc(r.id) + '">') + differBox(r, r.id) +
       '<div class="cands">' + r.candidates.map(function (c) { return card(c, r.id, r.office, r.id); }).join("") + "</div>" +
-      raceFoot(Object.assign({ debate: G.defaultDebate }, r)) + "</section>";
+      lawsBox(r, r.id) + raceFoot(Object.assign({ debate: G.defaultDebate }, r)) + "</section>";
   }
 
   function rowsRace(r) {
@@ -129,9 +166,9 @@
     var panels = r.districts.map(function (d, i) {
       var name = "U.S. House, District " + d.n;
       return '<div class="panel"' + (STATIC ? "" : ' role="tabpanel" aria-labelledby="tab-al' + esc(d.n) + '"') + ' id="panel-al' + esc(d.n) + '"' + (i && !STATIC ? " hidden" : "") + ">" +
-        '<h3 class="district-area" id="al-' + esc(d.n) + '"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</h3>" + differBox(d) +
+        '<h3 class="district-area" id="al-' + esc(d.n) + '"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</h3>" + differBox(d, "al" + d.n) +
         '<div class="cands">' + d.candidates.map(function (c) { return card(c, "house", name, "al" + d.n); }).join("") + "</div>" +
-        raceFoot(Object.assign({ debate: G.defaultDebate }, d)) + "</div>";
+        lawsBox(d, "al" + d.n) + raceFoot(Object.assign({ debate: G.defaultDebate }, d)) + "</div>";
     }).join("");
     return '<section class="race" id="' + esc(r.id) + '" data-kind="districts">' + raceHead(r) +
       '<p class="find">' + esc(r.findText) + " " + ext(r.findLink.url, esc(r.findLink.label)) + "</p>" +

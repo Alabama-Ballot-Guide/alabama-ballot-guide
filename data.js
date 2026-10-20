@@ -3750,6 +3750,10 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-20",
+      "text": "Added short, sourced explanations of the laws and bills candidates mention, such as the CHOOSE Act, the SAVE America Act and the Laken Riley Act. Tap a law’s name in a candidate’s entry to read it."
+    },
+    {
+      "date": "2026-10-20",
       "text": "Added a Spanish summary of the dates and voting rules (Lo esencial en español), and how to vote if you’re not on the poll list."
     },
     {
@@ -3812,5 +3816,188 @@ window.GUIDE = {
         "url": "https://vote.gov/es/"
       }
     ]
-  }
+  },
+  "laws": [
+    {
+      "id": "choose-act",
+      "term": "CHOOSE Act",
+      "kind": "Alabama law, 2024",
+      "match": [
+        "CHOOSE Act"
+      ],
+      "d": "The Creating Hope and Opportunity for Our Students’ Education Act. It pays for education savings accounts: state money families can spend on private-school tuition or approved homeschool costs. Accounts are up to $7,000 per private-school student and $2,000 per homeschooled student (up to $4,000 per family). Through 2026–27, new applicants need household income at or below 300% of the federal poverty level. Starting in 2027–28, any Alabama family can apply, with the number of accounts limited by what the Legislature budgets.",
+      "src": [
+        {
+          "label": "Yellowhammer News: 2026–27 CHOOSE Act timeline and eligibility",
+          "url": "https://yellowhammernews.com/alabama-announces-2026-2027-choose-act-timeline-eligibility/"
+        },
+        {
+          "label": "Alabama Reflector: CHOOSE Act eligibility and funding (Mar 2, 2026)",
+          "url": "https://alabamareflector.com/2026/03/02/alabamas-school-voucher-program-might-go-universal-despite-tight-budgets/"
+        }
+      ]
+    },
+    {
+      "id": "hr1-2025",
+      "term": "H.R. 1 (2025 tax-and-spending law)",
+      "kind": "Federal law, 2025",
+      "match": [
+        "H.R. 1",
+        "2025 tax-and-spending law"
+      ],
+      "d": "The federal budget law signed July 4, 2025 (Public Law 119-21), introduced as the “One Big Beautiful Bill Act.” Among many provisions, it extended the 2017 tax cuts and reduced projected federal Medicaid spending.",
+      "src": [
+        {
+          "label": "Congress.gov: H.R. 1 (119th Congress)",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/1"
+        }
+      ]
+    },
+    {
+      "id": "laken-riley-act",
+      "term": "Laken Riley Act",
+      "kind": "Federal law, 2025",
+      "match": [
+        "Laken Riley Act"
+      ],
+      "d": "Signed Jan. 29, 2025. Requires immigration authorities to detain people in the country illegally who are charged with, arrested for or convicted of burglary, theft, shoplifting, assaulting a police officer, or a crime that kills or seriously injures someone. It also lets states sue the federal government over certain immigration decisions. Named for Laken Riley, a Georgia nursing student killed in 2024.",
+      "src": [
+        {
+          "label": "Congress.gov: S. 5, Laken Riley Act",
+          "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5"
+        }
+      ]
+    },
+    {
+      "id": "save-america-act",
+      "term": "SAVE America Act",
+      "kind": "Proposed federal law, 2026",
+      "match": [
+        "SAVE America Act"
+      ],
+      "d": "Would require documentary proof of U.S. citizenship, such as a passport, to register to vote, and a photo ID to vote in federal elections, including a copy of the ID with absentee ballots. States would also have to check their voter lists against a federal citizenship database. The House passed it 218–213 on Feb. 11, 2026. It has not become law.",
+      "src": [
+        {
+          "label": "Congressional Research Service: SAVE America Act",
+          "url": "https://www.congress.gov/crs-product/IF12902"
+        }
+      ]
+    },
+    {
+      "id": "save-act",
+      "term": "SAVE Act",
+      "kind": "Proposed federal law, 2024",
+      "match": [
+        "SAVE Act"
+      ],
+      "d": "The Safeguard American Voter Eligibility Act. Would have required documentary proof of U.S. citizenship, such as a passport or birth certificate, to register to vote in federal elections, and required states to check voter lists for noncitizens. The House passed it 221–198 in July 2024. It did not become law. The SAVE America Act is the 2026 version.",
+      "src": [
+        {
+          "label": "Congress.gov: H.R. 8281 (118th Congress)",
+          "url": "https://www.congress.gov/bill/118th-congress/house-bill/8281"
+        }
+      ]
+    },
+    {
+      "id": "lewis-vraa",
+      "term": "John R. Lewis Voting Rights Advancement Act",
+      "kind": "Proposed federal law",
+      "match": [
+        "John R. Lewis Voting Rights Advancement Act"
+      ],
+      "d": "Would bring back federal “preclearance”: states and localities with recent records of voting-rights violations would need approval from the Justice Department or a federal court before changing voting rules. The U.S. Supreme Court’s 2013 ruling in Shelby County v. Holder, a case from Shelby County, Alabama, ended the old system for deciding which places needed approval. Named for the late Rep. John Lewis, an Alabama native. It has not become law.",
+      "src": [
+        {
+          "label": "Congress.gov: H.R. 14 (119th Congress)",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/14"
+        }
+      ]
+    },
+    {
+      "id": "voting-rights-act",
+      "term": "Voting Rights Act",
+      "kind": "Federal law, 1965",
+      "match": [
+        "Voting Rights Act"
+      ],
+      "d": "The federal law that bans racial discrimination in voting. Its Section 2 is used to challenge election rules and district maps in court. In Louisiana v. Callais (April 29, 2026), the U.S. Supreme Court ruled 6–3 that a map violates Section 2 only when the evidence supports “a strong inference that the State intentionally drew its districts to afford minority voters less opportunity because of their race.”",
+      "src": [
+        {
+          "label": "Congressional Research Service: Louisiana v. Callais (May 2026)",
+          "url": "https://www.congress.gov/crs-product/LSB11431"
+        }
+      ]
+    },
+    {
+      "id": "affordable-care-act",
+      "term": "Affordable Care Act",
+      "kind": "Federal law, 2010",
+      "match": [
+        "Affordable Care Act"
+      ],
+      "d": "The federal health law often called Obamacare. It created the HealthCare.gov marketplaces, with tax credits that lower premiums based on income, and lets states expand Medicaid. Larger premium tax credits first added in 2021 expired at the end of 2025.",
+      "src": [
+        {
+          "label": "Congressional Research Service: enhanced premium tax credit FAQ",
+          "url": "https://www.congress.gov/crs-product/R48290"
+        },
+        {
+          "label": "Alabama Reflector: Alabama marketplace enrollment after the credits expired (Aug 19, 2026)",
+          "url": "https://alabamareflector.com/2026/08/19/alabama-obamacare-enrollment-drops-23-after-tax-credits-expire/"
+        }
+      ]
+    },
+    {
+      "id": "medicaid-expansion",
+      "term": "Medicaid expansion",
+      "kind": "Part of the Affordable Care Act",
+      "match": [
+        "Medicaid expansion",
+        "expand Medicaid",
+        "expanding Medicaid"
+      ],
+      "d": "The Affordable Care Act’s option for states to extend Medicaid to adults earning up to 138% of the federal poverty level. Alabama is one of 10 states that have not expanded it.",
+      "src": [
+        {
+          "label": "Alabama Reflector: the 10 states that didn’t expand Medicaid (Jul 22, 2024)",
+          "url": "https://alabamareflector.com/2024/07/22/in-the-10-states-that-didnt-expand-medicaid-1-6m-cant-afford-health-insurance/"
+        }
+      ]
+    },
+    {
+      "id": "pact-act",
+      "term": "PACT Act",
+      "kind": "Federal law, 2022",
+      "match": [
+        "PACT Act"
+      ],
+      "d": "Signed Aug. 10, 2022. Expanded VA health care and disability benefits for veterans exposed to burn pits, Agent Orange and other toxic substances, and added more than 20 conditions the VA presumes were caused by that exposure.",
+      "src": [
+        {
+          "label": "Congress.gov: H.R. 3967 (117th Congress)",
+          "url": "https://www.congress.gov/bill/117th-congress/house-bill/3967"
+        }
+      ]
+    },
+    {
+      "id": "ndaa-2027",
+      "term": "H.R. 8800 (2027 defense authorization)",
+      "kind": "Proposed federal law, 2026",
+      "match": [
+        "H.R. 8800",
+        "2027 defense authorization"
+      ],
+      "d": "The National Defense Authorization Act for 2027: the yearly bill that sets defense policy and authorizes military spending, including pay and benefits for service members. The House passed it 216–212 on July 22, 2026.",
+      "src": [
+        {
+          "label": "Congress.gov: H.R. 8800 (119th Congress)",
+          "url": "https://www.congress.gov/bill/119th-congress/house-bill/8800"
+        },
+        {
+          "label": "U.S. House: roll call 278 on H.R. 8800 (Jul 22, 2026)",
+          "url": "https://clerk.house.gov/Votes/2026278"
+        }
+      ]
+    }
+  ]
 };

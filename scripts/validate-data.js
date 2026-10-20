@@ -260,6 +260,12 @@ const addId = (p, id) => {
   });
 });
 (G.vote || []).forEach((s, i) => { if (s.id !== undefined) addId("vote[" + i + "].id", s.id); });
+// law ids become in-page anchors (#law-<race>-<id>); each law needs at least one phrase to find in candidate text
+(G.laws || []).forEach((l, i) => {
+  addId("laws[" + i + "].id", l.id);
+  if (!Array.isArray(l.match) || !l.match.length || l.match.some(m => typeof m !== "string" || m.length < 3)) err("laws[" + i + "].match", "needs one or more phrases of 3+ characters");
+  if (!(l.src || []).length) err("laws[" + i + "]", "law description has no source");
+});
 const known = new Set([...ids.keys(), "overview", "state", "congress", "amendments", "vote", "find"]);
 (G.dates || []).forEach((d, i) => {
   if (!known.has(d.target)) err("dates[" + i + "].target", "points to a missing section: " + d.target);
