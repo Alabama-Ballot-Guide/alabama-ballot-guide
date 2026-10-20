@@ -252,7 +252,7 @@ a.date:hover { background: var(--surface); }
 
 /* Group headers */
 .group { padding-block: 56px 0; }
-.group > .wrap > h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4vw, 2.5rem); letter-spacing: -.015em; line-height: 1.1; }
+.group > .wrap > h1, .group > .wrap > h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4vw, 2.5rem); letter-spacing: -.015em; line-height: 1.1; }
 .group-intro { color: var(--muted); max-width: 64ch; margin-top: 10px; font-size: 1.03rem; }
 .group-src { margin-top: 10px; font-size: .84rem; color: var(--muted); max-width: 90ch; }
 
@@ -293,7 +293,7 @@ a.date:hover { background: var(--surface); }
 .positions strong { font-weight: 600; font-size: .97rem; line-height: 1.35; }
 .positions p { font-size: .9375rem; color: var(--muted); line-height: 1.5; }
 .refs { white-space: nowrap; }
-.refs a { display: inline-grid; place-items: center; min-width: 1.35em; height: 1.35em; padding: 0 .3em; margin-left: 3px; border-radius: 4px; font-size: .72rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); text-decoration: none; vertical-align: 1px; font-variant-numeric: tabular-nums; }
+.refs a { display: inline-grid; place-items: center; min-width: 1.6em; height: 1.6em; padding: 0 .3em; margin-left: 5px; border-radius: 5px; font-size: .78rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); text-decoration: none; vertical-align: 1px; font-variant-numeric: tabular-nums; }
 .refs a:hover { outline: 1px solid var(--accent); }
 .positions li[hidden] { display: none; }
 .empty-topic { font-size: .906rem; color: var(--muted); font-style: italic; }
@@ -365,6 +365,13 @@ a.date:hover { background: var(--surface); }
 .deadlines thead td { border-top: 0; }
 .deadlines tbody th { font-weight: 600; color: var(--muted); min-width: 9rem; }
 .deadlines td { font-weight: 600; color: var(--fg); font-variant-numeric: tabular-nums; min-width: 8rem; }
+.es-guide { margin-top: 28px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 20px; display: grid; gap: 10px; }
+.es-guide h2 { font-size: 1.25rem; font-weight: 700; }
+.es-guide > p { color: var(--muted); max-width: 70ch; }
+.es-guide dl { margin: 0; display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: 10px 20px; }
+.es-guide dt { font-weight: 700; }
+.es-guide dd { margin: 0; color: var(--muted); max-width: 70ch; }
+@media (max-width: 37.5em) { .es-guide dl { grid-template-columns: 1fr; gap: 2px; } .es-guide dd { margin-bottom: 10px; } }
 .deadlines .note { padding: 8px 14px 12px; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
 @media (max-width: 37.5em) {
   /* Phones: each delivery method becomes a short labeled list instead of a cramped three-column table */

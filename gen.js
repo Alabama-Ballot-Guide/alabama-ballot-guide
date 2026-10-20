@@ -142,6 +142,7 @@ const json = {
     deadlines: s.deadlines ? { columns: s.deadlines.cols, rows: s.deadlines.rows.map(r => ({ method: r.h, application: r.c[0], ballot: r.c[1] })) } : undefined,
     links: (s.links || []).map(l => ({ title: l.label, url: l.url }))
   })),
+  spanish_essentials: G.spanishGuide ? { title: G.spanishGuide.title, intro: G.spanishGuide.intro, items: G.spanishGuide.items.map(x => ({ topic: x.h, text: x.p })), links: G.spanishGuide.links.map(l => ({ title: l.label, url: l.url })) } : undefined,
   official_resources: [
     { title: "Check registration, district, polling place and sample ballot", url: LOOKUP_URL },
     ...[dayStep, absStep, idStep, noIdStep].flatMap(s => (s.links || []).map(l => ({ title: l.label, url: l.url }))),
@@ -210,6 +211,11 @@ json.how_to_vote.forEach(s => {
   if (s.deadlines) md.push("| | " + s.deadlines.columns.join(" | ") + " |", "| --- | --- | --- |", ...s.deadlines.rows.map(r => "| " + r.method + " | " + r.application + " | " + r.ballot + " |"), "");
   md.push(...s.links.map(l => "- [" + l.title + "](" + l.url + ")"), "");
 });
+if (G.spanishGuide) {
+  md.push("## " + G.spanishGuide.title, "", G.spanishGuide.intro, "");
+  G.spanishGuide.items.forEach(x => md.push("- **" + x.h + ":** " + x.p));
+  md.push("", ...G.spanishGuide.links.map(l => "- [" + l.label + "](" + l.url + ")"), "");
+}
 md.push("## About", "");
 G.about.forEach(a => md.push("**" + a.h + ".** " + a.p.replace("The number after each point links to the source behind it.", "Each point lists the sources behind it.") + (a.links ? " " + a.links.map(l => "[" + l.label + "](" + l.url + ")").join(", ") + "." : ""), ""));
 fs.writeFileSync(path.join(dir, "guide.md"), md.join("\n"));
@@ -233,7 +239,7 @@ const llms = [
   "- Registration: " + checkStep.p + " " + LOOKUP_URL,
   "- Absentee voting: " + absStep.p + " " + absStep.list.join("; ") + ". " + absStep.ol.map((x, i) => "(" + (i + 1) + ") " + x).join(" ") + " " + absStep.after +
     " " + absStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
-  "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; "),
+  "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; ") + (G.spanishGuide ? ". A Spanish summary of the dates and rules is in guide.md (\"" + G.spanishGuide.title + "\")." : ""),
   "- Photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p + " " + idStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
   "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments.",

@@ -177,7 +177,8 @@
       "<h1>" + esc(G.heroTitle) + "</h1>" +
       '<p class="lede">' + esc(G.heroLede) + "</p>" +
       '<p class="meta">' + G.heroMeta.map(function (m) { return "<span>" + esc(m) + "</span>"; }).join("") + "</p>" +
-      '<p class="es" lang="es">' + esc(G.spanish.text) + " " + G.spanish.links.map(function (l) { return ext(l.url, esc(l.label)); }).join(" · ") + "</p>" +
+      '<p class="es" lang="es">' + esc(G.spanish.text) + " " + (G.spanishGuide ? '<a href="#espanol">' + esc(G.spanishGuide.title) + "</a> · " : "") +
+        G.spanish.links.map(function (l) { return ext(l.url, esc(l.label)); }).join(" · ") + "</p>" +
       findBallot() +
       '<div class="dates">' + G.dates.map(function (d) {
         var past = d.iso && parseISO(d.iso) < now;
@@ -215,7 +216,7 @@
 
     G.groups.forEach(function (g) {
       var vn = g.id === "federal" ? "congress" : g.id;
-      html += '<div class="view" data-view="' + esc(vn) + '" id="view-' + esc(vn) + '"><section class="group" id="' + esc(g.id) + '"><div class="wrap"><h2>' + esc(g.title) + "</h2>" +
+      html += '<div class="view" data-view="' + esc(vn) + '" id="view-' + esc(vn) + '"><section class="group" id="' + esc(g.id) + '"><div class="wrap"><h1>' + esc(g.title) + "</h1>" +
         (g.intro ? '<p class="group-intro">' + esc(g.intro) + "</p>" : "") +
         (g.src ? '<p class="group-src">Sources: ' + g.src.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</p>" : "") +
         g.races.map(function (r) {
@@ -223,7 +224,7 @@
         }).join("") + "</div></section></div>";
     });
 
-    html += '<div class="view" data-view="amendments" id="view-amendments"><section class="group" id="amendments"><div class="wrap"><h2>Statewide amendments</h2>' +
+    html += '<div class="view" data-view="amendments" id="view-amendments"><section class="group" id="amendments"><div class="wrap"><h1>Statewide amendments</h1>' +
       '<p class="group-intro">' + esc(G.amendIntro) + '</p><div class="amends">' +
       G.amendments.map(function (a) {
         return '<article class="amend"><p class="eyebrow">' + esc(a.n) + "</p><h3>" + esc(a.title) + '</h3><p class="sum">' + esc(a.summary) + "</p>" +
@@ -233,6 +234,12 @@
           "</article>";
       }).join("") + "</div></div></section></div>";
 
+    function spanishGuide() {
+      var S = G.spanishGuide; if (!S) return "";
+      return '<section class="es-guide" id="espanol" lang="es" aria-labelledby="esH"><h2 id="esH">' + esc(S.title) + "</h2><p>" + esc(S.intro) + "</p><dl>" +
+        S.items.map(function (x) { return "<dt>" + esc(x.h) + "</dt><dd>" + esc(x.p) + "</dd>"; }).join("") + "</dl>" +
+        '<p class="links">' + S.links.map(function (l) { return ext(l.url, esc(l.label) + " ↗"); }).join("") + "</p></section>";
+    }
     // Application vs. ballot, by mail vs. by hand: four deadlines side by side
     function deadlineTable(t) {
       return '<div class="deadlines"><table><caption>' + esc(t.caption) + "</caption><thead><tr><td></td>" +
@@ -240,7 +247,7 @@
         t.rows.map(function (r) { return '<tr><th scope="row">' + esc(r.h) + "</th>" + r.c.map(function (c, i) { return '<td data-label="' + esc(t.cols[i].split(" (")[0]) + '">' + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
         "</tbody></table>" + (t.note ? '<p class="note">' + esc(t.note) + "</p>" : "") + "</div>";
     }
-    html += '<div class="view" data-view="vote" id="view-vote"><section class="group" id="vote"><div class="wrap"><h2>How to vote</h2>' +
+    html += '<div class="view" data-view="vote" id="view-vote"><section class="group" id="vote"><div class="wrap"><h1>How to vote</h1>' +
       '<p class="group-intro">' + esc(G.voteIntro) + '</p><div class="steps">' +
       G.vote.map(function (s) {
         return '<div class="step' + (s.wide ? " wide" : "") + '"' + (s.id ? ' id="' + esc(s.id) + '"' : "") + "><h3>" + esc(s.h) + "</h3>" +
@@ -251,7 +258,7 @@
           (s.after ? "<p>" + esc(s.after) + "</p>" : "") +
           (s.links ? '<p class="links">' + s.links.map(function (l) { return ext(l.url, esc(l.label) + " ↗"); }).join("") + "</p>" : "") +
           "</div>";
-      }).join("") + "</div></div></section></div>";
+      }).join("") + "</div>" + spanishGuide() + "</div></section></div>";
 
     main.innerHTML = html;
 

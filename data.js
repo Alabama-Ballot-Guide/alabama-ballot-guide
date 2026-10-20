@@ -3540,7 +3540,8 @@ window.GUIDE = {
         "Alabama has no early voting. Voting before Election Day means voting absentee, which requires a qualifying reason.",
         "Some polling places near the Georgia line may run on Eastern Time (7 a.m. to 7 p.m. Eastern). Check with your county if unsure.",
         "Moved within your county since you registered? Go to the polling place for your new address, update your registration there, and vote a provisional ballot.",
-        "Moved to another county? Call your county Board of Registrars before Election Day."
+        "Moved to another county? Call your county Board of Registrars before Election Day.",
+        "Not on the poll list, or poll workers can’t confirm your registration? Ask for a provisional ballot. It counts once officials confirm you’re eligible."
       ],
       "links": [
         {
@@ -3749,6 +3750,10 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-20",
+      "text": "Added a Spanish summary of the dates and voting rules (Lo esencial en español), and how to vote if you’re not on the poll list."
+    },
+    {
+      "date": "2026-10-20",
       "text": "Added the absentee ballot return date to Key dates, emergency absentee ballots, ballot dates for military and overseas voters, steps for voters who moved, the full list of accepted IDs, and plainer wording in several places. Fixed a broken source link for Clyde Jones Jr."
     },
     {
@@ -3767,5 +3772,45 @@ window.GUIDE = {
       "date": "2026-10-20",
       "text": "First published, with candidate positions as of Oct. 20."
     }
-  ]
+  ],
+  "spanishGuide": {
+    "title": "Lo esencial en español",
+    "intro": "Las fechas y reglas para votar el 3 de noviembre de 2026 en Alabama. Las descripciones de los candidatos están solo en inglés.",
+    "items": [
+      {
+        "h": "Día de las elecciones",
+        "p": "Martes 3 de noviembre, de 7 a.m. a 7 p.m. Si está en la fila a las 7 p.m., puede votar. Alabama no tiene votación anticipada."
+      },
+      {
+        "h": "Inscripción",
+        "p": "El plazo para inscribirse para esta elección venció el lunes 19 de octubre. Verifique su inscripción, su lugar de votación y su boleta de muestra en el sitio oficial del estado (en inglés)."
+      },
+      {
+        "h": "Identificación con foto",
+        "p": "Lleve una identificación física con foto, como una licencia de conducir de Alabama, la identificación de votante con foto de Alabama (gratuita) o un pasaporte de EE. UU. No se aceptan identificaciones digitales. Si no tiene identificación, puede votar con una boleta provisional y presentar una identificación ante la Junta de Registradores de su condado antes de las 5 p.m. del viernes 6 de noviembre."
+      },
+      {
+        "h": "Voto en ausencia",
+        "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre."
+      },
+      {
+        "h": "Preguntas",
+        "p": "Llame a la División Electoral de la Secretaría de Estado al 334‑242‑7210 o, sin costo, al 1‑800‑274‑8683."
+      }
+    ],
+    "links": [
+      {
+        "label": "Consultar mi inscripción (en inglés)",
+        "url": "https://myinfo.alabamavotes.gov/voterview"
+      },
+      {
+        "label": "Vote411 en español",
+        "url": "https://www.vote411.org/es/alabama"
+      },
+      {
+        "label": "vote.gov en español",
+        "url": "https://vote.gov/es/"
+      }
+    ]
+  }
 };
