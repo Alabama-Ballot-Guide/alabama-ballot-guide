@@ -218,7 +218,11 @@ if (args["changed-files"]) {
 if (B) {
   const sb = shape(B), sn = shape(G);
   for (const [k, types] of sn) {
-    if (!sb.has(k)) err(k, "new field not in the approved schema (structural changes need a human-made PR)");
+    if (!sb.has(k)) {
+      // Agents can't add fields; an editor's own PR may, and the editor reviews how the page shows it
+      if (args.agent) err(k, "new field not in the approved schema (structural changes need a human-made PR)");
+      else notes.push(k + ": new field added by a human-made PR");
+    }
     else for (const t of types) if (!sb.get(k).has(t)) err(k, "type changed to " + t + " (approved: " + [...sb.get(k)].join("/") + ")");
   }
 }
