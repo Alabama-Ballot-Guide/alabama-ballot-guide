@@ -1,0 +1,21 @@
+# Every path needs approval from a human editor. Never list a bot, GitHub App or agent account here.
+# Works with the main-branch ruleset: "Require review from Code Owners" + "Require approval of the most recent push".
+# Replace with a second trusted person (or use an org team such as @org/editors).
+*                       @jonesdr4888
+
+# Content (agents may propose changes here; a human must approve)
+/data.js                @jonesdr4888
+
+# Voter-service facts lock, source allowlist and validator: humans only, never in an agent PR
+/security/              @jonesdr4888
+/scripts/               @jonesdr4888
+
+# Build, page code, crawler files and CI
+/.github/               @jonesdr4888
+/build.py               @jonesdr4888
+/gen.js                 @jonesdr4888
+/app.js                 @jonesdr4888
+/shell.html             @jonesdr4888
+/og-card.html           @jonesdr4888
+/package.json           @jonesdr4888
+/package-lock.json      @jonesdr4888

@@ -1,0 +1,85 @@
+# Required status check for every pull request into main (agent or human).
+# Read-only token, no secrets. Agent PRs are judged by the rules on main, so a PR cannot loosen its own checks.
+name: Check pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    env:
+      AGENT_LOGIN: alabama-guide-agent[bot]   # login of the GitHub App the AI pipeline uses
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      SITE_URL: https://alabamaballotguide.org   # keep in step with deploy.yml
+      CHROMIUM_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          package-manager-cache: false
+
+      - name: Load the rules from main
+        run: |
+          R="$RUNNER_TEMP/main"; mkdir -p "$R"
+          git show "$BASE_SHA:data.js" > "$R/base-data.js"
+          git diff --name-only "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed.txt"
+          for f in scripts/validate-data.js security/source-domains.json security/facts.lock.json; do
+            if ! git show "$BASE_SHA:$f" > "$R/$(basename "$f")" 2>/dev/null; then
+              # first PR that adds the checks: only a human PR may bootstrap them
+              [ "$PR_AUTHOR" != "$AGENT_LOGIN" ] || { echo "::error::$f missing on main"; exit 1; }
+              cp "$f" "$R/$(basename "$f")"
+            fi
+          done
+
+      - name: Validate data.js (parsed as JSON, never executed)
+        run: |
+          R="$RUNNER_TEMP/main"
+          if [ "$PR_AUTHOR" = "$AGENT_LOGIN" ]; then
+            # agents: rules from main, and only data.js may change
+            ARGS=(--agent --allowlist "$R/source-domains.json" --lock "$R/facts.lock.json")
+          else
+            # humans: the PR's own allowlist/lock, which CODEOWNERS makes a human review
+            ARGS=(--allowlist security/source-domains.json --lock security/facts.lock.json)
+          fi
+          node "$R/validate-data.js" --base "$R/base-data.js" --new data.js \
+            --changed-files "$RUNNER_TEMP/changed.txt" "${ARGS[@]}" | tee "$RUNNER_TEMP/validate.txt"
+          { echo "## Data check (author: $PR_AUTHOR)"; echo '```'; cat "$RUNNER_TEMP/validate.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install pinned build tools
+        run: npm ci --ignore-scripts
+
+      - name: Build a preview
+        run: python3 -I build.py
+
+      - name: Check the built pages
+        run: |
+          node "$RUNNER_TEMP/main/validate-data.js" --dist dist --allowlist security/source-domains.json \
+            --lock security/facts.lock.json --site-host "$(echo "$SITE_URL" | cut -d/ -f3)"
+
+      - name: Upload the preview for the human reviewer
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: preview-${{ github.event.pull_request.number }}
+          path: dist
+          retention-days: 7

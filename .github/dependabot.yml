@@ -1,0 +1,15 @@
+# Keeps the SHA-pinned actions current. Updates arrive as PRs and go through the same human review.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14        # don't adopt a release until it has been public for two weeks
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14

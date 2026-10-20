@@ -1,0 +1,23 @@
+# Never commit these to the public repository
+__pycache__/
+*.pyc
+_*.png
+_preview.html
+_prerender.*
+_og.js
+# unreviewed drafts and one-off editing scripts
+data.backup.js
+data.pre-*.js
+app.pre-*.js
+gen.pre-*.js
+apply-*.js
+differ*.js
+addpos.py
+# generated at build time (CI builds dist/ from reviewed source)
+ld.json
+/guide.json
+/guide.md
+/llms.txt
+alabama-ballot-guide.html
+dist/
+node_modules/

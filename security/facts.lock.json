@@ -1,0 +1,163 @@
+{
+  "_comment": "Critical voter-service facts. Only a human editor changes this file, with CODEOWNER review. CI fails if data.js differs from these values.",
+  "generatedFrom": "data.js",
+  "values": {
+    "electionDate": "2026-11-03",
+    "canonicalUrl": "https://claude.ai/artifact/WGJ2K8m2p9jgRbfpoCWCHV",
+    "findBallot.step1.link.url": "https://myinfo.alabamavotes.gov/voterview",
+    "dates[0].k": "Register to vote",
+    "dates[0].v": "Mon, Oct 19",
+    "dates[0].s": "Deadline for this election",
+    "dates[0].iso": "2026-10-19",
+    "dates[0].target": "check",
+    "dates[0].pastNote": "Closed for this election. You can still check your status.",
+    "dates[1].k": "Absentee by mail",
+    "dates[1].v": "Tue, Oct 27",
+    "dates[1].s": "Application must arrive by this date",
+    "dates[1].iso": "2026-10-27",
+    "dates[1].target": "absentee",
+    "dates[1].pastNote": "Mail deadline has passed",
+    "dates[2].k": "Absentee in person",
+    "dates[2].v": "Thu, Oct 29",
+    "dates[2].s": "Last day to apply at your county’s absentee office",
+    "dates[2].iso": "2026-10-29",
+    "dates[2].target": "absentee",
+    "dates[2].pastNote": "In-person deadline has passed",
+    "dates[3].k": "Election Day",
+    "dates[3].v": "Tue, Nov 3",
+    "dates[3].s": "Polls open 7 a.m. – 7 p.m.",
+    "dates[3].iso": "2026-11-03",
+    "dates[3].target": "election-day",
+    "absenteeStages[0].until": "2026-10-27",
+    "absenteeStages[0].title": "Can’t make it to the polls on Nov. 3?",
+    "absenteeStages[0].text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Mailing an application now is risky: it must arrive by Tue, Oct. 27. The safer route is to apply in person at your county’s absentee office by Thu, Oct. 29.",
+    "absenteeStages[1].until": "2026-10-29",
+    "absenteeStages[1].title": "Need an absentee ballot?",
+    "absenteeStages[1].text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29.",
+    "absenteeStages[2].until": "2026-11-03",
+    "absenteeStages[2].title": "Voting on Tuesday, Nov. 3",
+    "absenteeStages[2].text": "The deadline to apply for an absentee ballot has passed. Vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+    "vote[0]": {
+      "id": "check",
+      "h": "Check your registration",
+      "p": "The deadline to register for this election was Monday, Oct. 19. Look up your registration, district, polling place, and sample ballot.",
+      "links": [
+        {
+          "label": "Look up your voter info",
+          "url": "https://myinfo.alabamavotes.gov/voterview"
+        }
+      ]
+    },
+    "vote[1]": {
+      "id": "election-day",
+      "h": "Vote on Election Day",
+      "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. Alabama has no early voting. If you moved, look up your polling place again.",
+      "links": [
+        {
+          "label": "Alabama Votes",
+          "url": "https://www.alabamavotes.gov"
+        }
+      ]
+    },
+    "vote[2]": {
+      "h": "Bring a photo ID",
+      "list": [
+        "Alabama driver’s license or nondriver ID",
+        "Free Alabama Photo Voter ID card",
+        "U.S. passport, military ID, or tribal ID",
+        "Other state, federal, or government employee photo ID",
+        "Student or employee ID from an Alabama college, or from a public college in another state"
+      ],
+      "after": "Bring the physical card; digital IDs are not accepted. A license expired less than 60 days still counts.",
+      "links": [
+        {
+          "label": "Full list of valid IDs",
+          "url": "https://www.sos.alabama.gov/alabama-votes/photo-voter-id/valid-ids"
+        }
+      ],
+      "id": "photo-id"
+    },
+    "vote[3]": {
+      "id": "absentee",
+      "wide": true,
+      "h": "Voting absentee",
+      "p": "You need a qualifying reason. The most common:",
+      "list": [
+        "You’ll be out of your county on Election Day, including at college or in the military",
+        "You have a required work shift of 10 hours or more that overlaps polling hours",
+        "You’re ill or have a disability that keeps you from the polls",
+        "You’re caring for a family member who is confined at home",
+        "You’re a poll worker at a polling place other than your own"
+      ],
+      "ol": [
+        "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
+        "Return it yourself with a copy of your photo ID: by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
+        "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted.",
+        "Return the ballot yourself: by hand by 5 p.m. Mon, Nov 2, or by mail so it arrives by noon Tue, Nov 3. No one else may return it for you."
+      ],
+      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Military and overseas voters have different rules and later deadlines.",
+      "links": [
+        {
+          "label": "Application forms by county",
+          "url": "https://www.sos.alabama.gov/alabama-votes/absentee-ballot-application-by-county"
+        },
+        {
+          "label": "Absentee voting rules",
+          "url": "https://www.sos.alabama.gov/alabama-votes/voter/absentee-voting"
+        },
+        {
+          "label": "2026 deadlines",
+          "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-alabamians-november-3-general-election-absentee"
+        },
+        {
+          "label": "Military and overseas voters",
+          "url": "https://www.fvap.gov/alabama"
+        }
+      ]
+    },
+    "vote[4]": {
+      "h": "If you forget your ID",
+      "p": "Two poll workers who know you can sign a sworn statement identifying you, and you can vote a regular ballot. Otherwise, you can vote a provisional ballot; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
+      "links": [
+        {
+          "label": "Photo ID law",
+          "url": "https://www.sos.alabama.gov/alabama-votes/photo-voter-id/law-enacted"
+        }
+      ]
+    },
+    "vote[5]": {
+      "h": "Questions",
+      "p": "Call the Secretary of State’s Elections Division at 334‑242‑7210, or your county Board of Registrars."
+    },
+    "callout": {
+      "title": "Can’t make it to the polls on Nov. 3?",
+      "text": "You may be able to vote absentee if you’ll be out of your county (including away at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Mailed applications must arrive by Tuesday, Oct. 27, and the ballot needs a notary or two witnesses.",
+      "cta": "How to vote absentee",
+      "target": "absentee"
+    },
+    "idCard": {
+      "title": "Bring a photo ID",
+      "text": "A physical photo ID, such as a driver’s license or a free Alabama Photo Voter ID. No ID? Two poll workers who know you can vouch for you, or you can vote a provisional ballot and show ID by 5 p.m. Fri, Nov. 6.",
+      "cta": "Valid IDs and rules",
+      "target": "photo-id"
+    },
+    "spanish": {
+      "text": "¿Prefiere español? Información para votar en Alabama:",
+      "links": [
+        {
+          "label": "Vote411 en español",
+          "url": "https://www.vote411.org/es/alabama"
+        },
+        {
+          "label": "vote.gov",
+          "url": "https://vote.gov/es/registrar/alabama"
+        }
+      ]
+    }
+  },
+  "mustAppearInEveryEdition": [
+    "7 a.m.",
+    "7 p.m.",
+    "myinfo.alabamavotes.gov/voterview"
+  ]
+}

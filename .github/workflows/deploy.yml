@@ -1,0 +1,82 @@
+# Build and publish the guide to GitHub Pages.
+# Runs only from main (after a human-approved merge), on a daily schedule so the pre-rendered
+# dates stay current, or by hand. Settings -> Pages -> Source must be "GitHub Actions".
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "7 6 * * *"        # 01:07 CDT / 00:07 CST: rebuild so baked-in "past deadline" labels are current
+  workflow_dispatch:
+
+permissions: {}                 # nothing by default; each job asks for what it needs
+
+concurrency:
+  group: pages
+  cancel-in-progress: false     # never cancel a deploy half way
+
+defaults:
+  run:
+    shell: bash                 # bash -eo pipefail
+
+env:
+  # build.py now defaults to this custom domain. Until the domain is registered to you, verified in GitHub
+  # (Settings -> Pages -> verified domains) and its DNS points at Pages, use https://alabama-ballot-guide.github.io/alabama-ballot-guide
+  SITE_URL: https://alabamaballotguide.org
+  CHROMIUM_PATH: /usr/bin/google-chrome                         # preinstalled on GitHub's Ubuntu runners
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false   # no token left in .git/config for build code to find
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          package-manager-cache: false
+
+      - name: Install pinned build tools (lockfile, no install scripts)
+        run: npm ci --ignore-scripts
+
+      - name: Validate data.js before anything reads it
+        run: node scripts/validate-data.js --new data.js --allowlist security/source-domains.json --lock security/facts.lock.json
+
+      - name: Build
+        run: python3 -I build.py
+
+      - name: Check the built pages
+        run: |
+          node scripts/validate-data.js --dist dist --allowlist security/source-domains.json \
+            --lock security/facts.lock.json --site-host "$(echo "$SITE_URL" | cut -d/ -f3)"
+
+      - name: Publish only reader-facing files, plus a hash manifest
+        run: |
+          rm -f dist/README.md dist/MAINTAINING.md
+          (cd dist && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+          { echo "## Published files"; echo '```'; cat dist/SHA256SUMS; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+          retention-days: 30          # the live-site monitor compares against this artifact
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages             # Settings -> Environments: deployment branches = main only
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

@@ -1,0 +1,63 @@
+# Defacement / tamper monitor: every 30 minutes, the live site must match, byte for byte, what the
+# last successful deploy from main published, and must still carry the locked voter-service facts.
+# A failed run emails the person who last edited this schedule. Also run an external monitor
+# (see report) so an attacker who controls the GitHub account cannot silence this one.
+name: Live site monitor
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"    # remove after Nov. 10, 2026
+  workflow_dispatch:
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  compare:
+    # Off until the site is live: set the repository variable MONITOR_ENABLED to true
+    # (Settings -> Secrets and variables -> Actions -> Variables) after the first deploy.
+    if: vars.MONITOR_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read            # to download the deploy artifact
+    env:
+      SITE_URL: https://alabamaballotguide.org   # keep in step with deploy.yml
+      FILES: index.html guide.json guide.md llms.txt robots.txt sitemap.xml og-image.png SHA256SUMS
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Get what the last successful deploy published
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_id=$(gh run list --workflow deploy.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          [ -n "$run_id" ] || { echo "::error::no successful deploy found"; exit 1; }
+          gh run download "$run_id" --name github-pages --dir expected
+          mkdir -p expected/site && tar -xf expected/artifact.tar -C expected/site
+          echo "Comparing against deploy run $run_id" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Live files must match the deploy (retries cover the ~10 minute CDN cache after a deploy)
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            rm -rf live; mkdir live; fail=0
+            for f in $FILES; do
+              curl -fsS --proto '=https' --tlsv1.2 --max-time 30 "$SITE_URL/$f?m=$(date +%s)" -o "live/$f" || { echo "fetch failed: $f"; fail=1; continue; }
+              cmp -s "expected/site/$f" "live/$f" || { echo "differs: $f"; fail=1; }
+            done
+            [ "$fail" = 0 ] && { echo "live site matches the deploy"; exit 0; }
+            sleep 120
+          done
+          echo "::error::The live site does not match the last deploy from main. Possible defacement, DNS hijack or out-of-band deploy."
+          exit 1
+
+      - name: Locked facts and link domains on the live copy
+        run: |
+          node scripts/validate-data.js --dist live --allowlist security/source-domains.json \
+            --lock security/facts.lock.json --site-host "$(echo "$SITE_URL" | cut -d/ -f3)"

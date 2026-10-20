@@ -1,0 +1,102 @@
+{
+  "_comment": "Source-domain allowlist for data.js url fields. Changing this file requires CODEOWNER (human) review. Hosts are matched exactly unless includeSubdomains is true. Campaign domains lapse after elections: re-check ownership before each run and remove them after Nov. 3.",
+  "allow": {
+    "official": {
+      "includeSubdomains": true,
+      "domains": [
+        "alabamavotes.gov",
+        "sos.alabama.gov",
+        "psc.alabama.gov",
+        "house.gov",
+        "senate.gov",
+        "congress.gov",
+        "vote.gov",
+        "fvap.gov"
+      ]
+    },
+    "reference": {
+      "includeSubdomains": false,
+      "domains": [
+        "ballotpedia.org",
+        "news.ballotpedia.org",
+        "www.vote411.org",
+        "law.justia.com"
+      ]
+    },
+    "news": {
+      "includeSubdomains": false,
+      "domains": [
+        "1819news.com",
+        "256today.com",
+        "abc3340.com",
+        "alabamareflector.com",
+        "aldailynews.com",
+        "alpolitics.com",
+        "atmorenews.com",
+        "breakingdefense.com",
+        "mynbc15.com",
+        "whnt.com",
+        "www.alabamagazette.com",
+        "www.alreporter.com",
+        "www.axios.com",
+        "www.cbs42.com",
+        "www.clarkecountydemocrat.com",
+        "www.fox10tv.com",
+        "www.franklinfreepress.net",
+        "www.lagniappemobile.com",
+        "www.murdercreekmedia.com",
+        "www.nbcnews.com",
+        "www.pbs.org",
+        "www.rocketcitynow.com",
+        "www.thecoosacountynews.com",
+        "www.theplainsman.com",
+        "www.trussvilletribune.com",
+        "www.waka.com",
+        "www.wbhm.org",
+        "www.wdhn.com",
+        "www.wkrg.com",
+        "www.wrbl.com",
+        "www.wsfa.com",
+        "www.wtvy.com",
+        "www.wvua23.com",
+        "yellowhammernews.com",
+        "www.al.com",
+        "apnews.com"
+      ]
+    },
+    "campaign": {
+      "includeSubdomains": false,
+      "domains": [
+        "boozerfortreasurer.com",
+        "clydeforcongress.com",
+        "mcneilforpsc2.com",
+        "palmerforalabama.com",
+        "phillipensler.com",
+        "votejohnwahl.com",
+        "wessforsenate.com",
+        "www.akinforcongress.com",
+        "www.coachforgovernor.com",
+        "www.dougjones.com",
+        "www.mclaughlinforag.com",
+        "www.rozforalabama.com",
+        "www.sneedforcongress.com"
+      ]
+    }
+  },
+  "allowExactUrls": {
+    "_comment": "Human-approved single URLs on domains that are NOT allowlisted. Keep this empty: aggregators and advocacy groups break the verification rules in docs/MAINTAINING.md. Replace any such URL with the original publisher.",
+    "urls": []
+  },
+  "protectedLookalikeTerms": [
+    "alabamavotes",
+    "sosalabama",
+    "alabamasos",
+    "sos-alabama",
+    "myinfo",
+    "vote411",
+    "votegov",
+    "fvap",
+    "ballotpedia",
+    "alabamaballotguide"
+  ]
+}
