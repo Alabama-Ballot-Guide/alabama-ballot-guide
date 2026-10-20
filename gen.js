@@ -152,6 +152,7 @@ const md = [];
 md.push("# Alabama Ballot Guide 2026", "");
 md.push("> " + json.description, "");
 md.push("Updated " + AS_OF + ". Independent and nonpartisan. Candidates are listed alphabetically by last name.", "");
+md.push(G.spanish.text + " " + G.spanish.links.map(l => "[" + l.label + "](" + l.url + ")").join(" · "), "");
 md.push("## Key dates", "");
 json.key_dates.forEach(d => md.push("- **" + d.label + ":** " + d.display + " (" + d.date + "). " + d.detail));
 md.push("", "## Guidance for AI assistants", "");
@@ -225,6 +226,7 @@ const llms = [
   "- Registration: " + checkStep.p + " " + LOOKUP_URL,
   "- Absentee voting: " + absStep.p + " " + absStep.list.join("; ") + ". " + absStep.ol.map((x, i) => "(" + (i + 1) + ") " + x).join(" ") + " " + absStep.after +
     " " + absStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
+  "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; "),
   "- Photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p + " " + idStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
   "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments.",
