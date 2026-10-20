@@ -16,8 +16,8 @@ window.GUIDE = {
         "url": "https://www.vote411.org/es/alabama"
       },
       {
-        "label": "vote.gov",
-        "url": "https://vote.gov/es/registrar/alabama"
+        "label": "vote.gov en español",
+        "url": "https://vote.gov/es/"
       }
     ]
   },
@@ -150,10 +150,11 @@ window.GUIDE = {
                 {
                   "topic": "energy",
                   "h": "Pause new data centers",
-                  "d": "Would pause new data centers for one year to set rules, end their tax incentives, and require them to give back to host communities.",
+                  "d": "Would pause new data centers for one year to set rules, says state law should change so they get no tax breaks, and wants them to help pay for local services like schools and law enforcement.",
                   "s": [
                     4,
-                    2
+                    2,
+                    11
                   ]
                 },
                 {
@@ -167,7 +168,7 @@ window.GUIDE = {
                 {
                   "topic": "lottery",
                   "h": "Let voters decide on a lottery",
-                  "d": "Wants a statewide vote on a lottery, with the money going to education.",
+                  "d": "Wants a statewide vote on a standalone lottery.",
                   "s": [
                     1,
                     3
@@ -184,8 +185,8 @@ window.GUIDE = {
                 },
                 {
                   "topic": "safety",
-                  "h": "Prison and parole accountability",
-                  "d": "Wants independent oversight of the state prison system and more accountability in prisons and parole, noting that the governor appoints the prison commissioner and picks the parole board.",
+                  "h": "Prison accountability",
+                  "d": "Calls for prison accountability, including independent oversight of state prison spending such as the new Elmore County prison, and notes that the governor appoints the prison commissioner and picks the parole board.",
                   "s": [
                     8
                   ]
@@ -195,6 +196,7 @@ window.GUIDE = {
                   "h": "IVF and contraception amendment",
                   "d": "Proposes a state constitutional amendment protecting access to IVF and contraception.",
                   "s": [
+                    3,
                     9
                   ]
                 }
@@ -239,6 +241,10 @@ window.GUIDE = {
                 {
                   "label": "Jones campaign: Create jobs worth staying for",
                   "url": "https://www.dougjones.com/issues/issue-2"
+                },
+                {
+                  "label": "Alabama Reflector: Jones data center town hall (Oct 13, 2026)",
+                  "url": "https://alabamareflector.com/2026/10/13/doug-jones-outlines-data-center-policies-at-lowndes-county-town-hall/"
                 }
               ]
             },
@@ -253,6 +259,7 @@ window.GUIDE = {
                   "d": "Would eliminate the remaining 2% state sales tax on groceries and says he will not raise taxes.",
                   "s": [
                     1,
+                    2,
                     6
                   ]
                 },
@@ -268,7 +275,7 @@ window.GUIDE = {
                 {
                   "topic": "economy",
                   "h": "Recruit manufacturing jobs",
-                  "d": "Calls recruiting manufacturers the governor’s top job and wants more training in skilled trades like welding and electrical work.",
+                  "d": "Says he would be Alabama’s “recruiter-in-chief” and promises to bring high-paying manufacturing jobs back to empty plants.",
                   "s": [
                     4
                   ]
@@ -286,7 +293,7 @@ window.GUIDE = {
                 {
                   "topic": "energy",
                   "h": "Data centers on conditions",
-                  "d": "Welcomes data centers that pay the full cost of the power and water lines they need; opposes a moratorium and says communities can say no.",
+                  "d": "Welcomes data centers that pay “full price”: no tax abatements or incentives, plus the full cost of the power and water lines they need. Opposes a moratorium and says communities can say no.",
                   "s": [
                     5
                   ]
@@ -294,9 +301,10 @@ window.GUIDE = {
                 {
                   "topic": "education",
                   "h": "Protect and expand school choice",
-                  "d": "Would protect and expand the CHOOSE Act and focus schools on workforce readiness.",
+                  "d": "Would protect and expand the CHOOSE Act, and says he would emphasize workforce development in education.",
                   "s": [
-                    7
+                    7,
+                    2
                   ]
                 },
                 {
@@ -318,10 +326,11 @@ window.GUIDE = {
                 },
                 {
                   "topic": "abortion",
-                  "h": "Abortion and IVF views (2024)",
-                  "d": "In 2024 his Senate office said he is pro-life and believes life begins at conception, and that he did not support IVF clinics halting treatment. No newer statement was found.",
+                  "h": "IVF views (2024)",
+                  "d": "In 2024 he said he was “all for” the Alabama Supreme Court ruling that embryos created through IVF are children under state law. Later that year he said no one in Alabama wants to ban IVF and that he was proud the Legislature acted to protect it. No newer statement was found.",
                   "s": [
-                    10
+                    10,
+                    14
                   ]
                 },
                 {
@@ -332,7 +341,7 @@ window.GUIDE = {
                   "h": "Voted for 2025 tax-and-spending law",
                   "d": "As a U.S. senator, voted for the 2025 federal tax-and-spending law (H.R. 1), which extended the 2017 tax cuts and reduced projected federal Medicaid spending.",
                   "s": [
-                    14
+                    15
                   ]
                 }
               ],
@@ -350,7 +359,7 @@ window.GUIDE = {
                   "url": "https://mynbc15.com/news/local/tuberville-defends-national-guard-proposal-amid-questions-about-mobile-crime"
                 },
                 {
-                  "label": "Alabama Gazette: BCA conference remarks (Aug 23, 2026)",
+                  "label": "Alabama Gazette: BCA conference remarks (Aug 2026)",
                   "url": "https://www.alabamagazette.com/story/2026/08/23/news/tax-relief-technology-and-recruitment-define-tubervilles-vision-at-bca-conference/12092.html"
                 },
                 {
@@ -390,8 +399,12 @@ window.GUIDE = {
                   "url": "https://yellowhammernews.com/less-taxes-more-results-tommy-tuberville-releases-first-tv-ad-in-campaign-for-governor-of-alabama/"
                 },
                 {
-                  "label": "Ballotpedia: One Big Beautiful Bill Act votes",
-                  "url": "https://ballotpedia.org/One_Big_Beautiful_Bill_Act"
+                  "label": "Tuberville Senate office: statement on IVF (2024)",
+                  "url": "https://www.tuberville.senate.gov/newsroom/press-releases/tuberville-slams-biden-administration-for-lying-about-ivf-protections-in-alabama"
+                },
+                {
+                  "label": "U.S. Senate: roll call vote on passage of H.R. 1 (2025)",
+                  "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.htm"
                 }
               ]
             }
@@ -427,11 +440,11 @@ window.GUIDE = {
             },
             {
               "k": "Data centers",
-              "v": "Jones would pause new ones for a year, end their tax incentives and require them to give back to host communities; Tuberville opposes a pause and welcomes those that pay the full cost of their power and water lines."
+              "v": "Jones would pause new ones for a year; Tuberville opposes a pause and welcomes those that pay full price, including the cost of their power and water lines."
             },
             {
               "k": "Both",
-              "v": "Would end the state grocery tax, and would let voters decide on a lottery."
+              "v": "Would end the state grocery tax, oppose tax breaks for data centers, and let voters decide on a lottery."
             }
           ]
         },
@@ -452,9 +465,8 @@ window.GUIDE = {
                 {
                   "topic": "health",
                   "h": "Expand Medicaid",
-                  "d": "Supports Medicaid expansion with money to stabilize rural hospitals, plus loan forgiveness to recruit medical workers.",
+                  "d": "Supports expanding Medicaid.",
                   "s": [
-                    3,
                     4
                   ]
                 },
@@ -472,11 +484,20 @@ window.GUIDE = {
                   ]
                 },
                 {
+                  "topic": "energy",
+                  "h": "Data center moratorium",
+                  "d": "Calls for a moratorium on new data centers and a ban on nondisclosure agreements between local governments and data center companies.",
+                  "s": [
+                    3,
+                    6
+                  ]
+                },
+                {
                   "topic": "lottery",
                   "h": "Hold a lottery vote",
-                  "d": "Wants a statewide vote on a lottery, with the money going to education and health care.",
+                  "d": "Wants a voter-approved lottery.",
                   "s": [
-                    4
+                    6
                   ]
                 },
                 {
@@ -490,9 +511,9 @@ window.GUIDE = {
                 {
                   "topic": "safety",
                   "h": "Carry permits and police pay",
-                  "d": "Would restore the permit requirement to carry a handgun in public and offer bonuses and housing help to recruit officers.",
+                  "d": "Would restore the permit requirement to carry a gun in public, and offer officers signing bonuses, loan forgiveness and housing help.",
                   "s": [
-                    3
+                    4
                   ]
                 },
                 {
@@ -514,9 +535,10 @@ window.GUIDE = {
                 },
                 {
                   "topic": "abortion",
-                  "h": "Called IVF law a “Band-Aid” (2024)",
-                  "d": "In 2024 he called the Legislature’s IVF immunity law a “Band-Aid fix” and said a fuller solution might be needed. No newer statement was found.",
+                  "h": "IVF amendment",
+                  "d": "Calls for a constitutional amendment protecting IVF. In 2024 he called the Legislature’s IVF immunity law a “Band-Aid fix.”",
                   "s": [
+                    9,
                     8
                   ]
                 }
@@ -553,6 +575,10 @@ window.GUIDE = {
                 {
                   "label": "Alabama Reflector: IVF bill final passage (Mar 6, 2024)",
                   "url": "https://alabamareflector.com/2024/03/06/alabama-legislature-gives-final-approval-to-in-vitro-fertilization-bill/"
+                },
+                {
+                  "label": "Ensler campaign site",
+                  "url": "https://phillipensler.com/"
                 }
               ]
             },
@@ -563,8 +589,8 @@ window.GUIDE = {
               "positions": [
                 {
                   "topic": "taxes",
-                  "h": "Phase out the grocery tax",
-                  "d": "Wants the state grocery tax phased out completely as soon as possible.",
+                  "h": "End the grocery tax",
+                  "d": "Calls eliminating the state grocery tax one of his top priorities from “day one.”",
                   "s": [
                     1,
                     2
@@ -575,7 +601,8 @@ window.GUIDE = {
                   "h": "Economy first",
                   "d": "Names the economy as his top priority: less red tape, business recruitment, help for small businesses, and job training.",
                   "s": [
-                    1
+                    1,
+                    2
                   ]
                 },
                 {
@@ -614,7 +641,7 @@ window.GUIDE = {
                 {
                   "topic": "safety",
                   "h": "Law and order, no gun control",
-                  "d": "Says Alabama should “stand strong for law and order” and opposes gun control.",
+                  "d": "Says the state should stand strong for law and order, and opposes gun control.",
                   "s": [
                     1
                   ]
@@ -672,7 +699,7 @@ window.GUIDE = {
             },
             {
               "k": "Guns",
-              "v": "Ensler would restore the permit requirement to carry a handgun in public; Wahl opposes gun control."
+              "v": "Ensler would restore the permit requirement to carry a gun in public; Wahl opposes gun control."
             },
             {
               "k": "Both",
@@ -747,8 +774,9 @@ window.GUIDE = {
                     "immigration"
                   ],
                   "h": "Tougher criminal penalties",
-                  "d": "Wants stiffer penalties for gang activity, child exploitation, and illegal immigration, and promises a pro-police office.",
+                  "d": "Wants tougher laws on gang activity, child exploitation and illegal immigration, and says law enforcement “will always know I have their back.”",
                   "s": [
+                    4,
                     1
                   ]
                 },
@@ -764,7 +792,7 @@ window.GUIDE = {
                 {
                   "topic": "government",
                   "h": "Back the Trump agenda",
-                  "d": "Calls herself a steadfast ally of President Trump and pledges to support his America First agenda from Montgomery.",
+                  "d": "Calls herself a “steadfast ally of President Trump” who has fought federal overreach to advance his agenda.",
                   "s": [
                     1
                   ]
@@ -782,6 +810,10 @@ window.GUIDE = {
                 {
                   "label": "Alabama Political Reporter: Manufacture Alabama endorsement (Aug 25, 2026)",
                   "url": "https://www.alreporter.com/2026/08/25/manufacture-alabama-endorses-katherine-robertson-for-attorney-general/"
+                },
+                {
+                  "label": "256 Today: Robertson announces candidacy (Jun 2025)",
+                  "url": "https://256today.com/robertson-announces-candidacy-for-alabama-attorney-general/"
                 }
               ]
             }
@@ -812,21 +844,22 @@ window.GUIDE = {
                   "h": "Voter-roll and fraud unit",
                   "d": "Would create an Election Integrity Division to maintain voter rolls and follow up on fraud claims.",
                   "s": [
-                    2
-                  ]
-                },
-                {
-                  "topic": "government",
-                  "h": "Keep ID rules, add audits",
-                  "d": "Would keep photo ID requirements and pass a law for statewide post-election audits.",
-                  "s": [
+                    2,
                     1
                   ]
                 },
                 {
+                  "topic": "government",
+                  "h": "Post-election audits",
+                  "d": "Supports post-election audits of state elections.",
+                  "s": [
+                    3
+                  ]
+                },
+                {
                   "topic": "economy",
-                  "h": "Lower business fees",
-                  "d": "Would cut business filing fees and make Alabama a leader in business incorporation.",
+                  "h": "Easier business licensing",
+                  "d": "Would make the business licensing process easier.",
                   "s": [
                     3
                   ]
@@ -857,6 +890,7 @@ window.GUIDE = {
                   "h": "Early and absentee voting",
                   "d": "Supports creating early voting and expanding absentee voting.",
                   "s": [
+                    4,
                     1
                   ]
                 },
@@ -865,6 +899,7 @@ window.GUIDE = {
                   "h": "End straight-ticket voting",
                   "d": "Would end the option to vote for every candidate of one party with a single mark.",
                   "s": [
+                    4,
                     1
                   ]
                 },
@@ -873,6 +908,7 @@ window.GUIDE = {
                   "h": "Cap campaign donations",
                   "d": "Would cap campaign contributions to candidates.",
                   "s": [
+                    4,
                     1
                   ]
                 },
@@ -898,6 +934,10 @@ window.GUIDE = {
                 {
                   "label": "Clarke County Democrat: Rogers announces bid (Sep 2025)",
                   "url": "https://www.clarkecountydemocrat.com/articles/rogers-announces-bid-for-alabama-secretary-of-state/"
+                },
+                {
+                  "label": "Alabama Reflector voter guide: Secretary of State",
+                  "url": "https://alabamareflector.com/voter-guides/contests/alsos/"
                 }
               ]
             }
@@ -905,11 +945,11 @@ window.GUIDE = {
           "differ": [
             {
               "k": "Elections",
-              "v": "Dobson would create an Election Integrity Division, keep photo ID rules and seek a law requiring post-election audits; Rogers supports creating early voting and expanding absentee voting, and would end straight-ticket voting."
+              "v": "Dobson would create an Election Integrity Division and supports post-election audits; Rogers supports creating early voting and expanding absentee voting, and would end straight-ticket voting."
             },
             {
               "k": "Both",
-              "v": "Would make registering a business easier or cheaper."
+              "v": "Would make it easier to license or register a business."
             }
           ]
         },
@@ -931,8 +971,9 @@ window.GUIDE = {
                 {
                   "topic": "taxes",
                   "h": "A leaner office",
-                  "d": "Cites cutting office staff from 46 to 26 and bringing the office budget below 2011 levels.",
+                  "d": "Cites cutting office staff from 46 to 25 and bringing the office budget below 2011 levels.",
                   "s": [
+                    3,
                     1
                   ]
                 },
@@ -999,7 +1040,7 @@ window.GUIDE = {
                 {
                   "topic": "economy",
                   "h": "Modernize the office",
-                  "d": "Would use her banking experience to update the office and speed up returns of unclaimed money.",
+                  "d": "Would use her banking experience to “modernize” the office.",
                   "s": [
                     2
                   ]
@@ -1013,11 +1054,11 @@ window.GUIDE = {
                   ]
                 },
                 {
-                  "topic": "education",
-                  "h": "Wider college-savings use",
-                  "d": "Wants more families to use the state’s 529 college-savings plan.",
+                  "topic": "government",
+                  "h": "Help people find their money",
+                  "d": "Says she will make sure Alabamians know the treasurer’s programs exist and can get to their own money “without a fight.”",
                   "s": [
-                    2
+                    1
                   ]
                 }
               ],
@@ -1115,10 +1156,11 @@ window.GUIDE = {
                 },
                 {
                   "topic": "government",
-                  "h": "Election audits",
-                  "d": "Has called for a state law requiring election audits.",
+                  "h": "Election audits (2025)",
+                  "d": "In 2025, while running for secretary of state, called for a state law requiring election audits. He left that race in January 2026 to seek re-election as auditor.",
                   "s": [
-                    3
+                    3,
+                    2
                   ]
                 }
               ],
@@ -1141,7 +1183,7 @@ window.GUIDE = {
           "differ": [
             {
               "k": "Approach",
-              "v": "Edwards would focus on transparency and fiscal oversight; Sorrell wants authority to investigate lost state property and a state election-audit law."
+              "v": "Edwards would focus on transparency and fiscal oversight; Sorrell wants authority to investigate when state property is lost through negligence."
             }
           ]
         },
@@ -1161,20 +1203,18 @@ window.GUIDE = {
               "positions": [
                 {
                   "topic": "rural",
-                  "h": "Food safety first",
-                  "d": "Says keeping Alabama’s food supply safe would be a top priority.",
+                  "h": "Buy Alabama-grown",
+                  "d": "Says encouraging Alabamians to eat food grown in the state, through the Sweet Grown Alabama program, would be a top priority, and wants more local produce in school lunches.",
                   "s": [
-                    1,
-                    2
+                    1
                   ]
                 },
                 {
                   "topic": "rural",
-                  "h": "Farm profits, light rules",
-                  "d": "Would work to raise farm profits, keep regulation low, and bring younger farmers into the business.",
+                  "h": "Keep regulation light",
+                  "d": "Says regulations are hard on farmers and he would keep them low.",
                   "s": [
-                    1,
-                    3
+                    2
                   ]
                 },
                 {
@@ -1185,7 +1225,7 @@ window.GUIDE = {
                   "h": "End farm-equipment tax",
                   "d": "Would work to eliminate the state sales tax on farm equipment.",
                   "s": [
-                    4
+                    3
                   ]
                 },
                 {
@@ -1194,9 +1234,8 @@ window.GUIDE = {
                     "rural"
                   ],
                   "h": "Restore a rural crime unit",
-                  "d": "Would bring back the department’s rural crime division and expand the Sweet Grown Alabama program that gets local produce into school lunches.",
+                  "d": "Would bring back the department’s rural crime division.",
                   "s": [
-                    1,
                     2
                   ]
                 }
@@ -1205,10 +1244,6 @@ window.GUIDE = {
                 {
                   "label": "Alabama Daily News: Sparks and Hill make their cases",
                   "url": "https://aldailynews.com/sparks-and-hill-make-their-cases-to-be-alabamas-next-commissioner-of-agriculture-and-industries/"
-                },
-                {
-                  "label": "WSFA: meet the candidates (Oct 20, 2026)",
-                  "url": "https://www.wsfa.com/2026/10/20/meet-candidates-alabamas-race-commissioner-agriculture-industries/"
                 },
                 {
                   "label": "1819 News: Hill announces run",
@@ -1226,6 +1261,15 @@ window.GUIDE = {
               "role": "Former commissioner of agriculture and industries (2003–2011)",
               "positions": [
                 {
+                  "topic": "rural",
+                  "h": "Farmer cost-share program",
+                  "d": "Says his top priority would be a cost-sharing program, modeled on Tennessee’s, to help farmers buy equipment.",
+                  "s": [
+                    2,
+                    3
+                  ]
+                },
+                {
                   "topic": [
                     "taxes",
                     "rural"
@@ -1233,7 +1277,7 @@ window.GUIDE = {
                   "h": "End farm-equipment tax",
                   "d": "Would end the 1.5% state sales tax on farm equipment.",
                   "s": [
-                    1
+                    2
                   ]
                 },
                 {
@@ -1244,25 +1288,22 @@ window.GUIDE = {
                   "h": "Restore enforcement and inspections",
                   "d": "Would bring back the department’s law enforcement division and state gas-pump inspections to fight farm theft, consumer fraud and price gouging.",
                   "s": [
+                    1,
                     2,
-                    3,
-                    4
+                    3
                   ]
                 },
                 {
                   "topic": "rural",
                   "h": "Build on his record",
-                  "d": "Points to the testing labs, food-safety and farm-to-school programs started during his earlier tenure.",
+                  "d": "Points to his earlier tenure, when he says the department pursued livestock theft, checked fuel-pump accuracy, took an aggressive approach to food safety, and opened three animal diagnostic labs.",
                   "s": [
+                    1,
                     2
                   ]
                 }
               ],
               "sources": [
-                {
-                  "label": "WTVY: Sparks on farm costs (Sep 25, 2026)",
-                  "url": "https://www.wtvy.com/2026/09/25/sparks-targets-farm-cost-squeeze-bid-reclaim-alabama-ag-commissioner-seat/"
-                },
                 {
                   "label": "Alabama Political Reporter: Sparks campaign (May 15, 2026)",
                   "url": "https://www.alreporter.com/2026/05/15/sparks-shares-policy-focused-campaign-bid-for-commissioner-of-agriculture/"
@@ -1292,7 +1333,7 @@ window.GUIDE = {
           "differ": [
             {
               "k": "Emphasis",
-              "v": "Hill stresses food safety, farm profits and light regulation; Sparks points to the programs he started as commissioner."
+              "v": "Hill calls promoting Alabama-grown food through Sweet Grown Alabama a top priority; Sparks calls a cost-sharing program to help farmers buy equipment his top priority."
             },
             {
               "k": "Both",
@@ -1316,19 +1357,18 @@ window.GUIDE = {
               "positions": [
                 {
                   "topic": "energy",
-                  "h": "Public rate hearing first",
-                  "d": "Would call for a public rate hearing as his first order of business.",
+                  "h": "Public rate hearings",
+                  "d": "Supports public rate hearings to increase transparency.",
                   "s": [
                     1
                   ]
                 },
                 {
                   "topic": "energy",
-                  "h": "Compare rates, end the freeze",
-                  "d": "Wants a full comparison of Alabama’s rates with other states and criticizes the new law’s rate freeze, saying it locks in high rates.",
+                  "h": "Compare rates with other states",
+                  "d": "Wants a full comparison of Alabama’s rates with other states.",
                   "s": [
-                    1,
-                    2
+                    1
                   ]
                 }
               ],
@@ -1336,10 +1376,6 @@ window.GUIDE = {
                 {
                   "label": "1819 News: Gentry on utility rates",
                   "url": "https://1819news.com/news/item/public-service-commission-candidate-and-cullman-co-sheriff-matt-gentry-talks-utility-rates-psc-hearings-to-increase-transparency"
-                },
-                {
-                  "label": "Alabama Reflector: PSC race (Oct 16, 2026)",
-                  "url": "https://alabamareflector.com/2026/10/16/in-public-service-commission-race-reorganization-bill-looms-over-candidates/"
                 }
               ]
             },
@@ -1364,6 +1400,14 @@ window.GUIDE = {
                   "s": [
                     1
                   ]
+                },
+                {
+                  "topic": "energy",
+                  "h": "Extend the rate freeze",
+                  "d": "Wants to lower rates to 12 cents per kilowatt-hour and extend the base-rate freeze, now set to end in 2029, to 2030.",
+                  "s": [
+                    1
+                  ]
                 }
               ],
               "sources": [
@@ -1378,7 +1422,7 @@ window.GUIDE = {
               ]
             }
           ],
-          "note": "A 2026 state law expands the commission from three to seven members. Gov. Ivey named four new members who take their seats in January 2027, and later seats will be elected by district. The law also freezes Alabama Power’s base-rate increases through Jan. 1, 2029, allows a formal rate hearing only if five of seven commissioners or the energy secretary call for one, and creates a state energy secretary appointed by the governor. Sheila McNeil, the Democratic candidate for Place 2, has challenged the law in federal court.",
+          "note": "A 2026 state law expands the commission from three to seven members. Gov. Ivey appointed four new members, who will face elections in staggered terms. The law also freezes Alabama Power’s base rates until 2029, allows a formal rate hearing only if five of seven commissioners or the energy secretary call for one, and creates a state energy secretary appointed by the governor. Sheila McNeil, the Democratic candidate for Place 2, has challenged the law in federal court.",
           "noteSrc": [
             {
               "label": "Alabama Reflector: PSC race (Oct 16, 2026)",
@@ -1400,7 +1444,7 @@ window.GUIDE = {
           "differ": [
             {
               "k": "Power bills",
-              "v": "Gentry would call a public rate hearing first and criticizes the rate freeze; Gordon calls for cutting Alabama Power bills about 25%."
+              "v": "Gentry wants a full comparison of Alabama’s rates with other states; Gordon calls for cutting Alabama Power bills about 25% and extending the base-rate freeze to 2030."
             },
             {
               "k": "Both",
@@ -1465,7 +1509,8 @@ window.GUIDE = {
                   "h": "Data centers cover their power costs",
                   "d": "Says Alabama families shouldn’t pay for data centers’ power demand and would act as a watchman over new data centers and solar farms.",
                   "s": [
-                    1
+                    1,
+                    2
                   ]
                 },
                 {
@@ -1473,7 +1518,7 @@ window.GUIDE = {
                   "h": "Scrutinize rate requests",
                   "d": "Would review rate requests closely and make clear which costs utilities pass on to customers.",
                   "s": [
-                    2
+                    3
                   ]
                 }
               ],
@@ -1485,11 +1530,15 @@ window.GUIDE = {
                 {
                   "label": "Alabama Reflector: PSC runoff (Jun 11, 2026)",
                   "url": "https://alabamareflector.com/2026/06/11/republican-primary-for-public-service-commission-seat-goes-to-runoff/"
+                },
+                {
+                  "label": "Alabama Reflector: PSC race (Oct 16, 2026)",
+                  "url": "https://alabamareflector.com/2026/10/16/in-public-service-commission-race-reorganization-bill-looms-over-candidates/"
                 }
               ]
             }
           ],
-          "note": "A 2026 state law expands the commission from three to seven members. Gov. Ivey named four new members who take their seats in January 2027, and later seats will be elected by district. The law also freezes Alabama Power’s base-rate increases through Jan. 1, 2029, allows a formal rate hearing only if five of seven commissioners or the energy secretary call for one, and creates a state energy secretary appointed by the governor. Sheila McNeil, the Democratic candidate for Place 2, has challenged the law in federal court.",
+          "note": "A 2026 state law expands the commission from three to seven members. Gov. Ivey appointed four new members, who will face elections in staggered terms. The law also freezes Alabama Power’s base rates until 2029, allows a formal rate hearing only if five of seven commissioners or the energy secretary call for one, and creates a state energy secretary appointed by the governor. Sheila McNeil, the Democratic candidate for Place 2, has challenged the law in federal court.",
           "noteSrc": [
             {
               "label": "Alabama Reflector: PSC race (Oct 16, 2026)",
@@ -1740,8 +1789,8 @@ window.GUIDE = {
                 },
                 {
                   "topic": "taxes",
-                  "h": "Tax cuts and less debt",
-                  "d": "Points to his votes for tax deductions on tips and overtime and a new deduction for seniors, and wants to cut federal debt by targeting waste and fraud.",
+                  "h": "Tax cuts, less waste",
+                  "d": "Points to his votes for tax deductions on tips and overtime and a new deduction for seniors, and says tackling government waste and fraud will help lower inflation.",
                   "s": [
                     3,
                     4
@@ -1749,9 +1798,10 @@ window.GUIDE = {
                 },
                 {
                   "topic": "rural",
-                  "h": "Pass a new farm bill",
-                  "d": "As an Agriculture Committee member, backs the House-passed 2026 farm bill’s risk-management and credit tools for farmers.",
+                  "h": "Voted for the 2026 farm bill",
+                  "d": "Voted for the House-passed 2026 farm bill. In 2025, as an Agriculture Committee member, called crop insurance “the single most important risk management tool” for farmers.",
                   "s": [
+                    10,
                     5
                   ]
                 },
@@ -1802,7 +1852,7 @@ window.GUIDE = {
                   "url": "https://aldailynews.com/alabamas-gop-frontrunners-for-u-s-senate-talk-affordability-iran/"
                 },
                 {
-                  "label": "Moore op-ed: Farm Bill 2.0",
+                  "label": "Moore op-ed: Farm Bill 2.0 (Aug 2025)",
                   "url": "https://yellowhammernews.com/barry-moore-op-ed-alabama-farmers-deserve-a-farm-bill-2-0/"
                 },
                 {
@@ -1820,6 +1870,10 @@ window.GUIDE = {
                 {
                   "label": "Moore press release: Fort Novosel (now Fort Rucker) funding (May 2024)",
                   "url": "https://barrymoore.house.gov/media/press-releases/rep-barry-moore-pushes-answers-army-fort-novosel-funding"
+                },
+                {
+                  "label": "House roll call 154: 2026 farm bill (Apr 30, 2026)",
+                  "url": "https://clerk.house.gov/Votes/2026154"
                 }
               ]
             },
@@ -1850,15 +1904,19 @@ window.GUIDE = {
                   "d": "Wants more federal support for rural hospitals and incentives for doctors in underserved areas, and supports Medicaid expansion.",
                   "s": [
                     4,
-                    6
+                    6,
+                    1
                   ]
                 },
                 {
-                  "topic": "health",
-                  "h": "Protect Social Security and Medicare",
-                  "d": "Lists protecting Social Security and Medicare, along with veterans’ health care, as priorities.",
+                  "topic": [
+                    "health",
+                    "defense"
+                  ],
+                  "h": "Social Security, Medicare, veterans",
+                  "d": "Lists protecting Social Security and Medicare, and expanded opportunities for veterans moving to civilian life, among his priorities.",
                   "s": [
-                    1
+                    3
                   ]
                 },
                 {
@@ -1881,7 +1939,7 @@ window.GUIDE = {
                 {
                   "topic": "rural",
                   "h": "A voice for agriculture",
-                  "d": "Would seek a seat on the Senate Agriculture Committee and opposes the federal plan to expand beef imports.",
+                  "d": "Says Alabama agriculture deserves “a seat at the table” when Washington makes decisions about farms, and opposes the federal plan to expand beef imports.",
                   "s": [
                     8
                   ]
@@ -2064,8 +2122,8 @@ window.GUIDE = {
                     },
                     {
                       "topic": "economy",
-                      "h": "Workers and veterans",
-                      "d": "Supports a livable wage and union rights, and lists care for veterans as a core focus.",
+                      "h": "A living wage",
+                      "d": "Supports a living wage, noting that Alabama has no minimum wage of its own and defaults to the federal $7.25.",
                       "s": [
                         1
                       ]
@@ -2178,9 +2236,9 @@ window.GUIDE = {
                       "h": "Voted for the Laken Riley Act",
                       "d": "Voted for the Laken Riley Act in January 2025, which requires detention of immigrants in the country illegally who are charged with theft-related or violent crimes.",
                       "s": [
+                        10,
                         11,
-                        12,
-                        13
+                        12
                       ]
                     },
                     {
@@ -2200,8 +2258,9 @@ window.GUIDE = {
                         "rural"
                       ],
                       "h": "Protect cattle farmers",
-                      "d": "Introduced a bill to cancel the federal plan expanding foreign beef imports, calling it “a slap in the face” to cattle farmers.",
+                      "d": "Introduced a bill to cancel the federal plan expanding foreign beef imports, calling it “a slap in the face” to farmers.",
                       "s": [
+                        4,
                         6,
                         7
                       ]
@@ -2209,10 +2268,10 @@ window.GUIDE = {
                     {
                       "topic": "defense",
                       "h": "Voted against 2027 defense bill",
-                      "d": "Voted against the House’s 2027 defense authorization (H.R. 8800) in July 2026, objecting to SAVE America Act election provisions attached to it.",
+                      "d": "Voted against the House’s 2027 defense authorization (H.R. 8800) in July 2026, calling the amount of money it requests “outrageous,” especially in the midst of a war.",
                       "s": [
-                        8,
-                        9
+                        13,
+                        8
                       ]
                     },
                     {
@@ -2220,7 +2279,7 @@ window.GUIDE = {
                       "h": "Pressed VA on layoffs",
                       "d": "In 2025 pressed the VA secretary about reported layoffs affecting facilities in Mobile, Montgomery and Tuskegee.",
                       "s": [
-                        10
+                        9
                       ]
                     }
                   ],
@@ -2258,10 +2317,6 @@ window.GUIDE = {
                       "url": "https://yellowhammernews.com/it-is-outrageous-mike-rogers-shomari-figures-clash-over-ndaa-defense-spending/"
                     },
                     {
-                      "label": "Breaking Defense: House passes 2027 defense bill (Jul 2026)",
-                      "url": "https://breakingdefense.com/2026/07/house-passes-2027-ndaa-while-measure-remains-stalled-in-the-senate/"
-                    },
-                    {
                       "label": "Figures: veterans issues",
                       "url": "https://figures.house.gov/issues/veterans"
                     },
@@ -2276,6 +2331,10 @@ window.GUIDE = {
                     {
                       "label": "Yellowhammer News: Figures, Sewell vote for the Laken Riley Act (Jan 2025)",
                       "url": "https://yellowhammernews.com/alabama-lawmakers-including-figures-and-sewell-vote-to-pass-britts-criminal-immigrant-crackdown-bill/"
+                    },
+                    {
+                      "label": "House roll call 278: 2027 defense bill (Jul 22, 2026)",
+                      "url": "https://clerk.house.gov/Votes/2026278"
                     }
                   ]
                 },
@@ -2287,7 +2346,7 @@ window.GUIDE = {
                     {
                       "topic": "taxes",
                       "h": "Cut taxes and spending",
-                      "d": "Says he would lower prices by cutting taxes and spending, citing his state votes to cut the grocery tax and reduce state income tax on overtime pay.",
+                      "d": "Says he would lower prices by cutting taxes and spending, and cites his support for eliminating state taxes on overtime pay.",
                       "s": [
                         2,
                         1
@@ -2328,11 +2387,10 @@ window.GUIDE = {
                     },
                     {
                       "topic": "defense",
-                      "h": "Military bases and veterans",
-                      "d": "Lists the military and veterans among his priorities and notes that the district is home to several military bases.",
+                      "h": "Military and veterans",
+                      "d": "Lists supporting law enforcement, the military, veterans and farmers among his priorities.",
                       "s": [
-                        6,
-                        7
+                        6
                       ]
                     }
                   ],
@@ -2356,10 +2414,6 @@ window.GUIDE = {
                     {
                       "label": "1819 News: Marques on Figures’ record",
                       "url": "https://1819news.com/news/item/rhett-marques-takes-aim-at-shomari-figures-voting-record-in-craziness-vs-common-sense-website-in-election-lead-up"
-                    },
-                    {
-                      "label": "WDHN: House majority leader endorses Marques (Sep 2026)",
-                      "url": "https://www.wdhn.com/news/local-news/house-majority-leader-endorses-congressional-candidate-rhett-marques/"
                     },
                     {
                       "label": "Alabama Daily News: Scalise campaigns for Marques (Oct 2026)",
@@ -2508,7 +2562,7 @@ window.GUIDE = {
                     {
                       "topic": "abortion",
                       "h": "Opposes abortion",
-                      "d": "Names “protecting unborn lives” among his top priorities.",
+                      "d": "Lists protecting unborn lives among his top priorities.",
                       "s": [
                         1
                       ]
@@ -2653,11 +2707,11 @@ window.GUIDE = {
                       "url": "https://aderholt.house.gov/media-center/press-releases/congressman-aderholt-joins-hrsa-administrator-engels-rural-healthcare"
                     },
                     {
-                      "label": "Aderholt press release: budget law passage (May 22, 2025)",
+                      "label": "Aderholt press release: final House passage (Jul 3, 2025)",
                       "url": "https://aderholt.house.gov/media-center/press-releases/aderholt-applauds-house-passage-president-trumps-one-big-beautiful-bill"
                     },
                     {
-                      "label": "Aderholt press release: final passage vote (Jul 3, 2025)",
+                      "label": "Aderholt press release: first House passage (May 22, 2025)",
                       "url": "https://aderholt.house.gov/media-center/press-releases/congressman-aderholt-votes-pass-one-big-beautiful-bill-delivering-tax"
                     },
                     {
@@ -2783,6 +2837,7 @@ window.GUIDE = {
                       "h": "Expand Medicaid eligibility",
                       "d": "Would make rural health care a priority and expand who qualifies for Medicaid.",
                       "s": [
+                        6,
                         1
                       ]
                     },
@@ -2833,6 +2888,10 @@ window.GUIDE = {
                     {
                       "label": "Sneed campaign: immigration",
                       "url": "https://www.sneedforcongress.com/immigration"
+                    },
+                    {
+                      "label": "Alabama Reflector voter guide: District 5",
+                      "url": "https://alabamareflector.com/voter-guides/contests/al05/"
                     }
                   ]
                 },
@@ -2884,10 +2943,11 @@ window.GUIDE = {
                     },
                     {
                       "topic": "government",
-                      "h": "Supports SAVE Act",
-                      "d": "Supports requiring proof of citizenship to register to vote, as in the House-passed SAVE Act.",
+                      "h": "Proof of citizenship to vote",
+                      "d": "Supports requiring proof of citizenship to register to vote: voted for the SAVE Act in 2024 and the SAVE America Act in 2026.",
                       "s": [
-                        6
+                        6,
+                        8
                       ]
                     }
                   ],
@@ -2913,12 +2973,16 @@ window.GUIDE = {
                       "url": "https://1819news.com/news/item/vital-asset-for-increased-power-generation-demand-dale-strong-doubles-down-on-support-for-nuclear-development-at-bellefonte-plant"
                     },
                     {
-                      "label": "Strong press release: voting safeguards",
+                      "label": "Strong press release: SAVE Act vote (Sep 18, 2024)",
                       "url": "https://strong.house.gov/media/press-releases/strong-votes-safeguard-american-elections"
                     },
                     {
                       "label": "House roll call 190 (Jul 3, 2025)",
                       "url": "https://clerk.house.gov/Votes/2025190"
+                    },
+                    {
+                      "label": "House roll call 69: SAVE America Act (Feb 11, 2026)",
+                      "url": "https://clerk.house.gov/Votes/2026069"
                     }
                   ]
                 }
@@ -2963,18 +3027,28 @@ window.GUIDE = {
                     },
                     {
                       "topic": "government",
-                      "h": "Protect voting rights",
-                      "d": "Calls protecting the Voting Rights Act central to his campaign and pledges 12 town halls in his first term.",
+                      "h": "12 town halls",
+                      "d": "Pledges to hold 12 town halls in his first two-year term.",
                       "s": [
                         2
                       ]
                     },
                     {
                       "topic": "defense",
-                      "h": "Veterans; opposes Iran war",
-                      "d": "Pledges to stand with veterans and first responders, and says he wants to end U.S. military action against Iran.",
+                      "h": "Veterans and first responders",
+                      "d": "Pledges to stand with veterans and first responders.",
                       "s": [
-                        3,
+                        2
+                      ]
+                    },
+                    {
+                      "topic": [
+                        "education",
+                        "economy"
+                      ],
+                      "h": "Schools, jobs and small business",
+                      "d": "Lists strengthening public education and workforce development, and supporting small businesses, among his priorities.",
+                      "s": [
                         2
                       ]
                     }
@@ -2987,10 +3061,6 @@ window.GUIDE = {
                     {
                       "label": "Coosa County News: Mercer campaign (Jul 31, 2026)",
                       "url": "https://www.thecoosacountynews.com/2026/07/31/maurice-mercer-for-congress-community-first-country-forward/"
-                    },
-                    {
-                      "label": "Alabama Reflector: District 6 Democratic primary (Jul 27, 2026)",
-                      "url": "https://alabamareflector.com/2026/07/27/four-democrats-vie-for-central-alabama-congressional-seat-in-special-primary-election/"
                     }
                   ]
                 },
@@ -3019,8 +3089,8 @@ window.GUIDE = {
                     },
                     {
                       "topic": "economy",
-                      "h": "Fewer rules, more U.S. mining",
-                      "d": "Favors fewer business regulations and more U.S. mineral production to reduce reliance on China.",
+                      "h": "Fewer rules, critical minerals",
+                      "d": "Favors fewer business regulations, and has sponsored legislation to recover critical minerals.",
                       "s": [
                         1,
                         2
@@ -3093,12 +3163,8 @@ window.GUIDE = {
               ],
               "differ": [
                 {
-                  "k": "Iran",
-                  "v": "Mercer wants to end U.S. military action against Iran; Palmer voted against a March 2026 resolution to limit it."
-                },
-                {
-                  "k": "Voting laws",
-                  "v": "Mercer calls protecting the Voting Rights Act central to his campaign; Palmer voted for the House-passed SAVE America Act, calling its photo ID requirement “common sense, not voter suppression.”"
+                  "k": "Health care",
+                  "v": "Mercer lists expanding access to affordable health care and protecting Social Security and Medicare among his priorities; Palmer has called for repealing the Affordable Care Act."
                 }
               ]
             },
@@ -3126,18 +3192,15 @@ window.GUIDE = {
                       "h": "Responsible spending",
                       "d": "Favors “responsible federal spending and less unnecessary regulation,” saying the answer “isn’t always another government program.”",
                       "s": [
+                        2,
                         1
                       ]
                     },
                     {
-                      "topic": [
-                        "rural",
-                        "education"
-                      ],
-                      "h": "Farms, industry and schools",
-                      "d": "Would support Alabama’s farm and industrial sectors and expand educational opportunity.",
+                      "topic": "education",
+                      "h": "Expand educational opportunity",
+                      "d": "Wants to expand educational opportunity in the district.",
                       "s": [
-                        1,
                         2
                       ]
                     },
@@ -3156,6 +3219,26 @@ window.GUIDE = {
                       "d": "Pledges to give the military, law enforcement and first responders “the resources they need.”",
                       "s": [
                         3
+                      ]
+                    },
+                    {
+                      "topic": [
+                        "health",
+                        "rural"
+                      ],
+                      "h": "Rural health care",
+                      "d": "Wants to strengthen rural health care, including helping rural hospitals stay open, and to protect Medicare and Social Security.",
+                      "s": [
+                        3,
+                        4
+                      ]
+                    },
+                    {
+                      "topic": "immigration",
+                      "h": "Secure borders, legal immigration",
+                      "d": "Supports secure borders and “a workable legal immigration system.”",
+                      "s": [
+                        4
                       ]
                     }
                   ],
@@ -3307,6 +3390,10 @@ window.GUIDE = {
                 {
                   "k": "Costs",
                   "v": "Akin favors “responsible federal spending” and says the answer “isn’t always another government program”; Sewell focuses on gas, housing and grocery costs and has sponsored legislation to stop President Trump’s tariffs."
+                },
+                {
+                  "k": "Both",
+                  "v": "Support help for rural hospitals."
                 }
               ]
             }
@@ -3336,7 +3423,7 @@ window.GUIDE = {
       "title": "Filling a lieutenant governor vacancy",
       "summary": "Today, if the lieutenant governor’s office becomes vacant, it stays empty until the next regular election for the office. This amendment would fill a vacancy that occurs in the first two years of a term by election, if it occurs more than 60 days before the next general election. It also lets the Legislature set pay for the lieutenant governor and legislative officers by joint resolution, and requires an elected officer of each chamber to approve legislators’ travel spending.",
       "vote": "Passed unanimously in both chambers.",
-      "support": "Supporters say voters should fill a vacancy that comes early in a term; the office sat empty from 2017 to 2019. Sponsor Sen. Sam Givhan has given differing accounts of whether questions about candidates’ residency prompted it.",
+      "support": "Supporters say voters should fill a vacancy that comes early in a term.",
       "oppose": "No organized opposition was found.",
       "yes": "A vacancy early in the term is filled by election, and the pay and travel changes take effect.",
       "no": "A vacancy stays open until the next regular election, and current pay and travel rules stay.",
@@ -3358,10 +3445,10 @@ window.GUIDE = {
     {
       "n": "Statewide Amendment 2",
       "title": "Merging neighboring county school systems",
-      "summary": "Creates a voluntary process for two or more neighboring county school systems to merge; city systems are not covered. Each board must agree, and the State Board of Education must first study and publish the effects. If 25% of voters in an affected system sign a protest, the merger goes to a public vote and needs a majority in each county. No system would be merged automatically.",
+      "summary": "Creates a voluntary process for two or more neighboring county school systems to merge; city systems are not covered. Each board must agree, and the State Board of Education must first study and publish the effects. If 25% of voters in an affected system sign a protest, the merger goes to a public vote and needs a majority in each county and an overall majority across the affected counties. No system would be merged automatically.",
       "vote": "Passed both chambers with nearly unanimous support.",
-      "support": "Sponsor Rep. Terri Collins calls it “an option, not a mandate” that could move administrative savings into classrooms.",
-      "oppose": "No organized opposition was found. The Alabama Association of School Boards is neutral.",
+      "support": "Sponsor Rep. Terri Collins says merged systems could combine administration and “put more money back in the classroom.”",
+      "oppose": "The League of Women Voters of Alabama opposes it, saying the 25% threshold to force a public vote is too high. The Alabama Association of School Boards is neutral.",
       "yes": "A voluntary merger process is created, with a state study and a possible local vote.",
       "no": "No new merger process is added to the constitution.",
       "src": [
@@ -3385,7 +3472,7 @@ window.GUIDE = {
       "summary": "Requires local school boards to adopt policies for the Pledge of Allegiance at the start of each school day and to allow voluntary, student-led prayer. No student could be required to say the Pledge or pray. State law already requires a daily Pledge; this would add it to the constitution.",
       "vote": "Passed both chambers with nearly unanimous support.",
       "support": "Sponsor Rep. Reed Ingram says putting these policies in the constitution protects them from lawsuits.",
-      "oppose": "The League of Women Voters says it could favor religion.",
+      "oppose": "The League of Women Voters of Alabama says it would impinge on people’s rights.",
       "yes": "The daily Pledge and voluntary student-led prayer policies are written into the constitution.",
       "no": "The constitution is not changed. Existing state law on the daily Pledge and voluntary student prayer stays in effect.",
       "src": [
@@ -3408,8 +3495,8 @@ window.GUIDE = {
       "title": "Weekly national anthem in public schools",
       "summary": "Requires every public K–12 school to play a recording of, or have a school group perform, the first verse of The Star-Spangled Banner at least once a week during the school day.",
       "vote": "Passed both chambers; it drew more no votes than any of the other three amendments.",
-      "support": "Sponsor Sen. Gerald Allen points to America’s 250th anniversary and says he was inspired by the anthem at high school football games.",
-      "oppose": "Sen. Rodger Smitherman and other critics said the requirement does not belong in the constitution.",
+      "support": "Sponsor Sen. Gerald Allen says it will help celebrate America’s 250th anniversary.",
+      "oppose": "Sen. Vivian Davis Figures said the requirement should not be a constitutional amendment.",
       "yes": "A weekly national anthem requirement is added to the constitution.",
       "no": "The constitution is not changed, and there is no weekly anthem requirement.",
       "src": [
@@ -3420,10 +3507,6 @@ window.GUIDE = {
         {
           "label": "Alabama Reflector (Mar 4, 2026)",
           "url": "https://alabamareflector.com/2026/03/04/alabama-senate-passed-bill-would-require-weekly-national-anthem-broadcasts/"
-        },
-        {
-          "label": "Ballotpedia",
-          "url": "https://ballotpedia.org/Alabama_Require_Star-Spangled_Banner_Broadcast_or_Performance_in_Public_Schools_Amendment_(2026)"
         }
       ]
     }
@@ -3613,6 +3696,14 @@ window.GUIDE = {
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-10-20",
+      "text": "Correction: an independent check of the Congress and amendment sources found every recorded vote correct, and we fixed claims the cited sources didn’t support. Mercer’s entry wrongly said he called the Voting Rights Act central to his campaign and wants to end military action against Iran. The Amendment 2 entry wrongly said no organized opposition was found, and the Amendment 4 entry misattributed a critic’s objection."
+    },
+    {
+      "date": "2026-10-20",
+      "text": "Correction: after an independent check of every state-race source, we removed or re-sourced claims the cited sources didn’t support and added missing positions, including Jones’s and Tuberville’s shared opposition to data center tax breaks and Ensler’s data center moratorium. The Public Service Commission Place 1 entry wrongly said Gentry criticized the rate freeze; it now notes Gordon’s plan to extend it."
+    },
     {
       "date": "2026-10-20",
       "text": "Clarified How to vote after checking it against the Secretary of State: when hand-delivered absentee ballots are due, returning ballots by carrier, Eastern Time polling places, and which IDs are accepted."
