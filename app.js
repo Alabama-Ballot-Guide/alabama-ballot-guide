@@ -41,39 +41,38 @@
   function announce(msg) { live.textContent = ""; setTimeout(function () { live.textContent = msg; }, 30); }
 
   // ---------- laws and bills ----------
-  // Each law is described once in G.laws; a race lists the ones its text mentions, and the first
-  // mention in each position or differ line links to that list. No lookbehind: older Safari lacks it.
+  // Each law is described once in G.laws and listed in one section ("Laws and bills in this guide", at the
+  // top of the footer, so it sits below every tab). The first mention in each position or differ line links
+  // there; a mouse hover or keyboard focus also shows the one-line summary. No lookbehind: older Safari lacks it.
   var LAWS = (G.laws || []).map(function (l) {
     return { law: l, res: (l.match || []).map(function (m) {
       return new RegExp("(^|[^A-Za-z0-9])(" + m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![A-Za-z0-9])", "i");
     }) };
   });
-  function lawId(scope, l) { return "law-" + scope + "-" + l.id; }
+  var LAW_BY_ANCHOR = {};
+  LAWS.forEach(function (x) { LAW_BY_ANCHOR["law-" + x.law.id] = x.law; });
   // html is already escaped; law names contain none of the characters esc() changes
-  function linkLaws(html, scope, seen) {
+  function linkLaws(html, seen) {
     LAWS.forEach(function (x) {
       if (seen[x.law.id]) return;
       for (var i = 0; i < x.res.length; i++) {
         if (!x.res[i].test(html)) continue;
-        html = html.replace(x.res[i], function (all, pre, t) { return pre + '<a class="law" href="#' + esc(lawId(scope, x.law)) + '">' + t + "</a>"; });
+        html = html.replace(x.res[i], function (all, pre, t) { return pre + '<a class="law" href="#law-' + esc(x.law.id) + '">' + t + "</a>"; });
         seen[x.law.id] = 1;
         return;
       }
     });
     return html;
   }
-  function lawsBox(o, scope) {
-    var text = [o.note || ""];
-    (o.differ || []).forEach(function (x) { text.push(x.v); });
-    (o.candidates || []).forEach(function (c) { (c.positions || []).forEach(function (p) { text.push(p.h, p.d); }); });
-    text = text.join("\n");
-    var found = LAWS.filter(function (x) { return x.res.some(function (re) { return re.test(text); }); });
-    if (!found.length) return "";
-    return '<div class="laws"><p class="laws-h">Laws and bills mentioned</p><dl>' + found.map(function (x) {
-      var l = x.law;
-      return '<dt id="' + esc(lawId(scope, l)) + '">' + esc(l.term) + ' <span class="kind">' + esc(l.kind) + "</span></dt><dd>" + esc(l.d) +
-        ((l.src || []).length ? ' <span class="law-src">Sources: ' + l.src.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</span>" : "") + "</dd>";
-    }).join("") + "</dl></div>";
+  function lawsSection() {
+    if (!LAWS.length) return "";
+    return '<section class="laws-ref" id="laws" aria-labelledby="lawsH"><div class="wrap"><h2 id="lawsH">Laws and bills in this guide</h2>' +
+      '<p class="laws-intro">Short, neutral descriptions of the laws and bills candidates mention. A law’s name in a candidate’s entry links here.</p>' +
+      '<dl class="laws-list">' + LAWS.map(function (x) {
+        var l = x.law;
+        return '<div class="law-item" id="law-' + esc(l.id) + '"><dt>' + esc(l.term) + ' <span class="kind">' + esc(l.kind) + "</span></dt><dd>" + esc(l.d) +
+          ((l.src || []).length ? ' <span class="law-src">Sources: ' + l.src.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</span>" : "") + "</dd></div>";
+      }).join("") + "</dl></div></section>";
   }
 
   // ---------- render pieces ----------
@@ -88,7 +87,7 @@
       }).join("");
       var seen = {};
       return '<li data-topics="' + esc(ts.join(" ")) + '"><span class="t">' + esc(ts.map(function (t) { return G.topics[t] || t; }).join(" · ")) + "</span>" + sep(": ") +
-        "<strong>" + linkLaws(esc(p.h), target, seen) + "</strong>" + sep(". ") + "<p>" + linkLaws(esc(p.d), target, seen) + (refs ? ' <span class="refs">' + refs + "</span>" : "") + "</p></li>";
+        "<strong>" + linkLaws(esc(p.h), seen) + "</strong>" + sep(". ") + "<p>" + linkLaws(esc(p.d), seen) + (refs ? ' <span class="refs">' + refs + "</span>" : "") + "</p></li>";
     }).join("");
     var src = srcs.map(function (s) { return "<li>" + ext(s.url, esc(s.label)) + "</li>"; }).join("");
     return '<article class="cand">' +
@@ -107,11 +106,11 @@
       "</article>";
   }
 
-  function differBox(x, scope) {
+  function differBox(x) {
     if (!x.differ || !x.differ.length) return "";
     return '<div class="differ"><p class="differ-h">Where they differ</p><ul>' + x.differ.map(function (i) {
       var both = i.k === "Both";
-      return "<li><b>" + esc(both ? "Where they agree" : i.k) + ":</b> " + linkLaws(esc(both ? "Both " + i.v.charAt(0).toLowerCase() + i.v.slice(1) : i.v), scope, {}) + "</li>";
+      return "<li><b>" + esc(both ? "Where they agree" : i.k) + ":</b> " + linkLaws(esc(both ? "Both " + i.v.charAt(0).toLowerCase() + i.v.slice(1) : i.v), {}) + "</li>";
     }).join("") + "</ul></div>";
   }
   var mine = load("al-guide-mine", {});
@@ -135,9 +134,9 @@
 
   function fullRace(r) {
     return '<section class="race" id="' + esc(r.id) + '" data-kind="full" aria-labelledby="h-' + esc(r.id) + '">' +
-      raceHead(r).replace('<h3 class="office">', '<h3 class="office" id="h-' + esc(r.id) + '">') + differBox(r, r.id) +
+      raceHead(r).replace('<h3 class="office">', '<h3 class="office" id="h-' + esc(r.id) + '">') + differBox(r) +
       '<div class="cands">' + r.candidates.map(function (c) { return card(c, r.id, r.office, r.id); }).join("") + "</div>" +
-      lawsBox(r, r.id) + raceFoot(Object.assign({ debate: G.defaultDebate }, r)) + "</section>";
+      raceFoot(Object.assign({ debate: G.defaultDebate }, r)) + "</section>";
   }
 
   function rowsRace(r) {
@@ -166,9 +165,9 @@
     var panels = r.districts.map(function (d, i) {
       var name = "U.S. House, District " + d.n;
       return '<div class="panel"' + (STATIC ? "" : ' role="tabpanel" aria-labelledby="tab-al' + esc(d.n) + '"') + ' id="panel-al' + esc(d.n) + '"' + (i && !STATIC ? " hidden" : "") + ">" +
-        '<h3 class="district-area" id="al-' + esc(d.n) + '"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</h3>" + differBox(d, "al" + d.n) +
+        '<h3 class="district-area" id="al-' + esc(d.n) + '"><b>District ' + esc(d.n) + "</b> · " + esc(d.area) + (d.status ? " · " + esc(d.status) : "") + "</h3>" + differBox(d) +
         '<div class="cands">' + d.candidates.map(function (c) { return card(c, "house", name, "al" + d.n); }).join("") + "</div>" +
-        lawsBox(d, "al" + d.n) + raceFoot(Object.assign({ debate: G.defaultDebate }, d)) + "</div>";
+        raceFoot(Object.assign({ debate: G.defaultDebate }, d)) + "</div>";
     }).join("");
     return '<section class="race" id="' + esc(r.id) + '" data-kind="districts">' + raceHead(r) +
       '<p class="find">' + esc(r.findText) + " " + ext(r.findLink.url, esc(r.findLink.label)) + "</p>" +
@@ -309,7 +308,7 @@
         (older.length ? '<details class="updates-more"><summary>Earlier updates (' + older.length + ")</summary>" +
           '<ul class="updates">' + older.map(item).join("") + "</ul></details>" : "");
     }
-    document.getElementById("about").innerHTML = '<div class="wrap"><h2>About this guide</h2><div class="about-grid">' + G.about.map(function (a) {
+    document.getElementById("about").innerHTML = lawsSection() + '<div class="wrap"><h2>About this guide</h2><div class="about-grid">' + G.about.map(function (a) {
       return "<div><h3>" + esc(a.h) + "</h3><p>" + esc(a.p) +
         (a.links ? " " + a.links.map(function (l) { return '<a href="' + esc(safeUrl(l.url)) + '" type="' + esc(l.type) + '">' + esc(l.label) + "</a>"; }).join(", ") + "." : "") + "</p></div>";
     }).join("") + "</div>" +
@@ -337,14 +336,15 @@
   }
 
   // Go to a tab ("state"), a race or step inside a tab ("governor", "absentee"), or a district ("al-2")
-  function go(token, focus) {
+  function go(token, focus, keepScroll) {
     var el = null, view = isView(token) ? token : null;
     var dm = /^al-?([1-7])$/.exec(token);
     if (token === "content") view = current;
     else if (!view) {
       el = dm ? document.getElementById("house") : document.getElementById(token);
-      if (!el || !el.closest(".view")) { el = null; view = "overview"; }
-      else view = el.closest(".view").dataset.view;
+      if (el && el.closest(".view")) view = el.closest(".view").dataset.view;
+      else if (el && el.closest("#laws")) view = current; // the laws list sits below every tab
+      else { el = null; view = "overview"; }
     }
     if (el && topic !== "all" && el.closest(".race[hidden], .group[hidden]")) { topic = "all"; applyTopic(); }
     showView(view);
@@ -353,9 +353,9 @@
       var t = document.getElementById("tab-al" + dm[1]); if (t) selectTab(t, false);
     }
     var hash = "#" + (token === "content" ? current : token);
-    try { if (focus && location.hash !== hash) history.pushState(null, "", hash); else history.replaceState(null, "", hash); } catch (e) {}
+    try { if (focus && location.hash !== hash) history.pushState(null, "", hash); else history.replaceState(history.state, "", hash); } catch (e) {}
     routed = location.hash;
-    if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
+    if (keepScroll) { /* Back to a saved spot: the caller restores it */ } else if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
     if (focus) {
       var target = el || document.querySelector("#view-" + view + " h1, #view-" + view + " h2");
       if (target) { if (!target.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT)$/.test(target.tagName)) target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); }
@@ -517,12 +517,75 @@
     if (t) selectTab(t, false);
   })();
   var routed = "";
-  function route() { if (location.hash !== routed) go(location.hash.slice(1) || "overview", false); }
+  var lawFrom = null; // the law link last followed, so Back can return to it
+  function route() {
+    if (location.hash === routed) return;
+    var st = history.state, back = !!st && typeof st.y === "number";
+    go(location.hash.slice(1) || "overview", false, back);
+    // Back from the laws list: return to the exact spot the reader left
+    if (back) {
+      // after hashchange the browser also scrolls to the tab's own anchor; restore once more on the next frame
+      var y = st.y, put = function () {
+        window.scrollTo({ top: y, behavior: "instant" });
+        if (lawFrom && document.contains(lawFrom)) lawFrom.focus({ preventScroll: true });
+      };
+      put(); requestAnimationFrame(function () { requestAnimationFrame(put); });
+    }
+  }
   go(location.hash.slice(1) || "overview", false);
   window.addEventListener("hashchange", route);
   window.addEventListener("popstate", route);
   setScrollPad();
   window.addEventListener("resize", setScrollPad);
+
+  // Law summaries: on mouse hover or keyboard focus, a one-line tooltip; a click or tap goes to the full entry.
+  // Touch shows nothing (no hover there). The tip can be hovered and Esc closes it (WCAG 1.4.13).
+  var tip = null, tipFor = null, tipKey = false, tipTimer = null;
+  function showTip(a, viaKey) {
+    var l = LAW_BY_ANCHOR[a.getAttribute("href").slice(1)];
+    if (!l || !l.short) return;
+    if (!tip) {
+      tip = document.createElement("div"); tip.className = "law-tip"; tip.id = "lawTip"; tip.setAttribute("role", "tooltip"); tip.hidden = true;
+      tip.addEventListener("pointerenter", function () { clearTimeout(tipTimer); });
+      tip.addEventListener("pointerleave", hideTipSoon);
+      document.body.appendChild(tip);
+    }
+    clearTimeout(tipTimer);
+    if (tipFor && tipFor !== a) tipFor.removeAttribute("aria-describedby");
+    tip.innerHTML = "<b>" + esc(l.term) + ":</b> " + esc(l.short) + '<span class="hint">' + (viaKey ? "Press Enter" : "Click") + " for the full explanation</span>";
+    tip.hidden = false; tipFor = a; tipKey = viaKey; a.setAttribute("aria-describedby", "lawTip");
+    var r = a.getBoundingClientRect(), vw = document.documentElement.clientWidth, head = document.querySelector(".top").offsetHeight;
+    var top = r.top - tip.offsetHeight - 8;
+    if (top < head + 4) top = r.bottom + 8;
+    tip.style.left = Math.max(8, Math.min(r.left, vw - tip.offsetWidth - 8)) + "px";
+    tip.style.top = top + "px";
+  }
+  function hideTip() {
+    clearTimeout(tipTimer);
+    if (tip) tip.hidden = true;
+    if (tipFor) tipFor.removeAttribute("aria-describedby");
+    tipFor = null;
+  }
+  function hideTipSoon() { clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 150); }
+  function lawLink(t) { return t && t.closest ? t.closest("a.law") : null; }
+  document.addEventListener("pointerover", function (e) {
+    var a = lawLink(e.target);
+    if (!a || e.pointerType !== "mouse") return;
+    if (a === tipFor) clearTimeout(tipTimer); else showTip(a, false);
+  });
+  document.addEventListener("pointerout", function (e) {
+    var a = lawLink(e.target);
+    if (a && a === tipFor && !a.contains(e.relatedTarget)) hideTipSoon();
+  });
+  document.addEventListener("focusin", function (e) {
+    var a = lawLink(e.target), kb = false;
+    try { kb = !!a && a.matches(":focus-visible"); } catch (err) {}
+    if (kb) showTip(a, true);
+  });
+  document.addEventListener("focusout", function (e) { if (e.target === tipFor) hideTip(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && tipFor) hideTip(); });
+  // a mouse tip closes on scroll; a keyboard tip follows its link (focusing a link can itself scroll the page)
+  window.addEventListener("scroll", function () { if (tipFor) { if (tipKey) showTip(tipFor, true); else hideTip(); } }, { passive: true });
 
   var sheet = document.getElementById("sheet"), scrim = document.getElementById("scrim"), btn = document.getElementById("picksBtn");
   var clearBtn = document.getElementById("clearPicks"), armTimer = null;
@@ -569,6 +632,10 @@
       if (isView(tok) || tok === "content" || /^al-?[1-7]$/.test(tok) || document.getElementById(tok)) {
         e.preventDefault();
         if (link.closest("#picksList")) { if (topic !== "all") { topic = "all"; applyTopic(); } toggleSheet(false, false); }
+        if (link.classList.contains("law")) {
+          hideTip(); lawFrom = link;
+          try { history.replaceState({ y: window.scrollY }, "", location.hash || "#" + current); } catch (err) {}
+        }
         go(tok, true);
       }
     }

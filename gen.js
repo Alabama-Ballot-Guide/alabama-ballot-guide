@@ -106,7 +106,7 @@ races.forEach(r => {
   r.laws_mentioned = lawRes.filter(x => x.res.some(re => re.test(t))).map(x => x.l.term);
 });
 const laws = lawRes.map(({ l }) => ({
-  id: l.id, name: l.term, kind: l.kind, description: l.d, sources: refs(l.src),
+  id: l.id, name: l.term, kind: l.kind, summary: l.short, description: l.d, sources: refs(l.src),
   mentioned_in: races.filter(r => r.laws_mentioned.indexOf(l.term) > -1).map(r => r.office)
 }));
 

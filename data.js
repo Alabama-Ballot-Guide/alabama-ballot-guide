@@ -3750,7 +3750,7 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-20",
-      "text": "Added short, sourced explanations of the laws and bills candidates mention, such as the CHOOSE Act, the SAVE America Act and the Laken Riley Act. Tap a law’s name in a candidate’s entry to read it."
+      "text": "Added short, sourced explanations of the laws and bills candidates mention, such as the CHOOSE Act, the SAVE America Act and the Laken Riley Act. Point to a law’s name for a one-line summary, or tap it for the full explanation."
     },
     {
       "date": "2026-10-20",
@@ -3822,6 +3822,7 @@ window.GUIDE = {
       "id": "choose-act",
       "term": "CHOOSE Act",
       "kind": "Alabama law, 2024",
+      "short": "Alabama’s 2024 law that pays for education savings accounts families can use for private-school or homeschool costs.",
       "match": [
         "CHOOSE Act"
       ],
@@ -3841,6 +3842,7 @@ window.GUIDE = {
       "id": "hr1-2025",
       "term": "H.R. 1 (2025 tax-and-spending law)",
       "kind": "Federal law, 2025",
+      "short": "The 2025 federal tax-and-spending law that extended the 2017 tax cuts and reduced projected federal Medicaid spending.",
       "match": [
         "H.R. 1",
         "2025 tax-and-spending law"
@@ -3857,6 +3859,7 @@ window.GUIDE = {
       "id": "laken-riley-act",
       "term": "Laken Riley Act",
       "kind": "Federal law, 2025",
+      "short": "A 2025 federal law requiring detention of immigrants in the country illegally who are charged with theft-related or violent crimes.",
       "match": [
         "Laken Riley Act"
       ],
@@ -3872,6 +3875,7 @@ window.GUIDE = {
       "id": "save-america-act",
       "term": "SAVE America Act",
       "kind": "Proposed federal law, 2026",
+      "short": "A 2026 bill, not law, requiring proof of citizenship to register and a photo ID to vote in federal elections.",
       "match": [
         "SAVE America Act"
       ],
@@ -3887,6 +3891,7 @@ window.GUIDE = {
       "id": "save-act",
       "term": "SAVE Act",
       "kind": "Proposed federal law, 2024",
+      "short": "A 2024 bill, not law, that would have required proof of citizenship to register to vote in federal elections.",
       "match": [
         "SAVE Act"
       ],
@@ -3902,6 +3907,7 @@ window.GUIDE = {
       "id": "lewis-vraa",
       "term": "John R. Lewis Voting Rights Advancement Act",
       "kind": "Proposed federal law",
+      "short": "A bill, not law, that would require places with recent voting-rights violations to get federal approval before changing voting rules.",
       "match": [
         "John R. Lewis Voting Rights Advancement Act"
       ],
@@ -3917,6 +3923,7 @@ window.GUIDE = {
       "id": "voting-rights-act",
       "term": "Voting Rights Act",
       "kind": "Federal law, 1965",
+      "short": "The 1965 federal law that bans racial discrimination in voting. A 2026 Supreme Court ruling narrowed challenges under it.",
       "match": [
         "Voting Rights Act"
       ],
@@ -3932,6 +3939,7 @@ window.GUIDE = {
       "id": "affordable-care-act",
       "term": "Affordable Care Act",
       "kind": "Federal law, 2010",
+      "short": "The 2010 federal health law, often called Obamacare, behind HealthCare.gov plans and Medicaid expansion.",
       "match": [
         "Affordable Care Act"
       ],
@@ -3951,6 +3959,7 @@ window.GUIDE = {
       "id": "medicaid-expansion",
       "term": "Medicaid expansion",
       "kind": "Part of the Affordable Care Act",
+      "short": "The Affordable Care Act’s option to cover more low-income adults through Medicaid. Alabama has not adopted it.",
       "match": [
         "Medicaid expansion",
         "expand Medicaid",
@@ -3968,6 +3977,7 @@ window.GUIDE = {
       "id": "pact-act",
       "term": "PACT Act",
       "kind": "Federal law, 2022",
+      "short": "A 2022 federal law that expanded VA care and benefits for veterans exposed to burn pits and other toxic substances.",
       "match": [
         "PACT Act"
       ],
@@ -3983,6 +3993,7 @@ window.GUIDE = {
       "id": "ndaa-2027",
       "term": "H.R. 8800 (2027 defense authorization)",
       "kind": "Proposed federal law, 2026",
+      "short": "The yearly defense policy and spending bill for 2027. The House passed it in July 2026.",
       "match": [
         "H.R. 8800",
         "2027 defense authorization"

@@ -32,7 +32,7 @@ A scheduled Claude Code task starts a fresh session each morning and does steps 
 
 ## House rules agents must follow
 - Describe positions in the candidate's own terms and attribute them ("says," "pledges," "voted for").
-- Votes cite roll calls. Laws use one neutral name and description everywhere. Each law or bill a candidate entry mentions has one sourced description in `laws` in data.js. The page lists it under that race and links the name automatically. If a new entry mentions a law that isn't there yet, a human-made PR adds it.
+- Votes cite roll calls. Laws use one neutral name and description everywhere. Each law or bill a candidate entry mentions has one sourced description and a one-line summary in `laws` in data.js. The page lists them all in "Laws and bills in this guide" below every tab, links each mention there, and shows the summary on hover. If a new entry mentions a law that isn't there yet, a human-made PR adds it.
 - Date anything older than the current campaign. Former officeholders' past records appear only if the candidate cites them now.
 - Give opposing candidates the same treatment: same depth, same kinds of sources, same note format.
 - A candidate's entry never describes their opponent.
