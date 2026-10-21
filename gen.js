@@ -148,6 +148,7 @@ const json = {
   races,
   judicial_and_board_races: otherRaces,
   laws,
+  updates: (G.updates || []).map(u => ({ date: u.date, text: u.text })),
   amendments: G.amendments.map(a => ({
     number: a.n, title: a.title, summary: a.summary, legislative_vote: a.vote,
     supporters_say: a.support, opponents_say: a.oppose, yes_means: a.yes, no_means: a.no, sources: refs(a.src)
@@ -231,16 +232,23 @@ if (laws.length) {
   md.push("");
 }
 md.push("## How to vote", "");
-json.how_to_vote.forEach(s => {
-  md.push("### " + s.topic, "", s.text, "");
-  if (s.deadlines) md.push("| | " + s.deadlines.columns.join(" | ") + " |", "| --- | --- | --- |", ...s.deadlines.rows.map(r => "| " + r.method + " | " + r.application + " | " + r.ballot + " |"), "");
-  md.push(...s.links.map(l => "- [" + l.title + "](" + l.url + ")"), "");
+// same order as the page: text, list as bullets, deadline table, numbered steps, follow-up, links
+G.vote.forEach(s => {
+  md.push("### " + s.h, "");
+  if (s.p) md.push(s.p, "");
+  if (s.list) md.push(...s.list.map(x => "- " + x), "");
+  if (s.deadlines) md.push(s.deadlines.caption + ":", "", "| | " + s.deadlines.cols.join(" | ") + " |", "| --- | --- | --- |",
+    ...s.deadlines.rows.map(r => "| " + r.h + " | " + r.c.join(" | ") + " |"), "", ...(s.deadlines.note ? [s.deadlines.note, ""] : []));
+  if (s.ol) md.push(...s.ol.map((x, i) => (i + 1) + ". " + x), "");
+  if (s.after) md.push(s.after, "");
+  if (s.links) md.push(...s.links.map(l => "- [" + l.label + "](" + l.url + ")"), "");
 });
 if (G.spanishGuide) {
   md.push("## " + G.spanishGuide.title, "", G.spanishGuide.intro, "");
   G.spanishGuide.items.forEach(x => md.push("- **" + x.h + ":** " + x.p));
   md.push("", ...G.spanishGuide.links.map(l => "- [" + l.label + "](" + l.url + ")"), "");
 }
+md.push("## Updates", "", "Newest first. Corrections start with \"Correction:\".", "", ...(G.updates || []).map(u => "- **" + u.date + ":** " + u.text), "");
 md.push("## About", "");
 G.about.forEach(a => md.push("**" + a.h + ".** " + a.p.replace("The number after each point links to the source behind it.", "Each point lists the sources behind it.") + (a.links ? " " + a.links.map(l => "[" + l.label + "](" + l.url + ")").join(", ") + "." : ""), ""));
 fs.writeFileSync(path.join(dir, "guide.md"), md.join("\n"));
@@ -277,6 +285,10 @@ const llms = [
   "",
   "- [guide.json](guide.json): Structured data. Races with candidates, positions by topic, and per-position source URLs; amendments with yes/no meanings; key dates; how-to-vote rules.",
   "- [guide.md](guide.md): The full guide as Markdown, suitable for reading into context.",
+  "",
+  "## Updates",
+  "",
+  ...(G.updates || []).map(u => "- " + u.date + ": " + u.text),
   "",
   "## How to use this guide",
   "",
