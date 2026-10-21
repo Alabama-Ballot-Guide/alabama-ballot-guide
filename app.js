@@ -520,6 +520,7 @@
   var lawFrom = null; // the law link last followed, so Back can return to it
   function route() {
     if (location.hash === routed) return;
+    if (sheet && !sheet.hidden) toggleSheet(false, false); // Back/Forward leaves My picks closed, not floating over another tab
     var st = history.state, back = !!st && typeof st.y === "number";
     go(location.hash.slice(1) || "overview", false, back);
     // Back from the laws list: return to the exact spot the reader left
@@ -533,6 +534,17 @@
     }
   }
   go(location.hash.slice(1) || "overview", false);
+  // A shared link to a section (#absentee): at load the browser scrolls to the fragment again and overshoots
+  // (by about a header's height), so settle on the section once that scroll has started
+  var firstHash = location.hash;
+  window.addEventListener("load", function () {
+    var tok = firstHash.slice(1), dm = /^al-?([1-7])$/.exec(tok);
+    var el = dm ? document.getElementById("house") : tok && !isView(tok) ? document.getElementById(tok) : null;
+    if (!el || !(el.closest(".view") || el.closest("#laws"))) return;
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      if (location.hash === firstHash) el.scrollIntoView({ behavior: "instant" });
+    }); });
+  });
   window.addEventListener("hashchange", route);
   window.addEventListener("popstate", route);
   setScrollPad();

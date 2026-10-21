@@ -152,7 +152,7 @@ const LOCK_PATHS = G => {
   (G.dates || []).forEach((d, i) => ["k", "v", "s", "iso", "target", "pastNote"].forEach(k => d[k] !== undefined && p.push("dates[" + i + "]." + k)));
   (G.absenteeStages || []).forEach((s, i) => ["until", "title", "text"].forEach(k => p.push("absenteeStages[" + i + "]." + k)));
   (G.vote || []).forEach((s, i) => { p.push("vote[" + i + "]"); });          // every How-to-vote step, whole object
-  ["callout", "idCard", "spanish"].forEach(k => G[k] !== undefined && p.push(k));
+  ["callout", "idCard", "spanish", "spanishGuide"].forEach(k => G[k] !== undefined && p.push(k));
   return p;
 };
 function get(G, p) { return p.split(/\.|(?=\[)/).reduce((o, k) => (o == null ? undefined : k.startsWith("[") ? o[+k.slice(1, -1)] : o[k]), G); }

@@ -1760,7 +1760,7 @@ window.GUIDE = {
     {
       "id": "federal",
       "title": "Congress",
-      "intro": "Alabama elects one U.S. senator and all seven U.S. House members this year. The House races use the map the Legislature drew in 2023. Federal courts had blocked it, and a court-drawn map was used in 2024; after the U.S. Supreme Court’s April 2026 ruling in Louisiana v. Callais, the Court let Alabama use the 2023 map for 2026. Districts 1, 2, 6 and 7 changed and held new primaries on Aug. 11.",
+      "intro": "Alabama elects one U.S. senator and all seven U.S. House members this year. The House races use the map the Legislature drew in 2023. Federal courts had blocked it, and a court-drawn map was used in 2024; after the U.S. Supreme Court’s April 2026 ruling in Louisiana v. Callais, a lower court blocked the 2023 map again in May, and on June 2 the Supreme Court paused that order, letting Alabama use the 2023 map for 2026 while the case continues. Districts 1, 2, 6 and 7 changed and held new primaries on Aug. 11.",
       "races": [
         {
           "id": "senate",
@@ -3418,6 +3418,10 @@ window.GUIDE = {
           "url": "https://alabamareflector.com/2026/05/26/federal-judges-block-alabamas-use-of-2023-congressional-map/"
         },
         {
+          "label": "Alabama Reflector: Supreme Court allows 2023 map (Jun 2, 2026)",
+          "url": "https://alabamareflector.com/2026/06/02/supreme-court-allows-alabama-to-use-2023-congressional-map-in-august-special-primary/"
+        },
+        {
           "label": "Alabama Reflector: special primary guide (Aug 10, 2026)",
           "url": "https://alabamareflector.com/2026/08/10/a-voter-guide-to-alabamas-special-primary-elections/"
         }
@@ -3538,15 +3542,17 @@ window.GUIDE = {
       "p": "Tuesday, Nov. 3, from 7 a.m. to 7 p.m. If you’re in line by 7 p.m., you can vote.",
       "list": [
         "Alabama has no early voting. Voting before Election Day means voting absentee, which requires a qualifying reason.",
+        "On the ballot you can either vote a straight-party ticket or mark candidates one by one.",
         "Some polling places near the Georgia line may run on Eastern Time (7 a.m. to 7 p.m. Eastern). Check with your county if unsure.",
         "Moved within your county since you registered? Go to the polling place for your new address, update your registration there, and vote a provisional ballot.",
-        "Moved to another county? Call your county Board of Registrars before Election Day.",
-        "Not on the poll list, or poll workers can’t confirm your registration? Ask for a provisional ballot. It counts once officials confirm you’re eligible."
+        "Moved to a different county? Your registration doesn’t move with you, and you can’t vote at your old polling place. Call the Board of Registrars in the county where you live now, before Election Day.",
+        "Not on the poll list, or poll workers can’t confirm your registration? Ask for a provisional ballot. It counts once officials confirm you’re eligible.",
+        "Asked for an absentee ballot but it never came, or you didn’t send it back? You can vote a provisional ballot at your polling place."
       ],
       "links": [
         {
           "label": "Alabama Votes",
-          "url": "https://www.alabamavotes.gov"
+          "url": "https://www.sos.alabama.gov/alabama-votes"
         },
         {
           "label": "2026 Voter Guide (Secretary of State, PDF)",
@@ -3564,7 +3570,7 @@ window.GUIDE = {
         "Employee photo ID from the federal government or from an Alabama state, county or city government",
         "Student or employee ID from an Alabama college, or from a public college in another state"
       ],
-      "after": "Bring the physical card; digital IDs, including Alabama’s digital driver’s license, are no longer accepted. A license expired less than 60 days still counts.",
+      "after": "Bring the physical card. Under a 2026 state law (HB110, in effect since Oct. 1), digital IDs, including Alabama’s digital driver’s license, aren’t accepted for voting, even though some older Secretary of State guides, including the 2026 Voter Guide PDF, still list it. A driver’s license or nondriver ID expired less than 60 days still counts. Licenses or IDs issued to foreign nationals can’t be used for voting.",
       "links": [
         {
           "label": "Full list of valid IDs",
@@ -3573,6 +3579,10 @@ window.GUIDE = {
         {
           "label": "No digital IDs (Secretary of State)",
           "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-voters-photo-id-requirements-ahead-upcoming-elections"
+        },
+        {
+          "label": "2026 digital ID law (HB110)",
+          "url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/HB110-enr.pdf"
         }
       ],
       "id": "photo-id"
@@ -3611,15 +3621,15 @@ window.GUIDE = {
             ]
           }
         ],
-        "note": "The mail and hand deadlines flip: a mailed application is due first, but a mailed ballot is due last."
+        "note": "By mail, the application is due first but the ballot is due last: a mailed application must arrive by Tue, Oct 27, while a mailed ballot can arrive as late as noon Tue, Nov 3."
       },
       "ol": [
         "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
-        "Return it yourself with a copy of your photo ID: by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
-        "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted.",
+        "Return it yourself with a copy of your photo ID (if you’re 65 or older or have a disability and check the box on the application saying you can’t vote in person, you don’t need to include ID): by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
+        "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted. Online or remote notarization isn’t allowed.",
         "Return the ballot yourself: by hand before your county’s absentee office closes on Mon, Nov 2 (5 p.m. at the latest), or by mail or a carrier such as FedEx or UPS so it arrives by noon Tue, Nov 3. Except in a medical emergency, no one else may return it for you."
       ],
-      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. Had a medical emergency, or an unexpected work trip out of your county, after the deadline? You may qualify for an emergency absentee ballot. Ask your county’s absentee election manager right away: work-trip applications close at 5 p.m. Mon, Nov 2, and medical-emergency ballots are due by noon Tue, Nov 3. Military and overseas voters apply by the same dates, but their ballots count if postmarked by Nov 3 and received by noon Tue, Nov 10.",
+      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. An emergency after the deadline, or voting from the military or overseas? See the next two sections.",
       "links": [
         {
           "label": "Application forms by county",
@@ -3632,20 +3642,68 @@ window.GUIDE = {
         {
           "label": "2026 deadlines",
           "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-alabamians-november-3-general-election-absentee"
-        },
+        }
+      ]
+    },
+    {
+      "id": "emergency",
+      "h": "Emergency after the deadline?",
+      "p": "You may still get an emergency absentee ballot if one of these happens within five days of the election and you didn’t know about it before the regular deadline:",
+      "list": [
+        "Your employer unexpectedly requires you to be away from your polling place while the polls are open",
+        "You need emergency treatment from a doctor",
+        "You’re caring for someone who needs emergency treatment from a doctor",
+        "A close relative dies, such as a parent, child, sibling, grandparent or grandchild (including in-laws)"
+      ],
+      "after": "Contact your county’s absentee election manager right away. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
+      "links": [
         {
           "label": "Emergency absentee law (Ala. Code § 17-11-3)",
           "url": "https://law.justia.com/codes/alabama/title-17/chapter-11/section-17-11-3/"
         },
         {
-          "label": "Military and overseas voters",
+          "label": "Emergency absentee application (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/voter-pdfs/absentee/EmergencyAbsenteeAppFillable.pdf"
+        },
+        {
+          "label": "Absentee election manager guide (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/election-2024/AbsenteeElectionManagerGuide.pdf"
+        }
+      ]
+    },
+    {
+      "id": "military",
+      "h": "Military and overseas voters",
+      "p": "Service members, their spouses and dependents, and U.S. citizens living overseas vote absentee under a federal law (UOCAVA), with a few differences:",
+      "list": [
+        "Apply by the same dates as other absentee voters. You can ask to get your ballot by email.",
+        "Your ballot counts if it’s postmarked by Tue, Nov 3, and arrives by noon Tue, Nov 10.",
+        "Outside the U.S. and got your ballot by email? You can return it electronically by Election Day, Tue, Nov 3; instructions come with the ballot.",
+        "You don’t need to include a copy of a photo ID.",
+        "Ballot hasn’t arrived? Use the Federal Write-In Absentee Ballot (FWAB) as a backup. The same postmark and arrival deadlines apply."
+      ],
+      "links": [
+        {
+          "label": "Alabama guide for military and overseas voters (FVAP, PDF)",
+          "url": "https://www.fvap.gov/uploads/FVAP/States/alabama.pdf"
+        },
+        {
+          "label": "Military and overseas voting (Secretary of State)",
+          "url": "https://www.sos.alabama.gov/alabama-votes/voter/military-overseas-voting"
+        },
+        {
+          "label": "Federal Voting Assistance Program: Alabama",
           "url": "https://www.fvap.gov/alabama"
+        },
+        {
+          "label": "2026 Voter Guide (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/election-2026/2026-VoterGuide.pdf"
         }
       ]
     },
     {
       "h": "If you forget your ID",
-      "p": "Two poll workers who know you can sign a sworn statement identifying you, and you can vote a regular ballot. Otherwise, you can vote a provisional ballot, which counts once officials confirm you’re eligible; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
+      "p": "If two election officials at your polling place positively identify you as a voter on the poll list and sign a sworn statement, you can vote a regular ballot. Otherwise, you can vote a provisional ballot, which counts once officials confirm you’re eligible; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
       "links": [
         {
           "label": "Photo ID law",
@@ -3737,17 +3795,21 @@ window.GUIDE = {
     {
       "until": "2026-11-03",
       "title": "Voting on Tuesday, Nov. 3",
-      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. A medical emergency or unexpected work trip may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
       "cta": "Election Day details"
     }
   ],
   "idCard": {
     "title": "Bring a photo ID",
-    "text": "A physical photo ID, such as a driver’s license or a free Alabama Photo Voter ID. No ID? Two poll workers who know you can sign a statement identifying you, or you can vote a provisional ballot and show ID by 5 p.m. Fri, Nov. 6.",
+    "text": "A physical photo ID, such as a driver’s license or a free Alabama Photo Voter ID. No ID? If two election officials positively identify you and sign a sworn statement, you can vote a regular ballot. Otherwise you can vote a provisional ballot and show ID by 5 p.m. Fri, Nov. 6.",
     "cta": "Valid IDs and rules",
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-10-21",
+      "text": "Clarified who qualifies for an emergency absentee ballot, including caregivers and a death in the family; added a section for military and overseas voters; and added details on moving to another county, the ID exemption for absentee voters 65 or older or with a disability, remote notarization, provisional ballots when an absentee ballot never came, straight-party voting and the 2026 digital-ID law."
+    },
     {
       "date": "2026-10-20",
       "text": "Added short, sourced explanations of the laws and bills candidates mention, such as the CHOOSE Act, the SAVE America Act and the Laken Riley Act. Point to a law’s name for a one-line summary, or tap it for the full explanation."
@@ -3783,7 +3845,7 @@ window.GUIDE = {
     "items": [
       {
         "h": "Día de las elecciones",
-        "p": "Martes 3 de noviembre, de 7 a.m. a 7 p.m. Si está en la fila a las 7 p.m., puede votar. Alabama no tiene votación anticipada."
+        "p": "Martes 3 de noviembre, de 7 a.m. a 7 p.m. Si está en la fila a las 7 p.m., puede votar. Alabama no tiene votación anticipada: para votar antes, hay que votar en ausencia, con un motivo válido."
       },
       {
         "h": "Inscripción",
@@ -3795,7 +3857,7 @@ window.GUIDE = {
       },
       {
         "h": "Voto en ausencia",
-        "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre."
+        "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Si tuvo una emergencia después del plazo (por ejemplo, una emergencia médica, una obligación de trabajo imprevista o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia; consulte de inmediato en la oficina de voto en ausencia de su condado. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre."
       },
       {
         "h": "Preguntas",

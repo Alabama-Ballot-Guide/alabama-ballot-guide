@@ -24,6 +24,10 @@ const dayStep = step(s => s.id === "election-day", "election-day");
 const idStep = step(s => s.id === "photo-id", "photo-id");
 const absStep = step(s => s.id === "absentee", "absentee");
 const noIdStep = step(s => s.h === "If you forget your ID", "If you forget your ID");
+const emStep = step(s => s.id === "emergency", "emergency");
+const milStep = step(s => s.id === "military", "military");
+// list items as running text: each ends with one period, none doubled (some items are full sentences)
+const sentences = list => (list || []).map(x => /[.?!]$/.test(x) ? x : x + ".").join(" ");
 const LOOKUP_URL = G.findBallot.step1.link.url;
 const electionEntry = G.dates.find(d => d.iso === G.electionDate);
 if (!electionEntry) throw new Error("data.js: no key date matches electionDate");
@@ -144,12 +148,13 @@ const json = {
   races,
   judicial_and_board_races: otherRaces,
   laws,
+  updates: (G.updates || []).map(u => ({ date: u.date, text: u.text })),
   amendments: G.amendments.map(a => ({
     number: a.n, title: a.title, summary: a.summary, legislative_vote: a.vote,
     supporters_say: a.support, opponents_say: a.oppose, yes_means: a.yes, no_means: a.no, sources: refs(a.src)
   })),
   how_to_vote: G.vote.map(s => ({
-    topic: s.h, text: [s.p, (s.list || []).join("; ") + (s.list ? "." : ""),
+    topic: s.h, text: [s.p, sentences(s.list),
       s.deadlines ? s.deadlines.caption + ": " + s.deadlines.rows.map(r => r.h + ", " + s.deadlines.cols[0].toLowerCase() + ": " + r.c[0] + "; " + s.deadlines.cols[1].toLowerCase() + ": " + r.c[1]).join(". ") + ". " + (s.deadlines.note || "") : "",
       (s.ol || []).map((x, i) => "Step " + (i + 1) + ": " + x).join(" "), s.after].filter(Boolean).join(" "),
     deadlines: s.deadlines ? { columns: s.deadlines.cols, rows: s.deadlines.rows.map(r => ({ method: r.h, application: r.c[0], ballot: r.c[1] })) } : undefined,
@@ -158,7 +163,7 @@ const json = {
   spanish_essentials: G.spanishGuide ? { title: G.spanishGuide.title, intro: G.spanishGuide.intro, items: G.spanishGuide.items.map(x => ({ topic: x.h, text: x.p })), links: G.spanishGuide.links.map(l => ({ title: l.label, url: l.url })) } : undefined,
   official_resources: [
     { title: "Check registration, district, polling place and sample ballot", url: LOOKUP_URL },
-    ...[dayStep, absStep, idStep, noIdStep].flatMap(s => (s.links || []).map(l => ({ title: l.label, url: l.url }))),
+    ...[dayStep, absStep, emStep, milStep, idStep, noIdStep].flatMap(s => (s.links || []).map(l => ({ title: l.label, url: l.url }))),
     ...G.spanish.links.map(l => ({ title: "Spanish: " + l.label, url: l.url }))
   ]
 };
@@ -227,16 +232,23 @@ if (laws.length) {
   md.push("");
 }
 md.push("## How to vote", "");
-json.how_to_vote.forEach(s => {
-  md.push("### " + s.topic, "", s.text, "");
-  if (s.deadlines) md.push("| | " + s.deadlines.columns.join(" | ") + " |", "| --- | --- | --- |", ...s.deadlines.rows.map(r => "| " + r.method + " | " + r.application + " | " + r.ballot + " |"), "");
-  md.push(...s.links.map(l => "- [" + l.title + "](" + l.url + ")"), "");
+// same order as the page: text, list as bullets, deadline table, numbered steps, follow-up, links
+G.vote.forEach(s => {
+  md.push("### " + s.h, "");
+  if (s.p) md.push(s.p, "");
+  if (s.list) md.push(...s.list.map(x => "- " + x), "");
+  if (s.deadlines) md.push(s.deadlines.caption + ":", "", "| | " + s.deadlines.cols.join(" | ") + " |", "| --- | --- | --- |",
+    ...s.deadlines.rows.map(r => "| " + r.h + " | " + r.c.join(" | ") + " |"), "", ...(s.deadlines.note ? [s.deadlines.note, ""] : []));
+  if (s.ol) md.push(...s.ol.map((x, i) => (i + 1) + ". " + x), "");
+  if (s.after) md.push(s.after, "");
+  if (s.links) md.push(...s.links.map(l => "- [" + l.label + "](" + l.url + ")"), "");
 });
 if (G.spanishGuide) {
   md.push("## " + G.spanishGuide.title, "", G.spanishGuide.intro, "");
   G.spanishGuide.items.forEach(x => md.push("- **" + x.h + ":** " + x.p));
   md.push("", ...G.spanishGuide.links.map(l => "- [" + l.label + "](" + l.url + ")"), "");
 }
+md.push("## Updates", "", "Newest first. Corrections start with \"Correction:\".", "", ...(G.updates || []).map(u => "- **" + u.date + ":** " + u.text), "");
 md.push("## About", "");
 G.about.forEach(a => md.push("**" + a.h + ".** " + a.p.replace("The number after each point links to the source behind it.", "Each point lists the sources behind it.") + (a.links ? " " + a.links.map(l => "[" + l.label + "](" + l.url + ")").join(", ") + "." : ""), ""));
 fs.writeFileSync(path.join(dir, "guide.md"), md.join("\n"));
@@ -249,7 +261,7 @@ const llms = [
   "> Nonpartisan summaries of what candidates in Alabama's " + ELECTION_LONG + " general election say they will do, with a source link for every point. Covers " +
     races.length + " contested statewide and congressional races (" + nCands + " candidates), appeals courts, the State Board of Education, four statewide amendments, and voting rules. Updated " + AS_OF + ".",
   "",
-  "Election Day: " + dayStep.p,
+  "Election Day: " + dayStep.p + " " + sentences(dayStep.list),
   "",
   "Canonical page: " + G.canonicalUrl,
   "",
@@ -260,6 +272,8 @@ const llms = [
   "- Registration: " + checkStep.p + " " + LOOKUP_URL,
   "- Absentee voting: " + absStep.p + " " + absStep.list.join("; ") + ". " + absStep.ol.map((x, i) => "(" + (i + 1) + ") " + x).join(" ") + " " + absStep.after +
     " " + absStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
+  "- " + emStep.h + " " + emStep.p + " " + sentences(emStep.list) + " " + emStep.after + " " + emStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
+  "- " + milStep.h + ": " + milStep.p + " " + sentences(milStep.list) + " " + milStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- En español: " + G.spanish.links.map(l => l.label + ": " + l.url).join("; ") + (G.spanishGuide ? ". A Spanish summary of the dates and rules is in guide.md (\"" + G.spanishGuide.title + "\")." : ""),
   "- Photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p + " " + idStep.links.map(l => l.label + ": " + l.url).join("; ") + ".",
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
@@ -271,6 +285,10 @@ const llms = [
   "",
   "- [guide.json](guide.json): Structured data. Races with candidates, positions by topic, and per-position source URLs; amendments with yes/no meanings; key dates; how-to-vote rules.",
   "- [guide.md](guide.md): The full guide as Markdown, suitable for reading into context.",
+  "",
+  "## Updates",
+  "",
+  ...(G.updates || []).map(u => "- " + u.date + ": " + u.text),
   "",
   "## How to use this guide",
   "",
@@ -309,6 +327,7 @@ const faq = [
   ["When is the 2026 general election in Alabama?", dayStep.p],
   ["What was the voter registration deadline for Alabama's November 2026 election?", checkStep.p + " " + LOOKUP_URL],
   ["Can I vote absentee in Alabama in 2026?", absStep.p + " " + absStep.list.join("; ") + ". " + absStep.ol.join(" ")],
+  ["Can I still vote absentee in Alabama after the deadline because of an emergency?", emStep.p + " " + sentences(emStep.list) + " " + emStep.after],
   ["What ID do I need to vote in Alabama?", "A physical photo ID: " + idStep.list.join("; ") + ". " + idStep.after + " " + noIdStep.p],
   ["Who is running for governor of Alabama in 2026?", who(raceByOffice("Governor")).trim()],
   ["Who is running for U.S. Senate in Alabama in 2026?", who(raceByOffice("U.S. Senate")).trim()],
