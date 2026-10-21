@@ -51,7 +51,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; scroll-padding-bottom: 24px; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; scroll-padding-bottom: 24px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -109,7 +109,9 @@ p { margin: 0; }
 @media (max-width: 53.75em) {
   .top .wrap { flex-wrap: wrap; row-gap: 0; padding-top: 8px; }
   .picks-btn { margin-left: auto; }
-  .nav { order: 3; flex-basis: 100%; margin: 0; overflow-x: auto; scrollbar-width: none; border-top: 1px solid var(--line); }
+  /* sideways strips scroll sideways only: with overflow-y left auto, iOS lets a 1px overflow drag the text up and down */
+  .nav { order: 3; flex-basis: 100%; margin: 0; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; border-top: 1px solid var(--line); }
+  .nav a[aria-current="page"]::after { bottom: 0; }
   .nav a:first-child { padding-left: 0; }
   .nav a:first-child[aria-current="page"]::after { left: 0; }
   .nav::-webkit-scrollbar { display: none; }
@@ -230,7 +232,7 @@ a.date:hover { background: var(--surface); }
   .filter { position: static; }
   .filter-row { flex-direction: column; gap: 8px; }
   .filter-label { padding-top: 0; }
-  .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; width: 100%; padding: 2px 32px 4px 2px; margin: -2px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); }
+  .chips { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; width: 100%; padding: 2px 32px 4px 2px; margin: -2px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); }
   .chips:focus-within { -webkit-mask-image: none; mask-image: none; }
   .chips::-webkit-scrollbar { display: none; }
   .chip { min-height: 44px; }
@@ -372,7 +374,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .step ul, .step ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .step ol li::marker { color: var(--accent); font-weight: 700; }
 .step .steps-h { font-weight: 700; color: var(--fg); margin-top: 6px; }
-.deadlines { overflow-x: auto; margin-top: 8px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); }
+.deadlines { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; margin-top: 8px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); }
 .deadlines table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
 .deadlines caption { text-align: left; font-weight: 700; color: var(--fg); padding: 12px 14px 4px; }
 .deadlines th, .deadlines td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--line); }
