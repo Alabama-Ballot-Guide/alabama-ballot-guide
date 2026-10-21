@@ -288,16 +288,18 @@ const ld = {
   inLanguage: "en",
   dateModified: AS_OF,
   isAccessibleForFree: true,
-  about: { "@type": "Event", name: "Alabama general election", startDate: G.electionDate, eventStatus: "https://schema.org/EventScheduled", location: { "@type": "State", name: "Alabama" } },
+  // a plain topic, not schema.org Event: Google reads Event as a ticketed happening and wants offers, performer, image...
+  about: { "@type": "Thing", name: "Alabama general election, " + ELECTION_LONG },
   mainEntity: {
     "@type": "Dataset",
     name: "Alabama 2026 general election: candidate positions and sources",
     description: "Candidates' stated positions by topic with source links, statewide amendments, and voting rules.",
     dateModified: AS_OF,
     isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: json.name, url: G.canonicalUrl },
     distribution: [
-      { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: "guide.json" },
-      { "@type": "DataDownload", encodingFormat: "text/markdown", contentUrl: "guide.md" }
+      { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: G.canonicalUrl + "guide.json" },
+      { "@type": "DataDownload", encodingFormat: "text/markdown", contentUrl: G.canonicalUrl + "guide.md" }
     ]
   }
 };
