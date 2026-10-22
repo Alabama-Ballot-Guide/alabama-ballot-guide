@@ -163,13 +163,13 @@ p { margin: 0; }
 .find-ballot { margin-top: 32px; padding: 24px; border: 1px solid var(--control-line); border-radius: var(--r-md); background: var(--raised); box-shadow: var(--shadow); display: grid; gap: 8px; }
 .find-ballot h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; }
 .find-ballot > p { color: var(--muted); }
-.fb-steps { margin: 8px 0 0; padding: 0; list-style: none; counter-reset: fb; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px 28px; }
+.fb-steps { margin: 8px 0 0; padding: 0; list-style: none; counter-reset: fb; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr)); gap: 16px 28px; }
 .fb-steps > li { counter-increment: fb; display: grid; gap: 6px; align-content: start; padding-left: 40px; position: relative; min-width: 0; }
 .fb-steps > li::before { content: counter(fb); position: absolute; left: 0; top: -2px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-fg); font-weight: 700; font-size: .875rem; }
 .fb-steps b { font-weight: 700; }
 .fb-steps span { color: var(--muted); font-size: .9375rem; }
 .fb-link { font-weight: 600; font-size: .9375rem; }
-.fb-pickers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px 14px; margin-top: 4px; }
+.fb-pickers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(12.5rem, 100%), 1fr)); gap: 10px 14px; margin-top: 4px; }
 .fb-pickers label { display: grid; gap: 4px; font-size: .84rem; font-weight: 600; color: var(--muted); }
 .fb-pickers select { font: inherit; font-size: .9375rem; color: var(--fg); background: var(--bg); border: 1px solid var(--control-line); border-radius: var(--r-sm); padding: 10px 12px; min-height: 44px; width: 100%; }
 .fb-status { font-size: .9375rem; display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
@@ -186,7 +186,7 @@ p { margin: 0; }
 .differ li b { color: var(--fg); font-weight: 600; }
 
 /* Absentee and ID boxes */
-.callouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px; margin-top: 18px; }
+.callouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); gap: 14px; margin-top: 18px; }
 .callout { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: var(--r-md); background: var(--accent-soft); color: var(--fg); text-decoration: none; min-width: 0; }
 .callout .ic.id { border-radius: 4px; width: 30px; height: 22px; }
 
@@ -241,12 +241,13 @@ a.date:hover { background: var(--surface); }
 /* Race index */
 .index { padding-block: 36px 8px; }
 .index h2 { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(210px, 100%), 1fr)); gap: 10px; margin-top: 16px; }
+.index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(13.125rem, 100%), 1fr)); gap: 10px; margin-top: 16px; }
 .index-grid a { display: grid; gap: 2px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); text-decoration: none; color: var(--fg); background: var(--raised); min-width: 0; }
 .index-grid a:hover { border-color: var(--control-line); background: var(--surface); }
 .index-grid a.util { background: var(--surface); }
 .index-grid b { font-weight: 600; font-size: .97rem; }
 .index-grid span { font-size: .84rem; color: var(--muted); }
+.amend-index { grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); margin: 18px 0 4px; }
 
 /* Tab views */
 .view > .group:first-child { padding-top: 40px; }
@@ -265,7 +266,7 @@ a.date:hover { background: var(--surface); }
 .race h3.office { font-size: 1.56rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; margin-top: 6px; }
 .does { color: var(--muted); margin-top: 6px; max-width: 66ch; }
 .status { font-size: .84rem; font-weight: 600; color: var(--muted); border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 5px 12px; max-width: 100%; }
-.cands { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px; margin-top: 22px; }
+.cands { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr)); gap: 16px; margin-top: 22px; }
 a.law { color: inherit; text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .law-tip { position: fixed; z-index: 35; max-width: min(320px, calc(100vw - 16px)); background: var(--fg); color: var(--bg); padding: 10px 12px; border-radius: var(--r-sm); font-size: .875rem; line-height: 1.45; box-shadow: 0 6px 24px rgba(0, 0, 0, .18); }
@@ -274,7 +275,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .laws-ref { border-bottom: 1px solid var(--line); }
 .laws-ref .wrap { padding-bottom: 40px; }
 .laws-intro { margin-top: 6px; max-width: 70ch; }
-.laws-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px 28px; margin: 18px 0 0; }
+.laws-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(21.25rem, 100%), 1fr)); gap: 20px 28px; margin: 18px 0 0; }
 .law-item { border-radius: 4px; }
 .law-item:focus { outline: 3px solid var(--accent); outline-offset: 6px; }
 .law-item dt { font-weight: 600; font-size: .9375rem; }
@@ -367,11 +368,11 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .amend .src { font-size: .84rem; color: var(--muted); }
 
 /* How to vote */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); align-items: start; gap: 16px; margin-top: 24px; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16.25rem, 100%), 1fr)); align-items: start; gap: 16px; margin-top: 24px; }
 .step { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; background: var(--raised); display: grid; gap: 8px; align-content: start; min-width: 0; }
 .step.wide { grid-column: 1 / -1; }
 .step h3 { font-size: 1.06rem; font-weight: 700; }
-.step p, .step li { font-size: 1rem; color: var(--muted); }
+.step p, .step li { font-size: 1rem; color: var(--fg); }
 .step ul, .step ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .step ol li::marker { color: var(--accent); font-weight: 700; }
 .step .steps-h { font-weight: 700; color: var(--fg); margin-top: 6px; }
@@ -379,7 +380,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .deadlines table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
 .deadlines caption { text-align: left; font-weight: 700; color: var(--fg); padding: 12px 14px 4px; }
 .deadlines th, .deadlines td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--line); }
-.deadlines thead th { border-top: 0; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.deadlines thead th { border-top: 0; font-size: .875rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .deadlines thead td { border-top: 0; }
 .deadlines tbody th { font-weight: 600; color: var(--muted); min-width: 9rem; }
 .deadlines td { font-weight: 600; color: var(--fg); font-variant-numeric: tabular-nums; min-width: 8rem; }
@@ -388,9 +389,9 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .es-guide > p { color: var(--muted); max-width: 70ch; }
 .es-guide dl { margin: 0; display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: 10px 20px; }
 .es-guide dt { font-weight: 700; }
-.es-guide dd { margin: 0; color: var(--muted); max-width: 70ch; }
+.es-guide dd { margin: 0; color: var(--fg); max-width: 70ch; }
 @media (max-width: 37.5em) { .es-guide dl { grid-template-columns: 1fr; gap: 2px; } .es-guide dd { margin-bottom: 10px; } }
-.deadlines .note { padding: 8px 14px 12px; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+.deadlines .note { padding: 8px 14px 12px; font-size: .9375rem; color: var(--muted); border-top: 1px solid var(--line); }
 @media (max-width: 37.5em) {
   /* Phones: each delivery method becomes a short labeled list instead of a cramped three-column table */
   .deadlines thead { display: none; }
@@ -400,7 +401,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
   .deadlines tbody th { color: var(--fg); }
   .deadlines td::before { content: attr(data-label) ": "; font-weight: 500; color: var(--muted); }
 }
-.step.wide ul { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); column-gap: 32px; }
+.step.wide ul { grid-template-columns: repeat(auto-fit, minmax(min(17.5rem, 100%), 1fr)); column-gap: 32px; }
 .step .links, .es-guide .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 4px; }
 .step .links a, .es-guide .links a { font-weight: 600; font-size: .906rem; }
 
@@ -408,7 +409,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .about { margin-top: 72px; background: var(--surface); border-top: 1px solid var(--line); }
 .about .wrap { padding-block: 40px 56px; }
 .about h2 { font-size: 1.06rem; font-weight: 700; }
-.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px 28px; margin-top: 18px; }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 24px 28px; margin-top: 18px; }
 .about h3 { font-size: .9375rem; font-weight: 700; margin-bottom: 6px; }
 .about p { font-size: .906rem; color: var(--muted); }
 

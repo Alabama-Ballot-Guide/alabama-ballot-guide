@@ -19,7 +19,7 @@
     "dates[1].pastNote": "Mail deadline has passed",
     "dates[2].k": "Apply absentee in person",
     "dates[2].v": "Thu, Oct 29",
-    "dates[2].s": "Last day to hand in an application at your county’s absentee office",
+    "dates[2].s": "Last day to hand in a regular application at your county’s absentee office. Emergency applications have later deadlines.",
     "dates[2].iso": "2026-10-29",
     "dates[2].target": "absentee",
     "dates[2].pastNote": "In-person deadline has passed",
@@ -39,10 +39,13 @@
     "absenteeStages[0].text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Mailing an application now is risky: it must arrive by Tue, Oct. 27. The safer route is to apply in person at your county’s absentee office by Thu, Oct. 29.",
     "absenteeStages[1].until": "2026-10-29",
     "absenteeStages[1].title": "Need an absentee ballot?",
-    "absenteeStages[1].text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29.",
+    "absenteeStages[1].text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3.",
     "absenteeStages[2].until": "2026-11-03",
     "absenteeStages[2].title": "Voting on Tuesday, Nov. 3",
-    "absenteeStages[2].text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away and plan to bring the application in person. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+    "absenteeStages[2].text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot. Ask your county’s absentee election manager right away: the application is due by 5 p.m. Mon, Nov. 2 (noon Nov. 3 for your own medical emergency), and unless it’s a medical emergency, you must bring it in yourself. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+    "absenteeStages[3].until": "2026-11-06",
+    "absenteeStages[3].title": "Voted a provisional ballot?",
+    "absenteeStages[3].text": "If you voted a provisional ballot because you didn’t have a photo ID, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6, so your vote can be counted.",
     "vote[0]": {
       "id": "check",
       "h": "Check your registration",
@@ -196,7 +199,7 @@
       "list": [
         "Apply by the same dates as other absentee voters. You can ask to get your ballot by email.",
         "Your ballot counts if it’s postmarked by Tue, Nov 3, and arrives by noon Tue, Nov 10.",
-        "Outside the U.S. and got your ballot by email? You can return it electronically by Election Day, Tue, Nov 3; instructions come with the ballot.",
+        "Outside the U.S. and got your ballot by email? You can return it electronically until 11:59 p.m. on Election Day, Tue, Nov 3; instructions come with the ballot.",
         "You don’t need to include a copy of a photo ID.",
         "Ballot hasn’t arrived? Use the Federal Write-In Absentee Ballot (FWAB) as a backup. The same postmark and arrival deadlines apply."
       ],
@@ -220,6 +223,7 @@
       ]
     },
     "vote[6]": {
+      "id": "forget-id",
       "h": "If you forget your ID",
       "p": "If two election officials at your polling place positively identify you as a voter on the poll list and sign a sworn statement, you can vote a regular ballot. Otherwise, you can vote a provisional ballot, which counts once officials confirm you’re eligible; to have it counted, bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6.",
       "links": [
@@ -276,7 +280,11 @@
         },
         {
           "h": "Voto en ausencia",
-          "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Si tuvo una emergencia después del plazo (por ejemplo, una emergencia médica, una obligación de trabajo imprevista o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia; consulte de inmediato en la oficina de voto en ausencia de su condado. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre."
+          "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre."
+        },
+        {
+          "h": "Emergencias después del plazo",
+          "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y devuelva la boleta antes del mediodía del martes 3 de noviembre. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla."
         },
         {
           "h": "Preguntas",

@@ -184,7 +184,7 @@
 
   function absenteeBox(now) {
     var st = G.absenteeStages.filter(function (s) { return parseISO(s.until) >= now; })[0] || G.absenteeStages[G.absenteeStages.length - 1];
-    var target = st.cta === "Election Day details" ? "election-day" : "absentee";
+    var target = st.cta === "Election Day details" ? "election-day" : st.cta === "Provisional ballot details" ? "forget-id" : "absentee";
     return '<a class="callout" href="#' + target + '"><span class="ic" aria-hidden="true"></span><span class="tx"><span class="ct">' + esc(st.title) + '</span><span class="cb">' +
       esc(st.text) + '</span><span class="cta">' + esc(st.cta) + " →</span></span></a>";
   }
@@ -267,9 +267,12 @@
     });
 
     html += '<div class="view" data-view="amendments" id="view-amendments"><section class="group" id="amendments"><div class="wrap"><h1>Statewide amendments</h1>' +
-      '<p class="group-intro">' + esc(G.amendIntro) + '</p><div class="amends">' +
-      G.amendments.map(function (a) {
-        return '<article class="amend"><p class="eyebrow">' + esc(a.n) + "</p><h3>" + esc(a.title) + '</h3><p class="sum">' + esc(a.summary) + "</p>" +
+      '<p class="group-intro">' + esc(G.amendIntro) + "</p>" +
+      '<nav class="index-grid amend-index" aria-label="The four amendments">' + G.amendments.map(function (a, i) {
+        return '<a href="#amend-' + (i + 1) + '"><b>' + esc(a.title) + "</b><span>" + esc(a.n.replace(/^Statewide /, "")) + "</span></a>";
+      }).join("") + '</nav><div class="amends">' +
+      G.amendments.map(function (a, i) {
+        return '<article class="amend" id="amend-' + (i + 1) + '"><p class="eyebrow">' + esc(a.n) + "</p><h3>" + esc(a.title) + '</h3><p class="sum">' + esc(a.summary) + "</p>" +
           "<dl><dt>Legislature’s vote</dt><dd>" + esc(a.vote) + "</dd><dt>Supporters say</dt><dd>" + esc(a.support) + "</dd><dt>Opponents say</dt><dd>" + esc(a.oppose) + "</dd></dl>" +
           '<div class="yn"><div class="y"><b>A yes vote</b>' + sep(": ") + esc(a.yes) + '</div><div class="n"><b>A no vote</b>' + sep(": ") + esc(a.no) + "</div></div>" +
           (a.src ? '<p class="src">Sources: ' + a.src.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</p>" : "") +
