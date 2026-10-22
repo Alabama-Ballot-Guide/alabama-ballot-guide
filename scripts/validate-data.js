@@ -44,7 +44,7 @@ const PARTY_CODES = new Set(["R", "D", "L", "I"]);
 const RESERVED_IDS = new Set(["top", "about", "live", "sheet", "scrim", "countdown", "picksSlot", "picksBtn", "picksN", "picksList",
   "filter", "filterLabel", "filterStatus", "find", "findH", "myHouse", "myBoe", "fbStatus", "houseNote", "boeNote", "races",
   "content", "showAll", "clearPicks", "closeSheet", "sheetTitle", "overview", "congress", "amendments", "vote", "laws", "lawsH", "lawTip"]);
-const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|law-|al-?\d)/;
+const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|law-|amend-|al-?\d)/;
 const ID_RE = /^[a-z][a-z0-9-]{0,40}$/;
 const TOPIC_RE = /^[a-z]{2,20}$/;
 const ISO_RE = /^\d{4}-\d{2}-\d{2}$/;
