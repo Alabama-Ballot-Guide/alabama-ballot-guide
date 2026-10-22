@@ -1,5 +1,8 @@
-# Every path needs approval from a human editor. Never list a bot, GitHub App or agent account here.
-# Works with the main-branch ruleset: "Require review from Code Owners" + "Require approval of the most recent push".
+# Every path is owned by the human editors. Never list a bot, GitHub App or agent account here.
+# The main-branch ruleset requires a pull request and the "validate" check, but no approvals: the editor
+# opens most PRs, and GitHub doesn't let anyone approve their own. So this file asks the editors for review;
+# it doesn't block a merge. Once a second person or a separate agent account exists, turn on
+# "Require review from Code Owners" and "Require approval of the most recent push" in the ruleset.
 # Editors are managed in the org team; add or remove people there, not in this file.
 *                       @Alabama-Ballot-Guide/editors
 

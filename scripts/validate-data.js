@@ -31,6 +31,10 @@ const warn = (p, m) => warnings.push((p ? p + ": " : "") + m);
 // ---------- constants ----------
 const PREFIX = "window.GUIDE = ";
 const AGENT_WRITABLE_FILES = new Set(["data.js"]);          // the only file an agent PR may touch
+// the only parts of data.js an agent PR may change: race and amendment content, the change log, and the
+// "Updated" and debate as-of lines. The About statements (official address, privacy) and the shared
+// law descriptions stay as a human wrote them.
+const AGENT_WRITABLE_KEYS = new Set(["groups", "amendments", "updates", "heroMeta", "defaultDebate"]);
 const PROTECTED_FILES = [/^\.github\//, /^build\.py$/, /^gen\.js$/, /^app\.js$/, /^shell\.html$/, /^og-card\.html$/,
   /^robots\.txt$/, /^CODEOWNERS$/, /^security\//, /^scripts\//, /^dist\//, /^package(-lock)?\.json$/, /^CNAME$/];
 const RELATIVE_URL_OK = { "about[].links[].url": new Set(["guide.json", "guide.md", "llms.txt"]) };
@@ -310,6 +314,8 @@ if (B) {
   const nb = names(B), nn = names(G);
   for (const n of nn) if (!nb.has(n)) err(n, "candidate ADDED. Ballot changes need a human-made PR with the Secretary of State's certified list as the source.");
   for (const n of nb) if (!nn.has(n)) err(n, "candidate REMOVED. Ballot changes need a human-made PR with the Secretary of State's certified list as the source.");
+  if (args.agent) for (const k of new Set([...Object.keys(B), ...Object.keys(G)]))
+    if (!AGENT_WRITABLE_KEYS.has(k) && JSON.stringify(B[k]) !== JSON.stringify(G[k])) err(k, "agent pull requests may not change this section (a human-made PR does)");
   const baseDomains = new Set(); walk(B, "", (p, v) => { if (/\.url$/.test(p) && /^https:/.test(v)) baseDomains.add(new URL(v).hostname); });
   const fresh = [...newDomains].filter(d => !baseDomains.has(d));
   notes.push(changed + " values changed" + (changedPaths.length ? ": " + changedPaths.slice(0, 25).join(", ") + (changedPaths.length > 25 ? ", ..." : "") : ""));
