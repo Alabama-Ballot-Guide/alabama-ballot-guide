@@ -51,15 +51,21 @@
   });
   var LAW_BY_ANCHOR = {};
   LAWS.forEach(function (x) { LAW_BY_ANCHOR["law-" + x.law.id] = x.law; });
-  // html is already escaped; law names contain none of the characters esc() changes
+  // html is already escaped; law names contain none of the characters esc() changes. Only text between
+  // tags is searched, never a tag or a link added for an earlier law, so a phrase can't break the markup.
   function linkLaws(html, seen) {
     LAWS.forEach(function (x) {
       if (seen[x.law.id]) return;
+      var parts = html.split(/(<[^>]*>)/);             // odd indexes are tags
       for (var i = 0; i < x.res.length; i++) {
-        if (!x.res[i].test(html)) continue;
-        html = html.replace(x.res[i], function (all, pre, t) { return pre + '<a class="law" href="#law-' + esc(x.law.id) + '">' + t + "</a>"; });
-        seen[x.law.id] = 1;
-        return;
+        for (var j = 0, inLink = false; j < parts.length; j++) {
+          if (j % 2) { inLink = /^<a[\s>]/i.test(parts[j]) || (inLink && !/^<\/a>/i.test(parts[j])); continue; }
+          if (inLink || !x.res[i].test(parts[j])) continue;
+          parts[j] = parts[j].replace(x.res[i], function (all, pre, t) { return pre + '<a class="law" href="#law-' + esc(x.law.id) + '">' + t + "</a>"; });
+          seen[x.law.id] = 1;
+          html = parts.join("");
+          return;
+        }
       }
     });
     return html;

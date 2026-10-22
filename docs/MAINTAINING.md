@@ -18,7 +18,7 @@ A scheduled Claude Code task starts a fresh session each morning and does steps 
    - data.js is parsed as JSON, never run, and must be in canonical form
    - every position cites a source, and every link is https on an allowlisted domain
    - locked voting facts can't change, and candidates can't be added or removed
-   - agent PRs (from the GitHub App, or from any branch named `agent/…`) may change only data.js, may not add fields, and are capped at 60 changed values
+   - agent PRs (from the GitHub App, or from any branch named `agent/…`) may change only data.js, and in it only the races, the amendments, the Updates list and the "Updated" and debate as-of lines. They may not add fields, and they are capped at 60 changed values. The About statements and the law descriptions are for human-made PRs.
    - the site is built, and every link on the built page is checked
 
    After publishing, the live-site monitor compares the live files with the build every 30 minutes.
