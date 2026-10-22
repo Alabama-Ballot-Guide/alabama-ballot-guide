@@ -42,7 +42,7 @@
     "absenteeStages[1].text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29.",
     "absenteeStages[2].until": "2026-11-03",
     "absenteeStages[2].title": "Voting on Tuesday, Nov. 3",
-    "absenteeStages[2].text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+    "absenteeStages[2].text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away and plan to bring the application in person. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
     "vote[0]": {
       "id": "check",
       "h": "Check your registration",
@@ -173,7 +173,7 @@
         "You’re caring for someone who needs emergency treatment from a doctor",
         "A close relative dies, such as a parent, child, sibling, grandparent or grandchild (including in-laws)"
       ],
-      "after": "Contact your county’s absentee election manager right away. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
+      "after": "Contact your county’s absentee election manager right away. Take the application to the office yourself, with a copy of your photo ID; only a medical-emergency application can be mailed, sent by carrier, or brought by someone else. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
       "links": [
         {
           "label": "Emergency absentee law (Ala. Code § 17-11-3)",

@@ -417,7 +417,7 @@ window.GUIDE = {
               ]
             }
           ],
-          "debate": "None scheduled. Tuberville said in August he would “probably not” debate; Jones has accepted several invitations.",
+          "debate": "None scheduled. Tuberville said in August he would “probably not” debate and later said he would not; Jones has publicly called for a debate.",
           "note": "A lawsuit challenging Tuberville’s Alabama residency was dismissed, and on Oct. 9 the Alabama Supreme Court affirmed the dismissal for lack of jurisdiction, without ruling on the residency question. The state Republican Party had earlier found him qualified.",
           "noteSrc": [
             {
@@ -3441,6 +3441,10 @@ window.GUIDE = {
       "no": "A vacancy stays open until the next regular election, and current pay and travel rules stay.",
       "src": [
         {
+          "label": "Official ballot wording (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/2026GeneralElectionStatewideBack.pdf"
+        },
+        {
           "label": "Alabama Secretary of State: statewide ballot measures",
           "url": "https://www.sos.alabama.gov/alabama-votes/voter/ballot-measures/statewide"
         },
@@ -3464,6 +3468,10 @@ window.GUIDE = {
       "yes": "A voluntary merger process is created, with a state study and a possible local vote.",
       "no": "No new merger process is added to the constitution.",
       "src": [
+        {
+          "label": "Official ballot wording (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/2026GeneralElectionStatewideBack.pdf"
+        },
         {
           "label": "Alabama Secretary of State: statewide ballot measures",
           "url": "https://www.sos.alabama.gov/alabama-votes/voter/ballot-measures/statewide"
@@ -3489,6 +3497,10 @@ window.GUIDE = {
       "no": "The constitution is not changed. Existing state law on the daily Pledge and voluntary student prayer stays in effect.",
       "src": [
         {
+          "label": "Official ballot wording (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/2026GeneralElectionStatewideBack.pdf"
+        },
+        {
           "label": "Alabama Secretary of State: statewide ballot measures",
           "url": "https://www.sos.alabama.gov/alabama-votes/voter/ballot-measures/statewide"
         },
@@ -3512,6 +3524,10 @@ window.GUIDE = {
       "yes": "A weekly national anthem requirement is added to the constitution.",
       "no": "The constitution is not changed, and there is no weekly anthem requirement.",
       "src": [
+        {
+          "label": "Official ballot wording (Secretary of State, PDF)",
+          "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/2026GeneralElectionStatewideBack.pdf"
+        },
         {
           "label": "Fair Ballot Commission statement",
           "url": "https://www.sos.alabama.gov/sites/default/files/2026-08/FBCStatewideAmendment-4.pdf"
@@ -3655,7 +3671,7 @@ window.GUIDE = {
         "You’re caring for someone who needs emergency treatment from a doctor",
         "A close relative dies, such as a parent, child, sibling, grandparent or grandchild (including in-laws)"
       ],
-      "after": "Contact your county’s absentee election manager right away. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
+      "after": "Contact your county’s absentee election manager right away. Take the application to the office yourself, with a copy of your photo ID; only a medical-emergency application can be mailed, sent by carrier, or brought by someone else. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
       "links": [
         {
           "label": "Emergency absentee law (Ala. Code § 17-11-3)",
@@ -3795,7 +3811,7 @@ window.GUIDE = {
     {
       "until": "2026-11-03",
       "title": "Voting on Tuesday, Nov. 3",
-      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot; ask your county’s absentee election manager right away and plan to bring the application in person. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
       "cta": "Election Day details"
     }
   ],
@@ -3806,6 +3822,10 @@ window.GUIDE = {
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-10-22",
+      "text": "Added that a non-medical emergency absentee application must be taken to the county office in person, corrected the governor’s race debate note, and linked the official ballot wording for each amendment."
+    },
     {
       "date": "2026-10-21",
       "text": "Clarified who qualifies for an emergency absentee ballot, including caregivers and a death in the family; added a section for military and overseas voters; and added details on moving to another county, the ID exemption for absentee voters 65 or older or with a disability, remote notarization, provisional ballots when an absentee ballot never came, straight-party voting and the 2026 digital-ID law."
