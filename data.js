@@ -76,7 +76,7 @@ window.GUIDE = {
     {
       "k": "Absentee ballot due back",
       "v": "Mon, Nov 2",
-      "s": "By hand: before your county office closes. By mail: it must arrive by noon Nov 3.",
+      "s": "By hand: before your county office closes, 5 p.m. at the latest. By mail: it must arrive by noon Nov 3.",
       "iso": "2026-11-02",
       "pastNote": "Hand delivery has closed. A mailed ballot counts only if it arrives by noon Nov 3.",
       "target": "absentee"
@@ -3810,13 +3810,13 @@ window.GUIDE = {
     {
       "until": "2026-10-29",
       "title": "Need an absentee ballot?",
-      "text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3.",
+      "text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2 (5 p.m. at the latest), or by mail so it arrives by noon Nov. 3.",
       "cta": "How to vote absentee"
     },
     {
       "until": "2026-11-03",
       "title": "Voting on Tuesday, Nov. 3",
-      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2, or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot. Ask your county’s absentee election manager right away: the application is due by 5 p.m. Mon, Nov. 2 (noon Nov. 3 for your own medical emergency), and unless it’s a medical emergency, you must bring it in yourself. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+      "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2 (5 p.m. at the latest), or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot. Ask your county’s absentee election manager right away: the application is due by 5 p.m. Mon, Nov. 2 (noon Nov. 3 for your own medical emergency), and unless it’s a medical emergency, you must bring it in yourself. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
       "cta": "Election Day details"
     },
     {
@@ -3835,7 +3835,7 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-23",
-      "text": "Added sources for the Court of Criminal Appeals, Place 5 entry and for the Medicaid expansion description, and the guide now shows when its voting information was last updated, separately from the date of the candidate summaries."
+      "text": "Added sources for the Court of Criminal Appeals, Place 5 entry and for the Medicaid expansion description, and the guide now shows when its voting information was last updated, separately from the date of the candidate summaries. The overview and Key dates now also give the 5 p.m. cutoff for hand-delivered absentee ballots."
     },
     {
       "date": "2026-10-22",

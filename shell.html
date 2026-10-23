@@ -99,9 +99,9 @@ p { margin: 0; }
 .nav a:hover { color: var(--fg); }
 .nav a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 .nav a[aria-current="page"]::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 3px; border-radius: 3px 3px 0 0; background: var(--accent); }
-.countdown { font-size: .84rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: var(--r-pill); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.countdown { font-size: .84rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: var(--r-pill); white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .picks-btn {
-  display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: .9rem; font-weight: 600; white-space: nowrap;
+  flex: none; display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: .9rem; font-weight: 600; white-space: nowrap;
   background: var(--fg); color: var(--bg); border: 2px solid var(--fg); border-radius: var(--r-pill); padding: 6px 8px 6px 14px; min-height: 40px; cursor: pointer;
 }
 .picks-btn .n { background: var(--bg); color: var(--fg); border-radius: var(--r-pill); min-width: 24px; height: 24px; display: inline-grid; place-items: center; font-size: .8rem; font-variant-numeric: tabular-nums; padding: 0 6px; }
@@ -279,6 +279,8 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .law-item { border-radius: 4px; }
 .law-item:focus { outline: 3px solid var(--accent); outline-offset: 6px; }
 .law-item dt { font-weight: 600; font-size: .9375rem; }
+.law-back { margin-top: 4px; }
+.law-back .linkbtn { padding: 4px 0; min-height: 36px; }
 .law-item .kind { font-weight: 400; font-size: .8125rem; color: var(--muted); margin-left: 4px; }
 .law-item dd { margin: 4px 0 0; font-size: .906rem; color: var(--muted); line-height: 1.5; }
 .law-item .law-src { display: block; margin-top: 4px; font-size: .84rem; }
@@ -368,7 +370,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .amend .src { font-size: .84rem; color: var(--muted); }
 
 /* How to vote */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16.25rem, 100%), 1fr)); align-items: start; gap: 16px; margin-top: 24px; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); align-items: start; gap: 16px; margin-top: 24px; }
 .step { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; background: var(--raised); display: grid; gap: 8px; align-content: start; min-width: 0; }
 .step.wide { grid-column: 1 / -1; }
 .step h3 { font-size: 1.06rem; font-weight: 700; }
@@ -376,6 +378,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .step ul, .step ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .step ol li::marker { color: var(--accent); font-weight: 700; }
 .step .steps-h { font-weight: 700; color: var(--fg); margin-top: 6px; }
+.step .see { font-weight: 600; }
 .deadlines { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; margin-top: 8px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); }
 .deadlines table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
 .deadlines caption { text-align: left; font-weight: 700; color: var(--fg); padding: 12px 14px 4px; }
