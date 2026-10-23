@@ -278,6 +278,13 @@ const known = new Set([...ids.keys(), "overview", "state", "congress", "amendmen
 });
 ["callout", "idCard"].forEach(k => { if (G[k] && !known.has(G[k].target)) err(k + ".target", "points to a missing section: " + G[k].target); });
 (G.updates || []).forEach((u, i) => { if (!ISO_RE.test(u.date) || isNaN(Date.parse(u.date))) err("updates[" + i + "].date", "invalid ISO date"); });
+// the hero's "Updated" date must be the newest Updates date, which gen.js prints in guide.md, llms.txt and ld.json
+{
+  const hm = /^Updated ([A-Z][a-z]+)\.? (\d{1,2}), (\d{4})$/.exec((G.heroMeta || [])[0] || ""), u = (G.updates || [])[0];
+  const mon = hm ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].indexOf(hm[1].slice(0, 3)) + 1 : 0;
+  if (hm && u && hm[3] + "-" + String(mon).padStart(2, "0") + "-" + hm[2].padStart(2, "0") !== u.date)
+    err("heroMeta[0]", JSON.stringify(G.heroMeta[0]) + " doesn't match the newest Updates entry (" + u.date + ")");
+}
 (G.absenteeStages || []).forEach((s, i) => { if (!ISO_RE.test(s.until)) err("absenteeStages[" + i + "].until", "invalid ISO date"); });
 candidatesOf(G).forEach(([race, c]) => {
   const cp = race + " / " + c.name;

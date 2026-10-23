@@ -12,7 +12,8 @@
         "congress.gov",
         "vote.gov",
         "fvap.gov",
-        "alison.legislature.state.al.us"
+        "alison.legislature.state.al.us",
+        "healthcare.gov"
       ]
     },
     "reference": {
@@ -21,7 +22,8 @@
         "ballotpedia.org",
         "news.ballotpedia.org",
         "www.vote411.org",
-        "law.justia.com"
+        "law.justia.com",
+        "www.kff.org"
       ]
     },
     "news": {
