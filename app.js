@@ -294,9 +294,12 @@
     }
     html += '<div class="view" data-view="vote" id="view-vote"><section class="group" id="vote"><div class="wrap"><h1>How to vote</h1>' +
       '<p class="group-intro">' + esc(G.voteIntro) + '</p><div class="steps">' +
-      G.vote.map(function (s) {
+      G.vote.map(function (s, i, all) {
+        // the absentee card is long, so point to the emergency card below it from the top
+        var em = s.id === "absentee" && all.filter(function (x) { return x.id === "emergency"; })[0];
         return '<div class="step' + (s.wide ? " wide" : "") + '"' + (s.id ? ' id="' + esc(s.id) + '"' : "") + "><h3>" + esc(s.h) + "</h3>" +
           (s.p ? "<p>" + esc(s.p) + "</p>" : "") +
+          (em ? '<p class="see">' + esc(em.h) + ' <a href="#emergency">See the emergency rules ↓</a></p>' : "") +
           (s.list ? "<ul>" + s.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
           (s.deadlines ? deadlineTable(s.deadlines) : "") +
           (s.ol ? '<p class="steps-h">Steps</p><ol>' + s.ol.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" : "") +
@@ -347,6 +350,7 @@
   // Go to a tab ("state"), a race or step inside a tab ("governor", "absentee"), or a district ("al-2")
   function go(token, focus, keepScroll) {
     var el = null, view = isView(token) ? token : null;
+    hideLawBack();
     var dm = /^al-?([1-7])$/.exec(token);
     if (token === "content") view = current;
     else if (!view) {
@@ -356,6 +360,7 @@
       else { el = null; view = "overview"; }
     }
     if (el && topic !== "all" && el.closest(".race[hidden], .group[hidden]")) { topic = "all"; applyTopic(); }
+    var switched = view !== current;
     showView(view);
     if (dm) {
       if (mine.house && String(mine.house) !== dm[1]) { showAllHouse = true; applyMine(); }
@@ -364,7 +369,11 @@
     var hash = "#" + (token === "content" ? current : token);
     try { if (focus && location.hash !== hash) history.pushState(null, "", hash); else history.replaceState(history.state, "", hash); } catch (e) {}
     routed = location.hash;
-    if (keepScroll) { /* Back to a saved spot: the caller restores it */ } else if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
+    // A new tab has nothing to do with the old scroll position, so jump straight there; glide only within a tab.
+    // (Gliding across tabs ran a second or more over unrelated text, and the reader first saw the old page's end.)
+    if (keepScroll) { /* Back to a saved spot: the caller restores it */ }
+    else if (el) el.scrollIntoView(switched ? { behavior: "instant" } : true);
+    else window.scrollTo(switched ? { top: 0, behavior: "instant" } : { top: 0 });
     if (focus) {
       var target = el || document.querySelector("#view-" + view + " h1, #view-" + view + " h2");
       if (target) { if (!target.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT)$/.test(target.tagName)) target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); }
@@ -527,6 +536,18 @@
   })();
   var routed = "";
   var lawFrom = null; // the law link last followed, so Back can return to it
+  var lawBack = null; // "Back to where you were", shown in the law's entry after following a law link
+  function hideLawBack() { if (lawBack) lawBack.hidden = true; }
+  function showLawBack(item) {
+    var dd = item && item.querySelector("dd");
+    if (!dd) return;
+    if (!lawBack) {
+      lawBack = document.createElement("p"); lawBack.className = "law-back";
+      lawBack.innerHTML = '<button type="button" class="linkbtn">← Back to where you were</button>';
+      lawBack.firstChild.addEventListener("click", function () { history.back(); });
+    }
+    dd.appendChild(lawBack); lawBack.hidden = false;
+  }
   function route() {
     if (location.hash === routed) return;
     if (sheet && !sheet.hidden) toggleSheet(false, false); // Back/Forward leaves My picks closed, not floating over another tab
@@ -656,6 +677,7 @@
         if (link.classList.contains("law")) {
           hideTip(); lawFrom = link;
           try { history.replaceState({ y: window.scrollY }, "", location.hash || "#" + current); } catch (err) {}
+          go(tok, true); showLawBack(document.getElementById(tok)); return;
         }
         go(tok, true);
       }
