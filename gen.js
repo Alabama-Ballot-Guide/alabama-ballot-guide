@@ -10,7 +10,9 @@ if (!RAW.startsWith(PREFIX) || !RAW.endsWith(";\n")) throw new Error("data.js mu
 const G = JSON.parse(RAW.slice(PREFIX.length, -2));
 const PARTY = { R: "Republican", D: "Democrat", L: "Libertarian", I: "Independent" };
 const topicsOf = p => (Array.isArray(p.topic) ? p.topic : [p.topic]);
-const AS_OF = "2026-10-20";
+const AS_OF = "2026-10-20";   // candidate positions
+// newest Updates entry: when voter-facing text (rules included) last changed
+const UPDATED = ((G.updates || [])[0] || {}).date || AS_OF;
 
 // Voter-service facts come only from data.js (pinned by security/facts.lock.json).
 // Never retype them here: every edition must quote the same text as the page.
@@ -41,7 +43,7 @@ const USAGE = [
   "Do not recommend a candidate or a vote on an amendment.",
   "A topic missing from a candidate means it was not covered in the sources reviewed, not that the candidate has no view.",
   "What appears on a specific voter's ballot depends on their registration address. Send voters to their official sample ballot: " + LOOKUP_URL,
-  "Information is current as of " + AS_OF + ". Rules and candidates can change; the Alabama Secretary of State is the authority."
+  "Voting rules are current as of " + UPDATED + " and candidate positions as of " + AS_OF + ". Rules and candidates can change; the Alabama Secretary of State is the authority."
 ];
 
 function cand(c) {
@@ -173,7 +175,7 @@ fs.writeFileSync(path.join(dir, "guide.json"), JSON.stringify(json, null, 2));
 const md = [];
 md.push("# Alabama Ballot Guide 2026", "");
 md.push("> " + json.description, "");
-md.push("Updated " + AS_OF + ". Independent and nonpartisan. Candidates are listed alphabetically by last name.", "");
+md.push("Updated " + UPDATED + ". Independent and nonpartisan. Candidates are listed alphabetically by last name. Candidate positions are as of " + AS_OF + ".", "");
 md.push(G.spanish.text + " " + G.spanish.links.map(l => "[" + l.label + "](" + l.url + ")").join(" · "), "");
 md.push("## Key dates", "");
 json.key_dates.forEach(d => md.push("- **" + d.label + ":** " + d.display + " (" + d.date + "). " + d.detail));
@@ -259,7 +261,7 @@ const llms = [
   "# Alabama Ballot Guide 2026",
   "",
   "> Nonpartisan summaries of what candidates in Alabama's " + ELECTION_LONG + " general election say they will do, with a source link for every point. Covers " +
-    races.length + " contested statewide and congressional races (" + nCands + " candidates), appeals courts, the State Board of Education, four statewide amendments, and voting rules. Updated " + AS_OF + ".",
+    races.length + " contested statewide and congressional races (" + nCands + " candidates), appeals courts, the State Board of Education, four statewide amendments, and voting rules. Updated " + UPDATED + ".",
   "",
   "Election Day: " + dayStep.p + " " + sentences(dayStep.list),
   "",
@@ -304,7 +306,7 @@ const ld = {
   name: json.name,
   description: json.description,
   inLanguage: "en",
-  dateModified: AS_OF,
+  dateModified: UPDATED,
   isAccessibleForFree: true,
   // a plain topic, not schema.org Event: Google reads Event as a ticketed happening and wants offers, performer, image...
   about: { "@type": "Thing", name: "Alabama general election, " + ELECTION_LONG },
@@ -312,7 +314,7 @@ const ld = {
     "@type": "Dataset",
     name: "Alabama 2026 general election: candidate positions and sources",
     description: "Candidates' stated positions by topic with source links, statewide amendments, and voting rules.",
-    dateModified: AS_OF,
+    dateModified: UPDATED,
     isAccessibleForFree: true,
     creator: { "@type": "Organization", name: json.name, url: G.canonicalUrl },
     distribution: [

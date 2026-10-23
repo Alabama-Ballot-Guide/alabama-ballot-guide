@@ -4,7 +4,7 @@ window.GUIDE = {
   "heroTitle": "Know who’s on your ballot.",
   "heroLede": "Plain-language summaries of the candidates in Alabama’s statewide and congressional races, and what each one says they will do. The number after each point links to its source.",
   "heroMeta": [
-    "Updated Oct. 20, 2026",
+    "Updated Oct. 23, 2026",
     "Independent and nonpartisan",
     "No ads or endorsements"
   ],
@@ -1673,6 +1673,10 @@ window.GUIDE = {
             {
               "label": "Alabama SoS: Mobile County sample ballot",
               "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/Mobile-Sample.pdf"
+            },
+            {
+              "label": "1819 News: Riggs Walker unopposed (May 14, 2026)",
+              "url": "https://1819news.com/news/item/riggs-walker-running-unopposed-for-place-5-on-alabama-court-of-criminal-appeals-after-incumbent-judge-beth-kellum-drops-re-election-bid"
             }
           ]
         },
@@ -3830,6 +3834,10 @@ window.GUIDE = {
   },
   "updates": [
     {
+      "date": "2026-10-23",
+      "text": "Added sources for the Court of Criminal Appeals, Place 5 entry and for the Medicaid expansion description, and the guide now shows when its voting information was last updated, separately from the date of the candidate summaries."
+    },
+    {
       "date": "2026-10-22",
       "text": "Added that a non-medical emergency absentee application must be taken to the county office in person, corrected the governor’s race debate note, and linked the official ballot wording for each amendment. Later the same day: from Oct. 30 the overview gives the emergency absentee deadline, and after Election Day the Nov. 6 ID deadline for provisional ballots; the Spanish section has the emergency rules; and the military and overseas section gives the 11:59 p.m. Election Day cutoff for ballots returned electronically."
     },
@@ -4060,6 +4068,14 @@ window.GUIDE = {
       ],
       "d": "The Affordable Care Act’s option for states to extend Medicaid to adults earning up to 138% of the federal poverty level. Alabama is one of 10 states that have not expanded it.",
       "src": [
+        {
+          "label": "HealthCare.gov: Medicaid expansion and the 138% income limit",
+          "url": "https://www.healthcare.gov/medicaid-chip/medicaid-expansion-and-you/"
+        },
+        {
+          "label": "KFF: status of state Medicaid expansion decisions (Oct 16, 2026)",
+          "url": "https://www.kff.org/medicaid/status-of-state-medicaid-expansion-decisions/"
+        },
         {
           "label": "Alabama Reflector: the 10 states that didn’t expand Medicaid (Jul 22, 2024)",
           "url": "https://alabamareflector.com/2024/07/22/in-the-10-states-that-didnt-expand-medicaid-1-6m-cant-afford-health-insurance/"
