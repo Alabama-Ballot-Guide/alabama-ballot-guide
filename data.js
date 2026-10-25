@@ -150,9 +150,9 @@ window.GUIDE = {
                   "h": "Wage, training and child-care plan",
                   "d": "Proposes a state earned income tax credit, more child care, free community college for adults without credentials, stronger apprenticeships, and licensing reform.",
                   "s": [
-                    10,
                     3,
-                    4
+                    4,
+                    10
                   ]
                 },
                 {
@@ -160,9 +160,18 @@ window.GUIDE = {
                   "h": "Pause new data centers",
                   "d": "Would pause new data centers for one year to set rules, says state law should change so they get no tax breaks, and wants them to help pay for local services like schools and law enforcement.",
                   "s": [
-                    4,
                     2,
+                    4,
                     11
+                  ]
+                },
+                {
+                  "topic": "energy",
+                  "h": "Formal hearings on power rates",
+                  "d": "Would push the Public Service Commission to hold formal hearings on Alabama Power rate increases, and says power companies should face a formal rate review with audits and sworn testimony.",
+                  "s": [
+                    12,
+                    13
                   ]
                 },
                 {
@@ -187,8 +196,8 @@ window.GUIDE = {
                   "h": "Ethics and citizen initiatives",
                   "d": "Proposes stronger ethics laws, a stock-trading ban for statewide officials, and letting citizens put measures on the ballot.",
                   "s": [
-                    7,
-                    3
+                    3,
+                    7
                   ]
                 },
                 {
@@ -253,6 +262,14 @@ window.GUIDE = {
                 {
                   "label": "Alabama Reflector: Jones data center town hall (Oct 13, 2026)",
                   "url": "https://alabamareflector.com/2026/10/13/doug-jones-outlines-data-center-policies-at-lowndes-county-town-hall/"
+                },
+                {
+                  "label": "Alabama Reflector: candidates on power rate hearings (Sep 24, 2026)",
+                  "url": "https://alabamareflector.com/2026/09/24/alabamas-attorney-general-can-intervene-in-rate-hearings-will-ag-candidates-do-so/"
+                },
+                {
+                  "label": "ABC 33/40: Doug Jones interview (Oct 23, 2026)",
+                  "url": "https://abc3340.com/news/beyond-the-podium/doug-jones-discusses-alabama-issues-tommy-tuberville-interview-request-goes-unanswered"
                 }
               ]
             },
@@ -263,12 +280,14 @@ window.GUIDE = {
               "positions": [
                 {
                   "topic": "taxes",
-                  "h": "End the grocery tax",
-                  "d": "Would eliminate the remaining 2% state sales tax on groceries and says he will not raise taxes.",
+                  "h": "End the grocery tax, cut income taxes",
+                  "d": "Would eliminate the remaining 2% state sales tax on groceries and says he will not raise taxes. His Oct. 22 platform would also cut the state income tax in steps over his first term, which it says would be paid for with audited savings from a smaller state government and economic growth, and would begin property tax relief with a freeze on property tax increases for seniors’ homes.",
                   "s": [
                     1,
                     2,
-                    6
+                    6,
+                    16,
+                    18
                   ]
                 },
                 {
@@ -291,12 +310,14 @@ window.GUIDE = {
                 },
                 {
                   "topic": "government",
-                  "h": "Review agencies, audit spending",
-                  "d": "Formed a team to review every state agency for waste and duplication, and pledges to “audit every state dollar.”",
+                  "h": "Audit and merge agencies, freeze hiring",
+                  "d": "Formed a team to review every state agency for waste and duplication, and pledges to “audit every state dollar.” His Oct. 22 platform would freeze state hiring outside public safety and direct care on his first day and merge at least a dozen agencies by the end of his first term.",
                   "s": [
                     11,
                     12,
-                    13
+                    13,
+                    16,
+                    18
                   ]
                 },
                 {
@@ -308,12 +329,24 @@ window.GUIDE = {
                   ]
                 },
                 {
+                  "topic": "energy",
+                  "h": "Extend the power-rate freeze",
+                  "d": "Says he would extend the freeze on Alabama Power’s base rates beyond its 2029 expiration.",
+                  "s": [
+                    5,
+                    18,
+                    19
+                  ]
+                },
+                {
                   "topic": "education",
                   "h": "Protect and expand school choice",
-                  "d": "Would protect and expand the CHOOSE Act, and says he would emphasize workforce development in education.",
+                  "d": "Would protect and expand the CHOOSE Act, and says he would emphasize workforce development in education. His Oct. 22 platform also pledges to fully fund First Class Pre-K.",
                   "s": [
+                    2,
                     7,
-                    2
+                    16,
+                    18
                   ]
                 },
                 {
@@ -423,6 +456,14 @@ window.GUIDE = {
                 {
                   "label": "Tuberville campaign: The Golden Age Playbook (Oct 22, 2026)",
                   "url": "https://www.coachforgovernor.com/playbook"
+                },
+                {
+                  "label": "Yellowhammer News: Tuberville’s “Back to Basics” playbook (Oct 2026)",
+                  "url": "https://yellowhammernews.com/tommy-tuberville-releases-back-to-basics-playbook-cut-the-income-tax-kill-the-grocery-tax-and-shrink-montgomery/"
+                },
+                {
+                  "label": "Alabama Reflector: candidates on power rate hearings (Sep 24, 2026)",
+                  "url": "https://alabamareflector.com/2026/09/24/alabamas-attorney-general-can-intervene-in-rate-hearings-will-ag-candidates-do-so/"
                 }
               ]
             }
@@ -3845,7 +3886,7 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-25",
-      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs."
+      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs. Later the same day, the governor race added positions from Tuberville’s Oct. 22 platform on income and senior property taxes, state hiring and agencies, First Class Pre-K and power rates, and Doug Jones’s position on power-rate hearings."
     },
     {
       "date": "2026-10-23",
