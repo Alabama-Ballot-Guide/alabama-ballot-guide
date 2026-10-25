@@ -27,7 +27,12 @@ raw = (d / "data.js").read_text()
 PREFIX = "window.GUIDE = "
 if not (raw.startswith(PREFIX) and raw.endswith(";\n")):
     sys.exit("data.js must be exactly `window.GUIDE = <JSON>;`")
-data = PREFIX + js_safe(json.loads(raw[len(PREFIX):-2])) + ";"
+G = json.loads(raw[len(PREFIX):-2])
+data = PREFIX + js_safe(G) + ";"
+# the sitemap's lastmod is the newest Updates entry (the same date guide.md shows as "Updated")
+UPDATED = ((G.get("updates") or [{}])[0]).get("date", "")
+if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", UPDATED):
+    sys.exit("updates[0].date must be YYYY-MM-DD")
 ld = js_safe(json.loads((d / "ld.json").read_text()))
 
 DESC = "Nonpartisan, sourced summaries of every candidate in Alabama's Nov. 3, 2026 statewide and congressional races, the four statewide amendments, and how to vote."
@@ -135,7 +140,7 @@ for name in ("guide.json", "guide.md", "llms.txt"):
     + "Sitemap: %s/sitemap.xml\n" % SITE_URL)
 (dist / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + "".join("  <url><loc>%s/%s</loc><lastmod>2026-10-20</lastmod><changefreq>daily</changefreq></url>\n" % (SITE_URL, p)
+    + "".join("  <url><loc>%s/%s</loc><lastmod>%s</lastmod><changefreq>daily</changefreq></url>\n" % (SITE_URL, p, UPDATED)
               for p in ("", "guide.md", "guide.json", "llms.txt"))
     + "</urlset>\n")
 # Link-preview image (1200x630) for social shares and search cards
