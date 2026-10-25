@@ -3718,6 +3718,7 @@ window.GUIDE = {
     },
     {
       "id": "emergency",
+      "wide": true,
       "h": "Emergency after the deadline?",
       "p": "You may still get an emergency absentee ballot if one of these happens within five days of the election and you didn’t know about it before the regular deadline:",
       "list": [
@@ -3799,7 +3800,7 @@ window.GUIDE = {
     },
     {
       "h": "How it was made",
-      "p": "Summaries draw on candidates’ own statements and reporting by Alabama news outlets, current as of Oct. 20, 2026. The number after each point links to the source behind it."
+      "p": "Summaries draw on candidates’ own statements and reporting by Alabama news outlets, current as of Oct. 20, 2026, with later additions dated in the Updates list. The number after each point links to the source behind it."
     },
     {
       "h": "What it includes",
@@ -3855,7 +3856,7 @@ window.GUIDE = {
     {
       "until": "2026-10-27",
       "title": "Can’t make it to the polls on Nov. 3?",
-      "text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Mailing an application now is risky: it must arrive by Tue, Oct. 27. The safer route is to apply in person at your county’s absentee office by Thu, Oct. 29.",
+      "text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Don’t count on the mail now: a mailed application must arrive by Tue, Oct. 27. Apply in person at your county’s absentee office by Thu, Oct. 29 instead.",
       "cta": "How to vote absentee"
     },
     {
@@ -3886,7 +3887,7 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-10-25",
-      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs. Later the same day, the governor race added positions from Tuberville’s Oct. 22 platform on income and senior property taxes, state hiring and agencies, First Class Pre-K and power rates, and Doug Jones’s position on power-rate hearings."
+      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs. Later the same day, the governor race added positions from Tuberville’s Oct. 22 platform on income and senior property taxes, state hiring and agencies, First Class Pre-K and power rates, and Doug Jones’s position on power-rate hearings. The overview also now warns not to count on the mail for absentee applications."
     },
     {
       "date": "2026-10-23",

@@ -36,7 +36,7 @@
     "dates[4].target": "election-day",
     "absenteeStages[0].until": "2026-10-27",
     "absenteeStages[0].title": "Can’t make it to the polls on Nov. 3?",
-    "absenteeStages[0].text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Mailing an application now is risky: it must arrive by Tue, Oct. 27. The safer route is to apply in person at your county’s absentee office by Thu, Oct. 29.",
+    "absenteeStages[0].text": "You may qualify to vote absentee if you’ll be out of your county (including at college), work a required shift of 10 hours or more during polling hours, are ill or disabled, or care for a homebound family member. Don’t count on the mail now: a mailed application must arrive by Tue, Oct. 27. Apply in person at your county’s absentee office by Thu, Oct. 29 instead.",
     "absenteeStages[1].until": "2026-10-29",
     "absenteeStages[1].title": "Need an absentee ballot?",
     "absenteeStages[1].text": "The mail deadline has passed. If you qualify, you can still apply in person at your county’s absentee office through Thu, Oct. 29. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2 (5 p.m. at the latest), or by mail so it arrives by noon Nov. 3.",
@@ -168,6 +168,7 @@
     },
     "vote[4]": {
       "id": "emergency",
+      "wide": true,
       "h": "Emergency after the deadline?",
       "p": "You may still get an emergency absentee ballot if one of these happens within five days of the election and you didn’t know about it before the regular deadline:",
       "list": [
