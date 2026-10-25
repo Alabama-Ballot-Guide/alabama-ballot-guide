@@ -4,7 +4,7 @@ window.GUIDE = {
   "heroTitle": "Know who’s on your ballot.",
   "heroLede": "Plain-language summaries of the candidates in Alabama’s statewide and congressional races, and what each one says they will do. The number after each point links to its source.",
   "heroMeta": [
-    "Updated Oct. 23, 2026",
+    "Updated Oct. 25, 2026",
     "Independent and nonpartisan",
     "No ads or endorsements"
   ],
@@ -285,7 +285,8 @@ window.GUIDE = {
                   "h": "Recruit manufacturing jobs",
                   "d": "Says he would be Alabama’s “recruiter-in-chief” and promises to bring high-paying manufacturing jobs back to empty plants.",
                   "s": [
-                    4
+                    4,
+                    17
                   ]
                 },
                 {
@@ -329,7 +330,8 @@ window.GUIDE = {
                   "d": "Says the state can’t afford to expand Medicaid and points to $203 million in new federal rural health money.",
                   "s": [
                     2,
-                    9
+                    9,
+                    16
                   ]
                 },
                 {
@@ -413,6 +415,14 @@ window.GUIDE = {
                 {
                   "label": "U.S. Senate: roll call vote on passage of H.R. 1 (2025)",
                   "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.htm"
+                },
+                {
+                  "label": "Alabama Political Reporter: Tuberville’s policy playbook (Oct 22, 2026)",
+                  "url": "https://www.alreporter.com/2026/10/22/tuberville-releases-policy-playbook-outlining-his-plans-for-alabama/"
+                },
+                {
+                  "label": "Tuberville campaign: The Golden Age Playbook (Oct 22, 2026)",
+                  "url": "https://www.coachforgovernor.com/playbook"
                 }
               ]
             }
@@ -3675,7 +3685,7 @@ window.GUIDE = {
         "You’re caring for someone who needs emergency treatment from a doctor",
         "A close relative dies, such as a parent, child, sibling, grandparent or grandchild (including in-laws)"
       ],
-      "after": "Contact your county’s absentee election manager right away. Take the application to the office yourself, with a copy of your photo ID; only a medical-emergency application can be mailed, sent by carrier, or brought by someone else. Apply by 5 p.m. Mon, Nov 2, and return the ballot by noon Tue, Nov 3. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
+      "after": "Contact your county’s absentee election manager right away. Take the application to the office yourself, with a copy of your photo ID; only a medical-emergency application can be mailed, sent by carrier, or brought by someone else. Apply by 5 p.m. Mon, Nov 2. After you vote, hand the ballot to the absentee election manager yourself by noon Tue, Nov 3; it can’t be mailed or returned by someone else. For your own medical emergency, your doctor certifies it, you can apply as late as noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it.",
       "links": [
         {
           "label": "Emergency absentee law (Ala. Code § 17-11-3)",
@@ -3834,6 +3844,10 @@ window.GUIDE = {
   },
   "updates": [
     {
+      "date": "2026-10-25",
+      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs."
+    },
+    {
       "date": "2026-10-23",
       "text": "Added sources for the Court of Criminal Appeals, Place 5 entry and for the Medicaid expansion description, and the guide now shows when its voting information was last updated, separately from the date of the candidate summaries. The overview and Key dates now also give the 5 p.m. cutoff for hand-delivered absentee ballots."
     },
@@ -3896,7 +3910,7 @@ window.GUIDE = {
       },
       {
         "h": "Emergencias después del plazo",
-        "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y devuelva la boleta antes del mediodía del martes 3 de noviembre. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla."
+        "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y, después de votar, entregue usted mismo la boleta en la oficina de voto en ausencia antes del mediodía del martes 3 de noviembre; no puede enviarse por correo ni entregarla otra persona. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla."
       },
       {
         "h": "Preguntas",
