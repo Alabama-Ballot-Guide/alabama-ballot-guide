@@ -43,7 +43,7 @@ const USAGE = [
   "Do not recommend a candidate or a vote on an amendment.",
   "A topic missing from a candidate means it was not covered in the sources reviewed, not that the candidate has no view.",
   "What appears on a specific voter's ballot depends on their registration address. Send voters to their official sample ballot: " + LOOKUP_URL,
-  "Voting rules are current as of " + UPDATED + " and candidate positions as of " + AS_OF + ". Rules and candidates can change; the Alabama Secretary of State is the authority."
+  "Voting rules are current as of " + UPDATED + " and candidate positions as of " + AS_OF + ", plus the later additions listed under Updates. Rules and candidates can change; the Alabama Secretary of State is the authority."
 ];
 
 function cand(c) {
@@ -135,7 +135,8 @@ Object.keys(G.topics).forEach(t => {
 const json = {
   name: "Alabama Ballot Guide 2026",
   description: "Nonpartisan, sourced summaries of candidates' stated positions in Alabama's " + ELECTION_LONG + " general election, plus the " + G.amendments.length + " statewide amendments and how to vote.",
-  as_of: AS_OF,
+  as_of: UPDATED,
+  candidate_positions_as_of: AS_OF,   // later candidate additions are dated in updates
   language: "en",
   canonical_url: G.canonicalUrl,
   files: { json: "guide.json", markdown: "guide.md", index: "llms.txt" },
@@ -175,7 +176,7 @@ fs.writeFileSync(path.join(dir, "guide.json"), JSON.stringify(json, null, 2));
 const md = [];
 md.push("# Alabama Ballot Guide 2026", "");
 md.push("> " + json.description, "");
-md.push("Updated " + UPDATED + ". Independent and nonpartisan. Candidates are listed alphabetically by last name. Candidate positions are as of " + AS_OF + ".", "");
+md.push("Updated " + UPDATED + ". Independent and nonpartisan. Candidates are listed alphabetically by last name. Candidate positions are as of " + AS_OF + ", plus the later additions listed under Updates.", "");
 md.push(G.spanish.text + " " + G.spanish.links.map(l => "[" + l.label + "](" + l.url + ")").join(" · "), "");
 md.push("## Key dates", "");
 json.key_dates.forEach(d => md.push("- **" + d.label + ":** " + d.display + " (" + d.date + "). " + d.detail));
