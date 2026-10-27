@@ -1,1 +1,1 @@
-{"name":"alabama-ballot-guide-build","private":true,"version":"1.0.0","description":"Build-time tools only. Nothing here ships to readers.","devDependencies":{"playwright":"1.63.0"}}
+{"name":"alabama-ballot-guide-build","private":true,"version":"1.0.0","description":"Build-time tools only. Nothing here ships to readers.","devDependencies":{"playwright":"1.64.0"}}
