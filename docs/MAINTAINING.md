@@ -30,6 +30,19 @@ A scheduled Claude Code task starts a fresh session each morning and does steps 
 5. **Human approval.** The editor reads a one-page summary: what changed, why, sources, review notes. They approve or send it back. On GitHub this is a pull request, and merging publishes. A daily-check PR always comes from a branch named `agent/…` and changes only data.js. If one changes any other file, don't merge it.
 6. **Publish and log.** Add a dated line to the Updates list on the site. Corrections are labeled "Correction" and say what changed.
 
+## Election night results (Nov. 3, then until certification)
+The Results tab shows the Secretary of State's unofficial counts for every contest on the ballot. The same rule applies: an agent or the editor prepares each update, a person merges it, and merging publishes.
+
+- **Only source:** the Secretary of State's election night results page on alabamavotes.gov. No news outlet totals and no media race calls. The validate check refuses a results source that isn't alabamavotes.gov or sos.alabama.gov, and any contest or name that doesn't match the ballot.
+- **Statuses:** `before` (no numbers, the default), `counting` (counties still reporting), `unofficial` (the state's page shows every county's election night count), `certified` (after the State Canvassing Board certifies, later in November). The page marks a candidate "Elected" or an amendment "Approved" or "Not approved" only at `certified`. What each status says to readers is written in app.js, so a data change can't reword it.
+- **Neutral by design:** names keep the guide's alphabetical order, every option gets the same gray bar, and nothing is ranked or highlighted while votes are counted.
+- **Each update:**
+  1. `node scripts/set-results.js --template > results.csv` prints every contest and name with the current numbers.
+  2. Copy each number and each contest's reporting line from the state's page into the sheet.
+  3. `node scripts/set-results.js --csv results.csv --status counting --as-of 2026-11-03T21:42 --source-url "<the state's results page>"`, with the time the numbers were copied, Central.
+  4. Run the validate check, then open a pull request from a branch named `agent/results-…` (agent rules apply: only `data.js`, only the results and the Updates list). Merging publishes in a few minutes.
+- On election night the first update is the moment the state posts the general election's results page, since its address (its `ecode`) isn't known before then. Set it with `--source-url` on that first update.
+
 ## House rules agents must follow
 - Describe positions in the candidate's own terms and attribute them ("says," "pledges," "voted for").
 - Votes cite roll calls. Laws use one neutral name and description everywhere. Each law or bill a candidate entry mentions has one sourced description and a one-line summary in `laws` in data.js. The page lists them all in "Laws and bills in this guide" below every tab, links each mention there, and shows the summary on hover. If a new entry mentions a law that isn't there yet, a human-made PR adds it.

@@ -17,6 +17,7 @@ It is a static site with no server, no ads, no tracking and no accounts.
 | `build.py` | Runs `gen.js`, pre-renders the page in Chromium so its content is in the HTML, and writes `dist/`. |
 | `og-card.html` | The preview image shown when the link is shared. |
 | `scripts/validate-data.js` | Checks content before every build. |
+| `scripts/set-results.js` | Copies election night numbers from the Secretary of State into `data.js`. |
 | `security/facts.lock.json` | Locked voting facts: dates, poll hours, ID and absentee rules. |
 | `security/source-domains.json` | Approved source sites. |
 
