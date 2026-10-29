@@ -31,10 +31,10 @@ const warn = (p, m) => warnings.push((p ? p + ": " : "") + m);
 // ---------- constants ----------
 const PREFIX = "window.GUIDE = ";
 const AGENT_WRITABLE_FILES = new Set(["data.js"]);          // the only file an agent PR may touch
-// the only parts of data.js an agent PR may change: race and amendment content, the change log, and the
-// "Updated" and debate as-of lines. The About statements (official address, privacy) and the shared
-// law descriptions stay as a human wrote them.
-const AGENT_WRITABLE_KEYS = new Set(["groups", "amendments", "updates", "heroMeta", "defaultDebate"]);
+// the only parts of data.js an agent PR may change: race and amendment content, the change log, the
+// "Updated" and debate as-of lines, and the election results (section 4b pins their shape to the ballot).
+// The About statements (official address, privacy) and the shared law descriptions stay as a human wrote them.
+const AGENT_WRITABLE_KEYS = new Set(["groups", "amendments", "updates", "heroMeta", "defaultDebate", "results"]);
 const PROTECTED_FILES = [/^\.github\//, /^build\.py$/, /^gen\.js$/, /^app\.js$/, /^shell\.html$/, /^og-card\.html$/,
   /^robots\.txt$/, /^CODEOWNERS$/, /^security\//, /^scripts\//, /^dist\//, /^package(-lock)?\.json$/, /^CNAME$/];
 const RELATIVE_URL_OK = { "about[].links[].url": new Set(["guide.json", "guide.md", "llms.txt"]) };
@@ -43,8 +43,8 @@ const PARTY_CODES = new Set(["R", "D", "L", "I"]);
 // ids the app itself uses for getElementById / views; data ids must not collide with these
 const RESERVED_IDS = new Set(["top", "about", "live", "sheet", "scrim", "countdown", "picksSlot", "picksBtn", "picksN", "picksList",
   "filter", "filterLabel", "filterStatus", "find", "findH", "myHouse", "myBoe", "fbStatus", "houseNote", "boeNote", "races",
-  "content", "showAll", "clearPicks", "closeSheet", "sheetTitle", "overview", "congress", "amendments", "vote", "laws", "lawsH", "lawTip"]);
-const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|law-|amend-|al-?\d)/;
+  "content", "showAll", "clearPicks", "closeSheet", "sheetTitle", "overview", "congress", "amendments", "vote", "laws", "lawsH", "lawTip", "results"]);
+const RESERVED_ID_PREFIX = /^(view-|h-|tab-|panel-|law-|amend-|res-|al-?\d)/;
 const ID_RE = /^[a-z][a-z0-9-]{0,40}$/;
 const TOPIC_RE = /^[a-z]{2,20}$/;
 const ISO_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -271,7 +271,7 @@ const addId = (p, id) => {
   if (!(l.src || []).length) err("laws[" + i + "]", "law description has no source");
   if (typeof l.short !== "string" || l.short.length < 20 || l.short.length > 160) err("laws[" + i + "].short", "needs a one-line summary (20-160 characters) for the hover tip");
 });
-const known = new Set([...ids.keys(), "overview", "state", "congress", "amendments", "vote", "find"]);
+const known = new Set([...ids.keys(), "overview", "state", "congress", "amendments", "vote", "find", "results"]);
 (G.dates || []).forEach((d, i) => {
   if (!known.has(d.target)) err("dates[" + i + "].target", "points to a missing section: " + d.target);
   if (d.iso && (!ISO_RE.test(d.iso) || isNaN(Date.parse(d.iso)))) err("dates[" + i + "].iso", "invalid ISO date");
@@ -299,6 +299,48 @@ candidatesOf(G).forEach(([race, c]) => {
   });
 });
 
+// 4b. election results: one contest per ballot contest, in ballot order, with exactly the ballot's names.
+// Numbers are copied from the Secretary of State, so the source must be the state's own site, and the
+// page never shows a winner before the State Canvassing Board certifies (see app.js).
+const RESULT_STATUS = new Set(["before", "counting", "unofficial", "certified"]);
+const RESULT_SOURCE_HOSTS = ["alabamavotes.gov", "sos.alabama.gov"];
+const AS_OF_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;   // Central time, as the state's page shows it
+function ballotContests(G2) {
+  const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const out = [];
+  racesOf(G2).forEach(r => {
+    if (r.candidates) out.push({ id: r.id, race: r.id, seat: "", names: r.candidates.map(c => c.name) });
+    (r.rows || []).forEach(row => out.push({ id: r.id + "-" + slug(row.office), race: r.id, seat: row.office, names: (row.cands || []).map(c => c.name) }));
+    (r.districts || []).forEach(d => out.push({ id: r.id + "-" + d.n, race: r.id, seat: String(d.n), names: d.candidates.map(c => c.name) }));
+  });
+  (G2.amendments || []).forEach((a, i) => out.push({ id: "amendment-" + (i + 1), race: "amendment-" + (i + 1), seat: "", names: ["Yes", "No"] }));
+  return out;
+}
+if (G.results !== undefined) {
+  const R = G.results, rp = "results";
+  if (!RESULT_STATUS.has(R.status)) err(rp + ".status", "must be one of " + [...RESULT_STATUS].join(", "));
+  if (R.status !== "before" && !AS_OF_RE.test(R.asOf || "")) err(rp + ".asOf", "needs the time the numbers were copied, as YYYY-MM-DDTHH:MM (Central)");
+  if (R.asOf && (!AS_OF_RE.test(R.asOf) || isNaN(Date.parse(R.asOf + ":00Z")))) err(rp + ".asOf", "invalid time: " + R.asOf);
+  if (!(R.source || []).length) err(rp + ".source", "results need the Secretary of State page they were copied from");
+  (R.source || []).forEach((src, i) => {
+    let host = ""; try { host = new URL(src.url).hostname.toLowerCase(); } catch (e) {}
+    if (!RESULT_SOURCE_HOSTS.some(h => host === h || host.endsWith("." + h))) err(rp + ".source[" + i + "].url", "results must come from the Secretary of State (" + RESULT_SOURCE_HOSTS.join(", ") + "), got " + (host || src.url));
+  });
+  const want = ballotContests(G), got = R.contests || [];
+  if (got.length !== want.length) err(rp + ".contests", "expected " + want.length + " contests (one per ballot contest), found " + got.length);
+  want.forEach((w, i) => {
+    const c = got[i], cp = rp + ".contests[" + i + "]";
+    if (!c) return;
+    if (c.id !== w.id || c.race !== w.race || c.seat !== w.seat) return err(cp, "expected contest " + w.id + " (race " + w.race + (w.seat ? ", seat " + w.seat : "") + "), found " + c.id);
+    const names = (c.votes || []).map(v => v.name);
+    if (JSON.stringify(names) !== JSON.stringify(w.names)) err(cp + ".votes", "names must be exactly the ballot's, in the guide's order: " + w.names.join(", "));
+    (c.votes || []).forEach((v, j) => { if (!Number.isInteger(v.votes) || v.votes < 0 || v.votes > 5e6) err(cp + ".votes[" + j + "].votes", "must be a whole number of votes"); });
+    if (!Number.isInteger(c.writeIn) || c.writeIn < 0 || c.writeIn > 5e6) err(cp + ".writeIn", "must be a whole number of votes");
+    if (/^amendment-/.test(w.id) && c.writeIn) err(cp + ".writeIn", "an amendment has no write-in votes");
+    if (R.status === "before" && ((c.votes || []).some(v => v.votes) || c.writeIn)) err(cp, "has votes while results.status is \"before\"");
+  });
+}
+
 // 5. critical facts lock
 if (args.lock) {
   if (!fs.existsSync(args.lock)) err(args.lock, "lock file missing");
@@ -313,8 +355,14 @@ if (B) {
   const leaves = o => { const m = new Map(); walk(o, "", (p, v) => m.set(p, v)); return m; };
   const lb = leaves(B), ln = leaves(G);
   let changed = 0; const changedPaths = [];
-  for (const [p, v] of ln) if (!lb.has(p) || lb.get(p) !== v) { changed++; changedPaths.push(p); }
+  // results numbers are pinned to the ballot by section 4b, so a full count update fits in one PR;
+  // the results intro and note are ordinary text and count as usual
+  const RESULT_NUMBERS = /^results\.(status|asOf|source\[\d+\]\.(label|url)|contests\[\d+\]\.(writeIn|reporting|votes\[\d+\]\.votes))$/;
+  const counts = p => !RESULT_NUMBERS.test(p);
+  let resultValues = 0;
+  for (const [p, v] of ln) if (!lb.has(p) || lb.get(p) !== v) { if (counts(p)) { changed++; changedPaths.push(p); } else resultValues++; }
   for (const p of lb.keys()) if (!ln.has(p)) { changed++; changedPaths.push(p + " (removed)"); }
+  if (resultValues) notes.push(resultValues + " results values changed (not counted toward the limit)");
   const max = +(args["max-changes"] || 60);
   if (changed > max) err("", changed + " changed values exceeds the per-PR limit of " + max + " (split the PR, or a human raises --max-changes)");
   const names = G2 => new Set(candidatesOf(G2).map(([r, c]) => r + " / " + c.name));

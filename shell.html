@@ -408,6 +408,30 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
 .step .links, .es-guide .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 4px; }
 .step .links a, .es-guide .links a { font-weight: 600; font-size: .906rem; }
 
+/* Election results: one card per contest, options in the guide's alphabetical order, one neutral
+   bar color for everyone (no party colors on the bars, no leader highlight) */
+.res-status { margin-top: 18px; padding: 14px 18px; border-radius: var(--r-md); background: var(--accent-soft); max-width: 80ch; }
+.res-status b { font-weight: 600; }
+.res-note { margin-top: 10px; color: var(--muted); max-width: 80ch; }
+.res-h { margin-top: 40px; font-size: 1.3rem; font-weight: 700; letter-spacing: -.01em; }
+.res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr)); gap: 14px; margin-top: 14px; }
+.res { border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px; background: var(--raised); display: grid; gap: 6px; align-content: start; min-width: 0; }
+.res h3 { font-size: 1.06rem; font-weight: 700; letter-spacing: -.01em; }
+.res h3 a { color: var(--fg); text-decoration: none; }
+.res h3 a:hover { text-decoration: underline; }
+.res-sub, .res-rep { font-size: .84rem; color: var(--muted); }
+.res-list { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 12px; }
+.res-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; }
+.res-name { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; font-weight: 600; min-width: 0; }
+.res-name .party { margin: 0; font-size: .8rem; }
+.res-name .badge, .res-out .badge { margin-left: 0; color: var(--fg); background: var(--accent-soft); }
+.res-n { font-size: .9375rem; color: var(--muted); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.res-n b { color: var(--fg); font-weight: 700; margin-left: 6px; }
+.res-bar { grid-column: 1 / -1; width: 100%; height: 8px; border: 0; border-radius: var(--r-pill); background: var(--surface); -webkit-appearance: none; appearance: none; overflow: hidden; }
+.res-bar::-webkit-progress-bar { background: var(--surface); border-radius: var(--r-pill); }
+.res-bar::-webkit-progress-value { background: var(--muted); border-radius: var(--r-pill); }
+.res-bar::-moz-progress-bar { background: var(--muted); border-radius: var(--r-pill); }
+
 /* About */
 .about { margin-top: 72px; background: var(--surface); border-top: 1px solid var(--line); }
 .about .wrap { padding-block: 40px 56px; }
@@ -422,7 +446,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
   .tab[aria-selected="true"] span { color: HighlightText; }
   .pick .ov { border-color: CanvasText; }
   .pick .ov::after { forced-color-adjust: none; background: CanvasText; }
-  .picks-btn, .chip, .tab, .callout, .status { border: 2px solid ButtonText; }
+  .picks-btn, .chip, .tab, .callout, .status, .res-status { border: 2px solid ButtonText; }
   .brand-mark, .brand-mark::after { forced-color-adjust: none; border-color: CanvasText; background: CanvasText; }
 }
 </style>
@@ -437,6 +461,7 @@ a.law:hover { color: var(--accent); text-decoration-style: solid; }
       <a href="#congress">Congress</a>
       <a href="#amendments">Amendments</a>
       <a href="#vote">How to vote</a>
+      <a href="#results">Results</a>
     </nav>
     <span class="countdown" id="countdown">Election Day · Nov 3</span>
     <span id="picksSlot"></span>

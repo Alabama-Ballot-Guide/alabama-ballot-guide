@@ -42,6 +42,7 @@ const USAGE = [
   "Present every candidate in a race with equal weight and in the order given (alphabetical by last name).",
   "Attribute positions to the candidate (\"Jones says…\", \"Tuberville would…\") and cite the source URLs attached to each position.",
   "Do not recommend a candidate or a vote on an amendment.",
+  "Election results here are copied from the Alabama Secretary of State. Until their status is \"certified\", call them unofficial and do not describe any candidate as the winner.",
   "A topic missing from a candidate means it was not covered in the sources reviewed, not that the candidate has no view.",
   "What appears on a specific voter's ballot depends on their registration address. Send voters to their official sample ballot: " + LOOKUP_URL,
   "Voting rules are current as of " + UPDATED + " and candidate positions as of " + AS_OF + ", plus the later additions listed under Updates. Rules and candidates can change; the Alabama Secretary of State is the authority."
@@ -133,6 +134,46 @@ Object.keys(G.topics).forEach(t => {
   if (rows.length) topicIndex[t] = { label: G.topics[t], races: rows };
 });
 
+// Election results: the numbers the page shows, copied from the Secretary of State. No winner until certified.
+const RESULT_STATUS = {
+  before: "No results yet. Results appear after polls close at 7 p.m. Central on Election Day.",
+  counting: "Unofficial and incomplete: counties are still reporting.",
+  unofficial: "Unofficial: counties have reported their election night counts; provisional, military and overseas ballots can still be added.",
+  certified: "Certified by the State Canvassing Board."
+};
+const results = G.results ? (() => {
+  const R = G.results;
+  const raceById = {};
+  G.groups.forEach(g => g.races.forEach(r => { raceById[r.id] = r; }));
+  return {
+    status: R.status,
+    status_text: RESULT_STATUS[R.status],
+    as_of_central_time: R.asOf || null,
+    note: R.note || null,
+    sources: refs(R.source),
+    contests: R.contests.map(c => {
+      const am = /^amendment-(\d)$/.exec(c.race);
+      const r = am ? null : raceById[c.race];
+      const list = am ? [] : r.candidates || (r.rows ? r.rows.find(row => row.office === c.seat).cands : r.districts.find(d => String(d.n) === c.seat).candidates);
+      const office = am ? G.amendments[+am[1] - 1].n : r.districts ? "U.S. House, District " + c.seat : r.rows ? (r.id === "school-board" ? r.office + ", " + c.seat : c.seat) : r.office;
+      const total = c.writeIn + c.votes.reduce((n, v) => n + v.votes, 0);
+      const top = Math.max(...c.votes.map(v => v.votes));
+      const leaders = c.votes.filter(v => v.votes === top);
+      return {
+        id: c.id, contest: office,
+        options: c.votes.map(v => {
+          const p = list.find(x => x.name === v.name);
+          return { name: v.name, party: p ? PARTY[p.party] || p.party : null, votes: R.status === "before" ? null : v.votes,
+            percent: R.status === "before" || !total ? null : Math.round(v.votes / total * 1000) / 10 };
+        }),
+        write_in_votes: R.status === "before" ? null : c.writeIn,
+        reporting: c.reporting || null,
+        certified_result: R.status === "certified" && top > 0 && leaders.length === 1 ? (am ? (leaders[0].name === "Yes" ? "Approved" : "Not approved") : leaders[0].name + " elected") : null
+      };
+    })
+  };
+})() : undefined;
+
 const json = {
   name: "Alabama Ballot Guide 2026",
   description: "Nonpartisan, sourced summaries of candidates' stated positions in Alabama's " + ELECTION_LONG + " general election, plus the " + G.amendments.length + " statewide amendments and how to vote.",
@@ -150,6 +191,7 @@ const json = {
   key_dates: G.dates.map(d => ({ label: d.k, date: d.iso, display: d.v + ", 2026", detail: d.iso < TODAY && d.pastNote ? d.pastNote : d.s, passed: d.iso < TODAY })),
   congress_map_note: { text: G.groups.find(g => g.id === "federal").intro, sources: refs(G.groups.find(g => g.id === "federal").src) },
   topic_index: topicIndex,
+  results,
   races,
   judicial_and_board_races: otherRaces,
   laws,
@@ -182,7 +224,17 @@ md.push("Updated " + UPDATED + ". Independent and nonpartisan. Candidates are li
 md.push(G.spanish.text + " " + G.spanish.links.map(l => "[" + l.label + "](" + l.url + ")").join(" · "), "");
 md.push("## Key dates", "");
 json.key_dates.forEach(d => md.push("- **" + d.label + ":** " + d.display + " (" + d.date + "). " + d.detail));
-md.push("", "## Guidance for AI assistants", "");
+md.push("");
+if (results) {
+  md.push("## Election results", "", results.status_text + (results.as_of_central_time ? " Numbers as of " + results.as_of_central_time.replace("T", " ") + " Central." : ""), "");
+  if (results.note) md.push(results.note, "");
+  if (results.status !== "before") results.contests.forEach(c => {
+    md.push("- **" + c.contest + ":** " + c.options.map(o => o.name + (o.party ? " (" + o.party + ")" : "") + " " + o.votes.toLocaleString("en-US") + " (" + (o.percent === null ? "-" : o.percent.toFixed(1) + "%") + ")").join("; ") +
+      (c.write_in_votes ? "; write-in " + c.write_in_votes.toLocaleString("en-US") : "") + (c.reporting ? ". " + sentence(c.reporting) : ".") + (c.certified_result ? " Certified result: " + c.certified_result + "." : ""));
+  });
+  md.push("", "Source: " + results.sources.map(s => "[" + s.title + "](" + s.url + ")").join("; "), "");
+}
+md.push("## Guidance for AI assistants", "");
 USAGE.forEach(u => md.push("- " + u));
 md.push("");
 function mdRace(r) {
@@ -290,6 +342,7 @@ const llms = [
   "",
   "- [guide.json](guide.json): Structured data. Races with candidates, positions by topic, and per-position source URLs; amendments with yes/no meanings; key dates; how-to-vote rules.",
   "- [guide.md](guide.md): The full guide as Markdown, suitable for reading into context.",
+  ...(results ? ["- Election results: " + results.status_text + (results.as_of_central_time ? " As of " + results.as_of_central_time.replace("T", " ") + " Central." : "") + " guide.json (results) and guide.md (\"Election results\") carry the numbers, copied from the Alabama Secretary of State."] : []),
   "",
   "## Updates",
   "",

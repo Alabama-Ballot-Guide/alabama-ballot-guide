@@ -182,6 +182,78 @@
       raceFoot(r) + "</section>";
   }
 
+  // ---------- election results ----------
+  // The numbers are copied from the Secretary of State (validate-data.js checks the source and that each
+  // contest matches the ballot). Every option keeps the guide's alphabetical order and the same neutral bar,
+  // so the page never ranks or calls a race; a result is marked only once the State Canvassing Board certifies it.
+  // The status wording lives here, in reviewed app code, so a data change can't alter what a status means.
+  var RESULT_STATUS = {
+    before: "Results will appear here after polls close at 7 p.m. Central on Tuesday, Nov. 3.",
+    counting: "Unofficial and incomplete. Counties are still reporting, so these numbers will change.",
+    unofficial: "Unofficial. Counties have reported their election night counts, but provisional, military and overseas ballots can still be added.",
+    certified: "Certified by the State Canvassing Board. These are the official results."
+  };
+  function asOfText(t) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(t || "");
+    if (!m) return "";
+    var h = +m[4], months = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    return (h % 12 || 12) + ":" + m[5] + (h < 12 ? " a.m." : " p.m.") + " Central, " + months[+m[2] - 1] + " " + +m[3];
+  }
+  function resultInfo(c) {
+    var am = /^amendment-(\d)$/.exec(c.race);
+    if (am) {
+      var a = G.amendments[+am[1] - 1];
+      return { group: "amendments", title: a.n.replace(/^Statewide /, ""), sub: a.title, link: "amend-" + am[1], people: {} };
+    }
+    var r = null, g = null;
+    G.groups.forEach(function (gg) { gg.races.forEach(function (rr) { if (rr.id === c.race) { r = rr; g = gg.id; } }); });
+    var list = r.candidates || (r.rows ? r.rows.filter(function (row) { return row.office === c.seat; })[0].cands
+      : r.districts.filter(function (d) { return String(d.n) === c.seat; })[0].candidates);
+    var people = {};
+    list.forEach(function (p) { people[p.name] = p; });
+    var title = r.districts ? r.office + ", District " + c.seat : r.rows ? (r.id === "school-board" ? r.office + ", " + c.seat : c.seat) : r.office;
+    var dist = r.districts ? r.districts.filter(function (d) { return String(d.n) === c.seat; })[0] : null;
+    return { group: g, title: title, sub: dist ? dist.area : r.id === "courts" ? r.office : "", link: r.districts ? "al-" + c.seat : r.id, people: people };
+  }
+  function resultCard(c, status) {
+    var x = resultInfo(c), counted = status !== "before";
+    var total = c.writeIn + c.votes.reduce(function (n, v) { return n + v.votes; }, 0);
+    var top = c.votes.reduce(function (m, v) { return Math.max(m, v.votes); }, 0);
+    var leaders = c.votes.filter(function (v) { return v.votes === top; });
+    var winner = status === "certified" && top > 0 && leaders.length === 1 ? leaders[0].name : null;
+    var amend = x.group === "amendments";
+    function row(name, votes, person) {
+      var pct = total ? Math.round(votes / total * 1000) / 10 : 0;
+      return '<li><span class="res-name">' + esc(name) +
+        (person && person.party ? sep(", ") + '<span class="party ' + esc(person.party) + '">' + esc(partyLabel(person)) + "</span>" : "") +
+        (winner === name && !amend ? sep(", ") + '<span class="badge res-mark">Elected</span>' : "") + "</span>" + sep(": ") +
+        '<span class="res-n">' + (counted ? votes.toLocaleString("en-US") + " votes" + sep(", ") + '<b>' + pct.toFixed(1) + "%</b>" : "No results yet") + "</span>" +
+        (counted ? '<progress class="res-bar" max="1000" value="' + Math.round(pct * 10) + '" aria-hidden="true"></progress>' : "") + "</li>";
+    }
+    return '<article class="res" id="res-' + esc(c.id) + '"><h3><a href="#' + esc(x.link) + '">' + esc(x.title) + "</a></h3>" +
+      (x.sub ? '<p class="res-sub">' + esc(x.sub) + "</p>" : "") +
+      (c.votes.length === 1 ? '<p class="res-sub">Unopposed</p>' : "") +
+      '<ul class="res-list">' + c.votes.map(function (v) { return row(v.name, v.votes, x.people[v.name]); }).join("") +
+      (c.writeIn ? row("Write-in", c.writeIn, null) : "") + "</ul>" +
+      (amend && winner ? '<p class="res-out"><span class="badge res-mark">' + (winner === "Yes" ? "Approved" : "Not approved") + "</span></p>" : "") +
+      (counted && c.reporting ? '<p class="res-rep">' + esc(c.reporting) + "</p>" : "") + "</article>";
+  }
+  function resultsView() {
+    var R = G.results;
+    if (!R) return "";
+    var when = asOfText(R.asOf);
+    var sections = [["state", "State races"], ["federal", "Congress"], ["amendments", "Amendments"]].map(function (s) {
+      var cs = R.contests.filter(function (c) { return resultInfo(c).group === s[0]; });
+      return '<h2 class="res-h">' + esc(s[1]) + '</h2><div class="res-grid">' + cs.map(function (c) { return resultCard(c, R.status); }).join("") + "</div>";
+    }).join("");
+    return '<div class="view" data-view="results" id="view-results"><section class="group" id="results"><div class="wrap"><h1>Election results</h1>' +
+      '<p class="group-intro">' + esc(R.intro) + "</p>" +
+      '<p class="res-status ' + esc(R.status) + '"><b>' + esc(RESULT_STATUS[R.status]) + "</b>" + (when ? " Numbers as of " + esc(when) + "." : "") + "</p>" +
+      (R.note ? '<p class="res-note">' + esc(R.note) + "</p>" : "") +
+      '<p class="group-src">Source: ' + R.source.map(function (s) { return ext(s.url, esc(s.label)); }).join(" · ") + "</p>" +
+      sections + "</div></section></div>";
+  }
+
   function absenteeBox(now) {
     var st = G.absenteeStages.filter(function (s) { return parseISO(s.until) >= now; })[0] || G.absenteeStages[G.absenteeStages.length - 1];
     var target = st.cta === "Election Day details" ? "election-day" : st.cta === "Provisional ballot details" ? "forget-id" : "absentee";
@@ -254,6 +326,7 @@
       }).join(""); }).join("") +
       '<a class="util" href="#amendments"><b>Amendments</b><span>' + G.amendments.length + " statewide questions</span></a>" +
       '<a class="util" href="#vote"><b>How to vote</b><span>ID, absentee, polling hours</span></a>' +
+      (G.results ? '<a class="util" href="#results"><b>Election results</b><span>Unofficial counts from the state</span></a>' : "") +
       "</div></div></section></div>" + filterHtml;
 
     G.groups.forEach(function (g) {
@@ -307,6 +380,7 @@
           (s.links ? '<p class="links">' + s.links.map(function (l) { return ext(l.url, esc(l.label) + " ↗"); }).join("") + "</p>" : "") +
           "</div>";
       }).join("") + "</div>" + spanishGuide() + "</div></section></div>";
+    html += resultsView();
 
     main.innerHTML = html;
 
@@ -331,7 +405,7 @@
   }
 
   // ---------- behavior ----------
-  var VIEWS = { overview: "Overview", state: "State races", congress: "Congress", amendments: "Amendments", vote: "How to vote" };
+  var VIEWS = { overview: "Overview", state: "State races", congress: "Congress", amendments: "Amendments", vote: "How to vote", results: "Results" };
   var current = "overview";
 
   function showView(name) {

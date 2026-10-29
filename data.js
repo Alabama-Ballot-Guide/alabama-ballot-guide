@@ -4177,5 +4177,522 @@ window.GUIDE = {
         }
       ]
     }
-  ]
+  ],
+  "results": {
+    "status": "before",
+    "asOf": "",
+    "intro": "Unofficial results from the Alabama Secretary of State, copied from the state’s election night results page as counties report. Candidates are listed alphabetically by last name, as everywhere else in this guide. Results become official only when the State Canvassing Board certifies them, later in November.",
+    "note": "",
+    "source": [
+      {
+        "label": "Election results (Alabama Secretary of State)",
+        "url": "https://www.alabamavotes.gov/"
+      }
+    ],
+    "contests": [
+      {
+        "id": "governor",
+        "race": "governor",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Doug Jones",
+            "votes": 0
+          },
+          {
+            "name": "Tommy Tuberville",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "lt-governor",
+        "race": "lt-governor",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Phillip Ensler",
+            "votes": 0
+          },
+          {
+            "name": "John Wahl",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "attorney-general",
+        "race": "attorney-general",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Jeff McLaughlin",
+            "votes": 0
+          },
+          {
+            "name": "Katherine Robertson",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "secretary-of-state",
+        "race": "secretary-of-state",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Caroleene Dobson",
+            "votes": 0
+          },
+          {
+            "name": "Wayne Rogers",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "treasurer",
+        "race": "treasurer",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Young Boozer",
+            "votes": 0
+          },
+          {
+            "name": "Rosilyn “Roz” Houston",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "auditor",
+        "race": "auditor",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Violet Edwards",
+            "votes": 0
+          },
+          {
+            "name": "Andrew Sorrell",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "agriculture",
+        "race": "agriculture",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Corey Hill",
+            "votes": 0
+          },
+          {
+            "name": "Ron Sparks",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "psc-1",
+        "race": "psc-1",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Matt Gentry",
+            "votes": 0
+          },
+          {
+            "name": "James Gordon",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "psc-2",
+        "race": "psc-2",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Sheila McNeil",
+            "votes": 0
+          },
+          {
+            "name": "Jim Zeigler",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-supreme-court-place-7",
+        "race": "courts",
+        "seat": "Supreme Court, Place 7",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Brad Mendheim",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-supreme-court-place-8",
+        "race": "courts",
+        "seat": "Supreme Court, Place 8",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "AshLeigh Meyer Dunham",
+            "votes": 0
+          },
+          {
+            "name": "Greg Shaw",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-court-of-civil-appeals-place-4",
+        "race": "courts",
+        "seat": "Court of Civil Appeals, Place 4",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Ben Bowden",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-court-of-civil-appeals-place-5",
+        "race": "courts",
+        "seat": "Court of Civil Appeals, Place 5",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Matt Fridy",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-court-of-criminal-appeals-place-4",
+        "race": "courts",
+        "seat": "Court of Criminal Appeals, Place 4",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Mary Windom",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "courts-court-of-criminal-appeals-place-5",
+        "race": "courts",
+        "seat": "Court of Criminal Appeals, Place 5",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Riggs Walker",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "school-board-district-2",
+        "race": "school-board",
+        "seat": "District 2",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Jamie McCurry",
+            "votes": 0
+          },
+          {
+            "name": "Tracie West",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "school-board-district-4",
+        "race": "school-board",
+        "seat": "District 4",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Yvette Richardson",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "school-board-district-6",
+        "race": "school-board",
+        "seat": "District 6",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Cathi Bradford",
+            "votes": 0
+          },
+          {
+            "name": "Angela Morgan",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "school-board-district-8",
+        "race": "school-board",
+        "seat": "District 8",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Shatika Armstrong",
+            "votes": 0
+          },
+          {
+            "name": "Emily Jones",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "senate",
+        "race": "senate",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Barry Moore",
+            "votes": 0
+          },
+          {
+            "name": "Everett Wess",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-1",
+        "race": "house",
+        "seat": "1",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Jerry Carl",
+            "votes": 0
+          },
+          {
+            "name": "Clyde Jones Jr.",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-2",
+        "race": "house",
+        "seat": "2",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Shomari Figures",
+            "votes": 0
+          },
+          {
+            "name": "Rhett Marques",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-3",
+        "race": "house",
+        "seat": "3",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Lee McInnis",
+            "votes": 0
+          },
+          {
+            "name": "Mike Rogers",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-4",
+        "race": "house",
+        "seat": "4",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Robert Aderholt",
+            "votes": 0
+          },
+          {
+            "name": "Amanda Pusczek",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-5",
+        "race": "house",
+        "seat": "5",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Andrew Sneed",
+            "votes": 0
+          },
+          {
+            "name": "Dale Strong",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-6",
+        "race": "house",
+        "seat": "6",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Maurice Mercer",
+            "votes": 0
+          },
+          {
+            "name": "Gary Palmer",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "house-7",
+        "race": "house",
+        "seat": "7",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Ammie Akin",
+            "votes": 0
+          },
+          {
+            "name": "Terri Sewell",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "amendment-1",
+        "race": "amendment-1",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Yes",
+            "votes": 0
+          },
+          {
+            "name": "No",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "amendment-2",
+        "race": "amendment-2",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Yes",
+            "votes": 0
+          },
+          {
+            "name": "No",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "amendment-3",
+        "race": "amendment-3",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Yes",
+            "votes": 0
+          },
+          {
+            "name": "No",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      },
+      {
+        "id": "amendment-4",
+        "race": "amendment-4",
+        "seat": "",
+        "reporting": "",
+        "votes": [
+          {
+            "name": "Yes",
+            "votes": 0
+          },
+          {
+            "name": "No",
+            "votes": 0
+          }
+        ],
+        "writeIn": 0
+      }
+    ]
+  }
 };
