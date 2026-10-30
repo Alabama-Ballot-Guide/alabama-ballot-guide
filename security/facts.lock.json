@@ -112,7 +112,7 @@
       "id": "absentee",
       "wide": true,
       "h": "Voting absentee",
-      "p": "You need a qualifying reason. The most common:",
+      "p": "Applications for the Nov. 3 election are closed: the deadlines were Tue, Oct 27 by mail and Thu, Oct 29 in person. Absentee voting requires a qualifying reason; the most common:",
       "list": [
         "You’ll be out of your county on Election Day, including at college or in the military",
         "You have a required work shift of 10 hours or more that overlaps polling hours",
@@ -130,27 +130,25 @@
           {
             "h": "By mail (it must arrive by)",
             "c": [
-              "Tue, Oct 27",
+              "Tue, Oct 27 (passed)",
               "Noon Tue, Nov 3"
             ]
           },
           {
             "h": "By hand (at your county’s absentee office)",
             "c": [
-              "Thu, Oct 29",
+              "Thu, Oct 29 (passed)",
               "Mon, Nov 2, before the office closes (5 p.m. at the latest)"
             ]
           }
         ],
-        "note": "By mail, the application is due first but the ballot is due last: a mailed application must arrive by Tue, Oct 27, while a mailed ballot can arrive as late as noon Tue, Nov 3."
+        "note": "Both application deadlines have passed. If you already have your ballot, a mailed ballot can still arrive as late as noon Tue, Nov 3."
       },
       "ol": [
-        "Get the application for the county where you’re registered: download it, ask your county’s absentee election manager (usually the circuit clerk), or call 334‑242‑7210.",
-        "Return it yourself with a copy of your photo ID (if you’re 65 or older or have a disability and check the box on the application saying you can’t vote in person, you don’t need to include ID): by mail so it arrives by Tue, Oct 27, or in person by Thu, Oct 29. Some county offices let you apply and vote in one visit; call ahead.",
-        "Mark your ballot and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted. Online or remote notarization isn’t allowed.",
+        "Already have your ballot? Mark it and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted. Online or remote notarization isn’t allowed.",
         "Return the ballot yourself: by hand before your county’s absentee office closes on Mon, Nov 2 (5 p.m. at the latest), or by mail or a carrier such as FedEx or UPS so it arrives by noon Tue, Nov 3. Except in a medical emergency, no one else may return it for you."
       ],
-      "after": "Time is short: the Secretary of State advises mailing at least two weeks before each deadline, so applying in person by Thu, Oct 29 is the safer route. College students: apply to the county where you’re registered, and use the form’s mailing-address line to have the ballot sent where you get mail. An emergency after the deadline, or voting from the military or overseas? See the next two sections.",
+      "after": "Voting from the military or overseas? See “Military and overseas voters” below.",
       "links": [
         {
           "label": "Application forms by county",
@@ -281,7 +279,7 @@
         },
         {
           "h": "Voto en ausencia",
-          "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. La solicitud debe llegar por correo a más tardar el martes 27 de octubre, o entregarse en persona a más tardar el jueves 29 de octubre. La boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre."
+          "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. El plazo para solicitar la boleta ya venció: la solicitud debía llegar por correo a más tardar el martes 27 de octubre o entregarse en persona a más tardar el jueves 29 de octubre. Si ya tiene su boleta, la boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre."
         },
         {
           "h": "Emergencias después del plazo",
