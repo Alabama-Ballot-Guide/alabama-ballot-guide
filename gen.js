@@ -13,6 +13,7 @@ const topicsOf = p => (Array.isArray(p.topic) ? p.topic : [p.topic]);
 const AS_OF = "2026-10-20";   // candidate positions
 // newest Updates entry: when voter-facing text (rules included) last changed
 const UPDATED = ((G.updates || [])[0] || {}).date || AS_OF;
+const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" }); // YYYY-MM-DD, Alabama time
 
 // Voter-service facts come only from data.js (pinned by security/facts.lock.json).
 // Never retype them here: every edition must quote the same text as the page.
@@ -145,7 +146,8 @@ const json = {
   election: { state: "Alabama", type: "General election", date: G.electionDate, polling_hours: POLL_HOURS + " local time" },
   usage_guidance: USAGE,
   topics: G.topics,
-  key_dates: G.dates.map(d => ({ label: d.k, date: d.iso, display: d.v + ", 2026", detail: d.s })),
+  // like the page, a key date that has passed shows its "passed" note (the site is rebuilt every morning)
+  key_dates: G.dates.map(d => ({ label: d.k, date: d.iso, display: d.v + ", 2026", detail: d.iso < TODAY && d.pastNote ? d.pastNote : d.s, passed: d.iso < TODAY })),
   congress_map_note: { text: G.groups.find(g => g.id === "federal").intro, sources: refs(G.groups.find(g => g.id === "federal").src) },
   topic_index: topicIndex,
   races,

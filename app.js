@@ -299,8 +299,8 @@
         var em = s.id === "absentee" && all.filter(function (x) { return x.id === "emergency"; })[0];
         return '<div class="step' + (s.wide ? " wide" : "") + '"' + (s.id ? ' id="' + esc(s.id) + '"' : "") + "><h3>" + esc(s.h) + "</h3>" +
           (s.p ? "<p>" + esc(s.p) + "</p>" : "") +
-          (em ? '<p class="see">' + esc(em.h) + ' <a href="#emergency">See the emergency rules ↓</a></p>' : "") +
           (s.list ? "<ul>" + s.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
+          (em ? '<p class="see">' + esc(em.h) + ' <a href="#emergency">See the emergency rules ↓</a></p>' : "") +
           (s.deadlines ? deadlineTable(s.deadlines) : "") +
           (s.ol ? '<p class="steps-h">Steps</p><ol>' + s.ol.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" : "") +
           (s.after ? "<p>" + esc(s.after) + "</p>" : "") +
