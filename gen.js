@@ -13,7 +13,16 @@ const topicsOf = p => (Array.isArray(p.topic) ? p.topic : [p.topic]);
 const AS_OF = "2026-10-20";   // candidate positions
 // newest Updates entry: when voter-facing text (rules included) last changed
 const UPDATED = ((G.updates || [])[0] || {}).date || AS_OF;
-const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" }); // YYYY-MM-DD, Alabama time
+// "YYYY-MM-DDTHH:MM" in Alabama time; the site is rebuilt every morning and right after deadlines that close at an hour
+const NOW = (() => {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+    .formatToParts(new Date()).map(x => [x.type, x.value]));
+  return p.year + "-" + p.month + "-" + p.day + "T" + p.hour + ":" + p.minute;
+})();
+// same rule as app.js: "switch": {"at": ..., fields} replaces those fields from that time on
+const atNow = x => (x && x.switch && NOW >= x.switch.at ? Object.assign({}, x, x.switch) : x);
+G.vote = G.vote.map(atNow);
+if (G.spanishGuide) G.spanishGuide.items = G.spanishGuide.items.map(atNow);
 
 // Voter-service facts come only from data.js (pinned by security/facts.lock.json).
 // Never retype them here: every edition must quote the same text as the page.
@@ -147,7 +156,7 @@ const json = {
   usage_guidance: USAGE,
   topics: G.topics,
   // like the page, a key date that has passed shows its "passed" note (the site is rebuilt every morning)
-  key_dates: G.dates.map(d => ({ label: d.k, date: d.iso, display: d.v + ", 2026", detail: d.iso < TODAY && d.pastNote ? d.pastNote : d.s, passed: d.iso < TODAY })),
+  key_dates: G.dates.map(d => ({ label: d.k, date: d.iso, display: d.v + ", 2026", detail: NOW >= (d.pastAt || d.iso + "T24:00") && d.pastNote ? d.pastNote : d.s, passed: NOW >= (d.pastAt || d.iso + "T24:00") })),
   congress_map_note: { text: G.groups.find(g => g.id === "federal").intro, sources: refs(G.groups.find(g => g.id === "federal").src) },
   topic_index: topicIndex,
   races,
