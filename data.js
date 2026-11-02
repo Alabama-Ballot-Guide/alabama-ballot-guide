@@ -4,7 +4,7 @@ window.GUIDE = {
   "heroTitle": "Know who’s on your ballot.",
   "heroLede": "Plain-language summaries of the candidates in Alabama’s statewide and congressional races, and what each one says they will do. The number after each point links to its source.",
   "heroMeta": [
-    "Updated Oct. 30, 2026",
+    "Updated Nov. 2, 2026",
     "Independent and nonpartisan",
     "No ads or endorsements"
   ],
@@ -78,8 +78,9 @@ window.GUIDE = {
       "v": "Mon, Nov 2",
       "s": "By hand: before your county office closes, 5 p.m. at the latest. By mail: it must arrive by noon Nov 3.",
       "iso": "2026-11-02",
-      "pastNote": "Hand delivery has closed. A mailed ballot counts only if it arrives by noon Nov 3.",
-      "target": "absentee"
+      "pastNote": "Hand delivery closed at 5 p.m. A ballot mailed now is very unlikely to arrive by noon Nov 3; contact your county’s absentee election manager.",
+      "target": "absentee",
+      "pastAt": "2026-11-02T17:00"
     },
     {
       "k": "Election Day",
@@ -3712,7 +3713,38 @@ window.GUIDE = {
           "label": "2026 deadlines",
           "url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-reminds-alabamians-november-3-general-election-absentee"
         }
-      ]
+      ],
+      "switch": {
+        "at": "2026-11-02T17:00",
+        "deadlines": {
+          "caption": "Absentee deadlines for Nov. 3",
+          "cols": [
+            "Application (asking for a ballot)",
+            "Ballot (sending it back filled in)"
+          ],
+          "rows": [
+            {
+              "h": "By mail (it must arrive by)",
+              "c": [
+                "Tue, Oct 27 (passed)",
+                "Noon Tue, Nov 3 (a ballot mailed now is very unlikely to arrive in time)"
+              ]
+            },
+            {
+              "h": "By hand (at your county’s absentee office)",
+              "c": [
+                "Thu, Oct 29 (passed)",
+                "Mon, Nov 2, 5 p.m. (passed)"
+              ]
+            }
+          ],
+          "note": "Hand delivery closed at 5 p.m. Mon, Nov 2, and a ballot mailed now is very unlikely to arrive by noon Tue, Nov 3. If you haven’t returned your ballot, contact your county’s absentee election manager right away."
+        },
+        "ol": [
+          "Already have your ballot? Mark it and sign the affidavit in front of a notary or two witnesses age 18 or older. Without this, your ballot can’t be counted. Online or remote notarization isn’t allowed.",
+          "Hand delivery closed at 5 p.m. Mon, Nov 2, and a ballot mailed now is very unlikely to arrive by noon Tue, Nov 3. If you haven’t returned your ballot, contact your county’s absentee election manager right away."
+        ]
+      }
     },
     {
       "id": "emergency",
@@ -3739,7 +3771,11 @@ window.GUIDE = {
           "label": "Absentee election manager guide (Secretary of State, PDF)",
           "url": "https://www.sos.alabama.gov/sites/default/files/election-2024/AbsenteeElectionManagerGuide.pdf"
         }
-      ]
+      ],
+      "switch": {
+        "at": "2026-11-02T17:00",
+        "after": "Applications for an emergency at work, for caring for someone with a medical emergency, or for a death in the family closed at 5 p.m. Mon, Nov 2. For your own medical emergency, your doctor certifies it, you can apply until noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it. Contact your county’s absentee election manager right away."
+      }
     },
     {
       "id": "military",
@@ -3864,9 +3900,16 @@ window.GUIDE = {
       "cta": "How to vote absentee"
     },
     {
-      "until": "2026-11-03",
+      "until": "2026-11-02",
+      "closesAt": "17:00",
       "title": "Voting on Tuesday, Nov. 3",
       "text": "Regular absentee applications are closed. Already have a ballot? Return it by hand before your county’s absentee office closes Mon, Nov. 2 (5 p.m. at the latest), or by mail so it arrives by noon Nov. 3. An emergency in the last five days, such as a medical emergency, an unexpected work requirement or a death in the family, may still qualify you for an emergency absentee ballot. Ask your county’s absentee election manager right away: the application is due by 5 p.m. Mon, Nov. 2 (noon Nov. 3 for your own medical emergency), and unless it’s a medical emergency, you must bring it in yourself. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
+      "cta": "Election Day details"
+    },
+    {
+      "until": "2026-11-03",
+      "title": "Voting on Tuesday, Nov. 3",
+      "text": "Hand delivery of absentee ballots closed at 5 p.m. Mon, Nov. 2, and a ballot mailed now is very unlikely to arrive by the noon Nov. 3 deadline. If you have an absentee ballot you haven’t returned, contact your county’s absentee election manager right away. Your own medical emergency? You can still apply for an emergency absentee ballot until noon Nov. 3. Otherwise, vote at your polling place on Tuesday, Nov. 3, from 7 a.m. to 7 p.m.",
       "cta": "Election Day details"
     },
     {
@@ -3883,6 +3926,10 @@ window.GUIDE = {
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-11-02",
+      "text": "From 5 p.m. Nov. 2, when county absentee offices close, the overview, Key dates, the absentee and emergency sections and the Spanish section say that hand delivery of absentee ballots has closed, that a ballot mailed then is very unlikely to arrive by noon Nov. 3, and that only voters with their own medical emergency can still apply for an emergency ballot."
+    },
     {
       "date": "2026-10-30",
       "text": "The absentee section now says applications for the Nov. 3 election are closed (in English and Spanish) and keeps only the steps for voters who already have a ballot. Passed deadlines are marked in its table, and guide.md and guide.json now mark passed key dates the way the page does."
@@ -3950,11 +3997,19 @@ window.GUIDE = {
       },
       {
         "h": "Voto en ausencia",
-        "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. El plazo para solicitar la boleta ya venció: la solicitud debía llegar por correo a más tardar el martes 27 de octubre o entregarse en persona a más tardar el jueves 29 de octubre. Si ya tiene su boleta, la boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre."
+        "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. El plazo para solicitar la boleta ya venció: la solicitud debía llegar por correo a más tardar el martes 27 de octubre o entregarse en persona a más tardar el jueves 29 de octubre. Si ya tiene su boleta, la boleta completada se entrega en mano antes de que cierre la oficina el lunes 2 de noviembre (a más tardar a las 5 p.m.), o por correo, y debe llegar antes del mediodía del martes 3 de noviembre. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre.",
+        "switch": {
+          "at": "2026-11-02T17:00",
+          "p": "Necesita un motivo que lo califique, por ejemplo, estar fuera de su condado el día de las elecciones o tener una enfermedad o discapacidad. El plazo para solicitar la boleta ya venció: la solicitud debía llegar por correo a más tardar el martes 27 de octubre o entregarse en persona a más tardar el jueves 29 de octubre. La entrega en mano de boletas cerró a las 5 p.m. del lunes 2 de noviembre, y una boleta enviada por correo ahora muy probablemente no llegará antes del mediodía del martes 3 de noviembre. Si no ha devuelto su boleta, comuníquese de inmediato con el administrador de votación en ausencia de su condado. Las boletas de votantes militares y en el extranjero cuentan si tienen matasellos a más tardar del 3 de noviembre y llegan antes del mediodía del martes 10 de noviembre. Si están fuera del país y recibieron la boleta por correo electrónico, pueden devolverla por vía electrónica hasta las 11:59 p.m. del martes 3 de noviembre."
+        }
       },
       {
         "h": "Emergencias después del plazo",
-        "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y, después de votar, entregue usted mismo la boleta en la oficina de voto en ausencia antes del mediodía del martes 3 de noviembre; no puede enviarse por correo ni entregarla otra persona. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla."
+        "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y, después de votar, entregue usted mismo la boleta en la oficina de voto en ausencia antes del mediodía del martes 3 de noviembre; no puede enviarse por correo ni entregarla otra persona. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla.",
+        "switch": {
+          "at": "2026-11-02T17:00",
+          "p": "Las solicitudes por una obligación de trabajo imprevista, por cuidar a alguien con una emergencia médica o por la muerte de un familiar cercano cerraron a las 5 p.m. del lunes 2 de noviembre. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla. Comuníquese de inmediato con la oficina de voto en ausencia de su condado."
+        }
       },
       {
         "h": "Preguntas",

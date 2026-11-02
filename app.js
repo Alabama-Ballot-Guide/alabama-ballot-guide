@@ -26,6 +26,25 @@
     } catch (e) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
   }
   function parseISO(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  // "YYYY-MM-DDTHH:MM" in Alabama time: some deadlines close at an hour (5 p.m.), not at midnight
+  function nowStamp() {
+    try {
+      var p = {};
+      new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+      return p.year + "-" + p.month + "-" + p.day + "T" + p.hour + ":" + p.minute;
+    } catch (e) { return new Date().toISOString().slice(0, 16); }
+  }
+  // A step or Spanish item with "switch": {"at": "YYYY-MM-DDTHH:MM", ...} shows those fields from that time on
+  function atNow(x) {
+    if (!x || !x.switch || nowStamp() < x.switch.at) return x;
+    var o = {}, k;
+    for (k in x) o[k] = x[k];
+    for (k in x.switch) o[k] = x.switch[k];
+    return o;
+  }
+  G.vote = G.vote.map(atNow);
+  if (G.spanishGuide) G.spanishGuide.items = G.spanishGuide.items.map(atNow);
   // Only https: links and the guide's own data files may become hrefs; anything else is neutralized.
   function safeUrl(u) {
     u = String(u == null ? "" : u).trim();
@@ -183,7 +202,8 @@
   }
 
   function absenteeBox(now) {
-    var st = G.absenteeStages.filter(function (s) { return parseISO(s.until) >= now; })[0] || G.absenteeStages[G.absenteeStages.length - 1];
+    var t = nowStamp(); // a stage lasts through its "until" day, or until its "closesAt" hour that day
+    var st = G.absenteeStages.filter(function (s) { return t < s.until + "T" + (s.closesAt || "24:00"); })[0] || G.absenteeStages[G.absenteeStages.length - 1];
     var target = st.cta === "Election Day details" ? "election-day" : st.cta === "Provisional ballot details" ? "forget-id" : "absentee";
     return '<a class="callout" href="#' + target + '"><span class="ic" aria-hidden="true"></span><span class="tx"><span class="ct">' + esc(st.title) + '</span><span class="cb">' +
       esc(st.text) + '</span><span class="cta">' + esc(st.cta) + " →</span></span></a>";
@@ -223,7 +243,7 @@
         G.spanish.links.map(function (l) { return ext(l.url, esc(l.label)); }).join(" · ") + "</p>" +
       findBallot() +
       '<div class="dates">' + G.dates.map(function (d) {
-        var past = d.iso && parseISO(d.iso) < now;
+        var past = d.iso && nowStamp() >= (d.pastAt || d.iso + "T24:00");
         var s = past && d.pastNote ? d.pastNote : d.s;
         if (d.countdown && days > 0) s += " · " + days + (days === 1 ? " day away" : " days away");
         return '<a class="date' + (past ? " past" : "") + '" href="#' + esc(d.target) + '"><span class="k">' + esc(d.k) + "</span>" + sep(": ") + '<span class="v">' + esc(d.v) +
