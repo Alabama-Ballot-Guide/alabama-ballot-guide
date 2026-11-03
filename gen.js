@@ -22,6 +22,8 @@ const NOW = (() => {
 // same rule as app.js: "switch": {"at": ..., fields} replaces those fields from that time on
 const atNow = x => (x && x.switch && NOW >= x.switch.at ? Object.assign({}, x, x.switch) : x);
 G.vote = G.vote.map(atNow);
+// the page’s amendments intro mentions local amendments; guide.md, llms.txt and guide.json carry that sentence too
+const LOCAL_AMEND = (G.amendIntro.match(/[^.]*\blocal amendments\b[^.]*\./) || [""])[0].trim();
 if (G.spanishGuide) G.spanishGuide.items = G.spanishGuide.items.map(atNow);
 
 // Voter-service facts come only from data.js (pinned by security/facts.lock.json).
@@ -163,6 +165,7 @@ const json = {
   judicial_and_board_races: otherRaces,
   laws,
   updates: (G.updates || []).map(u => ({ date: u.date, text: u.text })),
+  local_amendments_note: LOCAL_AMEND || undefined,
   amendments: G.amendments.map(a => ({
     number: a.n, title: a.title, summary: a.summary, legislative_vote: a.vote,
     supporters_say: a.support, opponents_say: a.oppose, yes_means: a.yes, no_means: a.no, sources: refs(a.src)
@@ -231,7 +234,7 @@ const fedGroup = G.groups.find(g => g.id === "federal");
 md.push("## Congress", "", fedGroup.intro, "");
 if (fedGroup.src) md.push("Sources: " + fedGroup.src.map(s => "[" + s.label + "](" + s.url + ")").join("; "), "");
 races.filter(r => r.level === "federal").forEach(mdRace);
-md.push("## Statewide amendments", "");
+md.push("## Statewide amendments", "", ...(LOCAL_AMEND ? [LOCAL_AMEND, ""] : []));
 json.amendments.forEach(a => {
   md.push("### " + a.number + ": " + a.title, "", a.summary, "",
     "- Legislature's vote: " + a.legislative_vote, "- Supporters say: " + a.supporters_say, "- Opponents say: " + a.opponents_say,
@@ -293,7 +296,7 @@ const llms = [
   "- Debates: " + races.filter(r => r.debates !== G.defaultDebate).map(r => r.office + ": " + sentence(r.debates)).join(" ") + " All other races: " + G.defaultDebate,
   ...(laws.length ? ["- Laws and bills: candidates' entries mention " + laws.length + " laws and bills, such as the " + laws.filter(l => l.name.indexOf("(") < 0).slice(0, 3).map(l => l.name).join(", the ").replace(/, the ([^,]*)$/, " and the $1") +
     ". guide.md (\"Laws and bills mentioned\") and guide.json (laws) describe each one neutrally, with sources."] : []),
-  "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments.",
+  "- On the ballot: " + races.map(r => r.office).concat(otherRaces.map(o => o.office + " (" + o.seats.length + " seats)")).join("; ") + "; and " + G.amendments.length + " statewide amendments." + (LOCAL_AMEND ? " " + LOCAL_AMEND : ""),
   "",
   "## Data",
   "",

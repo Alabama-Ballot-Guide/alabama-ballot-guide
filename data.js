@@ -736,8 +736,16 @@ window.GUIDE = {
               ]
             }
           ],
-          "debate": "WHNT News 19 hosts a debate Wednesday, Oct. 28, at 6 p.m., streamed at WHNT.com and on the WHNT19+ app.",
+          "debate": "Ensler and Wahl met in an hour-long debate hosted by WHNT News 19 on Wednesday, Oct. 28. The full recording is on WHNT.com.",
           "noteSrc": [
+            {
+              "label": "WHNT: watch the Lt. Governor debate (Oct 28, 2026)",
+              "url": "https://whnt.com/news/politics/your-local-election-headquarters/watch-alabama-lt-governor-candidates-meet-on-debate-stage/"
+            },
+            {
+              "label": "Alabama Reflector: Ensler, Wahl meet in debate (Oct 29, 2026)",
+              "url": "https://alabamareflector.com/2026/10/29/phillip-ensler-john-wahl-meet-in-lieutenant-governor-debate/"
+            },
             {
               "label": "WRBL / Nexstar: debate announcement",
               "url": "https://www.wrbl.com/news/news-19-lt-gov-debate-what-should-we-ask-the-candidates/"
@@ -3928,7 +3936,7 @@ window.GUIDE = {
   "updates": [
     {
       "date": "2026-11-03",
-      "text": "The emergency section, in English and Spanish, now says that a voter who already has an emergency ballot for a work emergency, caregiving or a death in the family hands it to the absentee election manager in person by noon Nov. 3, and the absentee section points voters with their own medical emergency to it."
+      "text": "The emergency section, in English and Spanish, now says that a voter who already has an emergency ballot for a work emergency, caregiving or a death in the family hands it to the absentee election manager in person by noon Nov. 3, and the absentee section points voters with their own medical emergency to it. Also: the lieutenant governor debate note now says the Oct. 28 debate took place and links the recording, and guide.md now notes that counties may have local amendments."
     },
     {
       "date": "2026-11-02",
@@ -3940,7 +3948,7 @@ window.GUIDE = {
     },
     {
       "date": "2026-10-25",
-      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs. Later the same day, the governor race added positions from Tuberville’s Oct. 22 platform on income and senior property taxes, state hiring and agencies, First Class Pre-K and power rates, and Doug Jones’s position on power-rate hearings. The overview also now warns not to count on the mail for absentee applications."
+      "text": "Added that a voter with a non-medical emergency absentee ballot must hand it to the absentee election manager in person by noon Nov. 3; it can’t be mailed or returned by someone else. Also cited Tuberville’s Oct. 22 policy playbook for his positions on Medicaid expansion and recruiting manufacturing jobs. Later the same day, the governor race added positions from Tuberville’s Oct. 22 platform on income and senior property taxes, state hiring and agencies, First Class Pre-K and power rates, and Doug Jones’s position on power-rate hearings. The website’s overview callout also now warns not to count on the mail for absentee applications."
     },
     {
       "date": "2026-10-23",
