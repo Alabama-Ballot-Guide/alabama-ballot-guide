@@ -4,7 +4,7 @@ window.GUIDE = {
   "heroTitle": "Know who’s on your ballot.",
   "heroLede": "Plain-language summaries of the candidates in Alabama’s statewide and congressional races, and what each one says they will do. The number after each point links to its source.",
   "heroMeta": [
-    "Updated Nov. 2, 2026",
+    "Updated Nov. 3, 2026",
     "Independent and nonpartisan",
     "No ads or endorsements"
   ],
@@ -3663,7 +3663,7 @@ window.GUIDE = {
       "id": "absentee",
       "wide": true,
       "h": "Voting absentee",
-      "p": "Applications for the Nov. 3 election are closed: the deadlines were Tue, Oct 27 by mail and Thu, Oct 29 in person. Absentee voting requires a qualifying reason; the most common:",
+      "p": "Regular applications for the Nov. 3 election are closed: the deadlines were Tue, Oct 27 by mail and Thu, Oct 29 in person. If you have a medical emergency of your own, you may still apply for an emergency absentee ballot until noon Tue, Nov 3; see “Emergency after the deadline?” below. Absentee voting requires a qualifying reason; the most common:",
       "list": [
         "You’ll be out of your county on Election Day, including at college or in the military",
         "You have a required work shift of 10 hours or more that overlaps polling hours",
@@ -3774,7 +3774,7 @@ window.GUIDE = {
       ],
       "switch": {
         "at": "2026-11-02T17:00",
-        "after": "Applications for an emergency at work, for caring for someone with a medical emergency, or for a death in the family closed at 5 p.m. Mon, Nov 2. For your own medical emergency, your doctor certifies it, you can apply until noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it. Contact your county’s absentee election manager right away."
+        "after": "Applications for an emergency at work, for caring for someone with a medical emergency, or for a death in the family closed at 5 p.m. Mon, Nov 2. For your own medical emergency, your doctor certifies it, you can apply until noon Tue, Nov 3, and someone you choose can turn in your application, pick up your ballot and return it. Contact your county’s absentee election manager right away. If you already got an emergency ballot for an emergency at work, caring for someone, or a death in the family, hand it to the absentee election manager yourself by noon Tue, Nov 3; it can’t be mailed or returned by someone else. The 5 p.m. Nov 2 hand-delivery cutoff above is for regular absentee ballots."
       }
     },
     {
@@ -3927,6 +3927,10 @@ window.GUIDE = {
   },
   "updates": [
     {
+      "date": "2026-11-03",
+      "text": "The emergency section, in English and Spanish, now says that a voter who already has an emergency ballot for a work emergency, caregiving or a death in the family hands it to the absentee election manager in person by noon Nov. 3, and the absentee section points voters with their own medical emergency to it."
+    },
+    {
       "date": "2026-11-02",
       "text": "From 5 p.m. Nov. 2, when county absentee offices close, the overview, Key dates, the absentee and emergency sections and the Spanish section say that hand delivery of absentee ballots has closed, that a ballot mailed then is very unlikely to arrive by noon Nov. 3, and that only voters with their own medical emergency can still apply for an emergency ballot."
     },
@@ -4008,7 +4012,7 @@ window.GUIDE = {
         "p": "Si en los cinco días antes de la elección tiene una emergencia que no conocía antes del plazo normal (una obligación de trabajo imprevista, una emergencia médica suya o de alguien a quien cuida, o la muerte de un familiar cercano), puede calificar para una boleta de voto en ausencia de emergencia. Consulte de inmediato en la oficina de voto en ausencia de su condado. Lleve la solicitud usted mismo, con una copia de su identificación con foto; solo una solicitud por emergencia médica puede enviarse por correo o por servicio de mensajería, o entregarla otra persona. Preséntela a más tardar a las 5 p.m. del lunes 2 de noviembre y, después de votar, entregue usted mismo la boleta en la oficina de voto en ausencia antes del mediodía del martes 3 de noviembre; no puede enviarse por correo ni entregarla otra persona. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla.",
         "switch": {
           "at": "2026-11-02T17:00",
-          "p": "Las solicitudes por una obligación de trabajo imprevista, por cuidar a alguien con una emergencia médica o por la muerte de un familiar cercano cerraron a las 5 p.m. del lunes 2 de noviembre. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla. Comuníquese de inmediato con la oficina de voto en ausencia de su condado."
+          "p": "Las solicitudes por una obligación de trabajo imprevista, por cuidar a alguien con una emergencia médica o por la muerte de un familiar cercano cerraron a las 5 p.m. del lunes 2 de noviembre. Si la emergencia médica es suya, su médico la certifica, puede presentar la solicitud hasta el mediodía del martes 3 de noviembre y una persona de su elección puede entregar la solicitud, recoger la boleta y devolverla. Comuníquese de inmediato con la oficina de voto en ausencia de su condado. Si ya recibió una boleta de emergencia por una obligación de trabajo, por cuidar a alguien o por la muerte de un familiar, entréguela usted mismo al administrador de votación en ausencia antes del mediodía del martes 3 de noviembre; no puede enviarse por correo ni entregarla otra persona."
         }
       },
       {
