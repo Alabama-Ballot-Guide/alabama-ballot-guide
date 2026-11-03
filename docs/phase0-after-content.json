@@ -1,0 +1,203 @@
+{
+  "_comment": "Content for the new top-level `after` key in data.js (post-election mode). Copy this object into data.js as G.after, minus this _comment field. Every text field already passes scripts/validate-data.js text rules (no URLs or angle brackets in text, allowlisted https URLs only in url fields, allowed characters). Dates are from the Code of Alabama and the Secretary of State's 2026 administrative calendar; see docs/phase0-post-election-mode.md, appendix A, for the source of every date. Status words (leading, elected, ratified, passed, failed) never appear in this content; the renderer adds them from result.status.",
+  "startsAt": "2026-11-03T19:00",
+  "eyebrow": "2026 Alabama voter guide · Nov. 3 general election",
+  "title": "The polls have closed. Here’s what happens next.",
+  "lede": "If you were in line by 7 p.m., stay in line: you can still vote. Unofficial results are posted by the Secretary of State as the counties report. Nothing is final until the counties certify on Fri, Nov. 13 and the State Canvassing Board certifies by Wed, Nov. 25. Every candidate’s stated positions and sources stay on this page.",
+  "switch": {
+    "at": "2026-11-04T00:00",
+    "title": "Alabama has voted. Here’s what happens next.",
+    "lede": "Unofficial results are posted by the Secretary of State as the counties report. Nothing is final until the counties certify on Fri, Nov. 13 and the State Canvassing Board certifies by Wed, Nov. 25. Every candidate’s stated positions and sources stay on this page."
+  },
+  "certifiedLede": "Every candidate’s stated positions and sources stay on this page, with the certified results on each race and amendment, and when the winners take office.",
+  "spanishText": "¿Prefiere español? Qué pasa después de las elecciones:",
+  "pillPending": "Polls closed · results pending",
+  "pill": "Results: unofficial",
+  "pillCertified": "Results: certified",
+  "navLabel": "Results",
+  "indexHeading": "What was on your ballot",
+  "indexNote": "This guide covered the statewide and congressional races and the four statewide amendments. Your ballot also had state legislative, county and local races and local amendments. Check your county’s election results for those.",
+  "indexCard": {
+    "title": "Results & what’s next",
+    "sub": "Certification timeline, recounts, taking office"
+  },
+  "callouts": [
+    {
+      "title": "Unofficial results",
+      "text": "Posted by the Alabama Secretary of State as the counties report. They become official only when the State Canvassing Board certifies them, by Wednesday, Nov. 25.",
+      "cta": "Secretary of State results",
+      "url": "https://www.sos.alabama.gov/alabama-votes/voter/enr-current-list"
+    },
+    {
+      "title": "What happens next",
+      "text": "Provisional ballots are counted Nov. 10, counties certify Nov. 13, the state certifies by Nov. 25, and new officeholders take office in January.",
+      "cta": "The full timeline",
+      "target": "results"
+    }
+  ],
+  "timeline": [
+    {
+      "kind": "deadline",
+      "k": "Show ID for a provisional ballot",
+      "v": "Fri, Nov 6",
+      "s": "By 5 p.m. at your county Board of Registrars, if you voted provisionally without photo ID",
+      "iso": "2026-11-06",
+      "pastAt": "2026-11-06T17:00",
+      "pastNote": "Deadline passed",
+      "target": "forget-id"
+    },
+    {
+      "kind": "milestone",
+      "k": "Provisional ballots counted",
+      "v": "Tue, Nov 10",
+      "s": "County boards count eligible provisional ballots from noon. Military and overseas ballots must arrive by noon.",
+      "iso": "2026-11-10",
+      "target": "next-provisional"
+    },
+    {
+      "kind": "milestone",
+      "k": "Counties certify",
+      "v": "Fri, Nov 13",
+      "s": "Each county canvassing board declares its results at noon and sends them to the state",
+      "iso": "2026-11-13",
+      "target": "next-certification"
+    },
+    {
+      "kind": "milestone",
+      "k": "State certifies",
+      "v": "By Wed, Nov 25",
+      "s": "Governor, Secretary of State and Attorney General, within 22 days of the election. In 2024: Nov 26. In 2022: Nov 28.",
+      "iso": "2026-11-25",
+      "target": "next-certification"
+    },
+    {
+      "kind": "milestone",
+      "k": "New officeholders take office",
+      "v": "Mon, Jan 18",
+      "s": "Governor and the six other statewide officers. New Congress: Jan 3. Legislature organizes: Jan 12.",
+      "iso": "2027-01-18",
+      "target": "next-office"
+    }
+  ],
+  "status": {
+    "h": "Results & what’s next",
+    "p": "County election officials report unofficial totals on election night and the Alabama Secretary of State posts them. They stay unofficial until the State Canvassing Board certifies them, by Wednesday, Nov. 25. The certified results are then posted on the Secretary of State’s 2026 election page. This guide does not publish its own counts.",
+    "links": [
+      { "label": "Unofficial election night results (Secretary of State)", "url": "https://www.sos.alabama.gov/alabama-votes/voter/enr-current-list" },
+      { "label": "2026 election information and certified results (Secretary of State)", "url": "https://www.sos.alabama.gov/alabama-votes/voter/election-information/2026" }
+    ]
+  },
+  "steps": [
+    {
+      "id": "next-provisional",
+      "h": "Provisional and absentee ballots",
+      "p": "A provisional ballot counts only after officials confirm the voter was eligible.",
+      "list": [
+        "No photo ID at the polls? Bring a valid photo ID to your county Board of Registrars by 5 p.m. Friday, Nov. 6, or the ballot will not be counted.",
+        "Your county Board of Registrars decides which provisional voters were eligible. Starting at noon on Tuesday, Nov. 10, the county canvassing board counts the eligible ballots and posts the results at the courthouse.",
+        "Military and overseas ballots count if they were postmarked by Nov. 3 and arrive by noon Tuesday, Nov. 10.",
+        "Was your ballot counted? After the Nov. 10 count, look up your record on the Secretary of State’s site and choose this election, or call your county Board of Registrars."
+      ],
+      "links": [
+        { "label": "Look up your voter record", "url": "https://myinfo.alabamavotes.gov/voterview" },
+        { "label": "Provisional ballot law (Ala. Code § 17-10-2)", "url": "https://law.justia.com/codes/alabama/title-17/chapter-10/section-17-10-2" },
+        { "label": "2026 photo voter ID guide (Secretary of State, PDF)", "url": "https://www.sos.alabama.gov/sites/default/files/election-2026/PhotoVoterIDGuide.pdf" }
+      ]
+    },
+    {
+      "id": "next-certification",
+      "h": "How the count becomes official",
+      "p": "Alabama certifies an election in two steps.",
+      "list": [
+        "Counties: the canvassing board in each county, made up of the probate judge, the sheriff and the circuit clerk, meets at noon on the second Friday after the election, Nov. 13. It declares the county’s results, posts them at the courthouse and sends them to the Secretary of State.",
+        "State: the Governor, the Secretary of State and the Attorney General, sitting as the State Canvassing Board, certify the statewide and district results within 22 days of the election, so by Wednesday, Nov. 25. In 2024 they certified on Nov. 26, three weeks after the election; in 2022, on Nov. 28.",
+        "Until then every number is unofficial, and totals can change as provisional ballots and late-arriving military and overseas ballots are added."
+      ],
+      "links": [
+        { "label": "County canvass law (Ala. Code § 17-12-16)", "url": "https://law.justia.com/codes/alabama/title-17/chapter-12/section-17-12-16/" },
+        { "label": "State canvass law (Ala. Code § 17-12-17)", "url": "https://law.justia.com/codes/alabama/title-17/chapter-12/section-17-12-17/" },
+        { "label": "2026 election calendar (Secretary of State, PDF)", "url": "https://www.sos.alabama.gov/sites/default/files/election-2026/AdminCalendar%20-2026.pdf" },
+        { "label": "2024 certification (Secretary of State)", "url": "https://www.sos.alabama.gov/newsroom/alabama-state-canvassing-board-certifies-2024-general-election-results" }
+      ]
+    },
+    {
+      "id": "next-recounts",
+      "h": "Recounts",
+      "p": "Alabama has two kinds of recount.",
+      "list": [
+        "Automatic: if a candidate, or a statewide amendment, loses by one-half of one percent of the votes cast or less, a recount is automatic. It begins within 72 hours after certification, and the certification is amended if the numbers change. The candidate who lost can waive it in writing.",
+        "Requested: otherwise, a candidate or an eligible voter can petition for a recount within 48 hours after the county canvass (the canvass starts at noon Friday, Nov. 13, so by about noon Sunday, Nov. 15) and must put up security to cover its cost. A requested recount cannot change the official result on its own; that takes an election contest."
+      ],
+      "links": [
+        { "label": "Automatic recounts (Ala. Code § 17-16-20)", "url": "https://law.justia.com/codes/alabama/title-17/chapter-16/article-2/section-17-16-20/" },
+        { "label": "Requested recounts (Ala. Code § 17-16-21)", "url": "https://law.justia.com/codes/alabama/title-17/chapter-16/article-2/section-17-16-21/" },
+        { "label": "Recount laws in Alabama (Ballotpedia)", "url": "https://ballotpedia.org/Recount_laws_in_Alabama" }
+      ]
+    },
+    {
+      "id": "next-amendments",
+      "h": "When amendments take effect",
+      "p": "Under Section 284 of the Alabama Constitution, an amendment approved by a majority of the people who voted on it is part of the constitution. The governor announces the result by proclamation after the state certifies the count; in 2022 the proclamation came the same day as certification. What changes day to day depends on each amendment’s own text, which this guide will quote once the result is certified.",
+      "links": [
+        { "label": "Alabama Constitution, Section 284", "url": "https://law.justia.com/constitution/alabama/CA-245838.html" },
+        { "label": "Official ballot wording for the four amendments (Secretary of State, PDF)", "url": "https://www.sos.alabama.gov/sites/default/files/sample-ballots/2026/gen/2026GeneralElectionStatewideBack.pdf" }
+      ]
+    },
+    {
+      "id": "next-office",
+      "wide": true,
+      "h": "When new officeholders take office",
+      "list": [
+        "U.S. House and Senate: the terms of the senator and seven representatives elected Nov. 3 begin at noon on Sunday, Jan. 3, 2027. The day of the new Congress’s first meeting is set by law.",
+        "State legislators: their terms legally began the day after the election. By practice they take the oath at the Legislature’s organizational session on Tuesday, Jan. 12, 2027, as in 2023; that session also elects the Speaker of the House and the Senate President Pro Tem and adopts the rules for the next four years. No other bills can pass at it.",
+        "Governor, lieutenant governor, attorney general, secretary of state, treasurer, auditor and agriculture commissioner: take office Monday, Jan. 18, 2027, the first Monday after the second Tuesday in January.",
+        "The 2027 Regular Session of the Legislature opens Tuesday, Feb. 2, 2027. It can meet for 30 days within 105 calendar days, so it must end by May 17."
+      ],
+      "links": [
+        { "label": "U.S. Constitution, 20th Amendment", "url": "https://constitution.congress.gov/constitution/amendment-20/" },
+        { "label": "Term start for statewide officers (Ala. Code § 36-3-1)", "url": "https://law.justia.com/codes/alabama/title-36/chapter-3/section-36-3-1/" },
+        { "label": "2027 session dates (Alabama Legislature)", "url": "https://alison.legislature.state.al.us/legislature-sublanding-page" },
+        { "label": "Organizational session law (Ala. Code § 29-1-4)", "url": "https://law.justia.com/codes/alabama/2019/title-29/chapter-1/article-1/section-29-1-4" }
+      ]
+    },
+    {
+      "id": "next-elections",
+      "h": "The next elections",
+      "p": "Registration is open year-round and closes 15 days before each election. You can check your registration at any time.",
+      "list": [
+        "Tuesday, Aug. 24, 2027: city elections in Montgomery, Mountain Brook, Scottsboro and Talladega, with a runoff, if needed, four weeks later under current law.",
+        "Tuesday, March 7, 2028: Alabama’s primary, held in early March in presidential years, with a runoff, if needed, four weeks later under current law. Candidates qualify with their parties 116 days before the primary.",
+        "Tuesday, Nov. 7, 2028: general election.",
+        "Special elections: when a seat in the Legislature or Congress opens, the governor calls a special election. Recent legislative specials took about six months from the announcement to the final vote."
+      ],
+      "links": [
+        { "label": "Upcoming elections (Secretary of State)", "url": "https://www.sos.alabama.gov/alabama-votes/voter/upcoming-elections" },
+        { "label": "Check your registration", "url": "https://myinfo.alabamavotes.gov/voterview" },
+        { "label": "Primary date law (Ala. Code § 17-13-3)", "url": "https://law.justia.com/codes/alabama/2019/title-17/chapter-13/article-1/section-17-13-3/" }
+      ]
+    }
+  ],
+  "voteNotes": [
+    {
+      "until": "2026-11-06T17:00",
+      "p": "The Nov. 3, 2026 election is over; these were its rules. Two deadlines are still open: if you voted a provisional ballot without photo ID, show a valid ID at your county Board of Registrars by 5 p.m. Friday, Nov. 6; military and overseas ballots postmarked by Nov. 3 count if they arrive by noon Tuesday, Nov. 10."
+    },
+    {
+      "until": "2026-11-10T12:00",
+      "p": "The Nov. 3, 2026 election is over; these were its rules. One deadline is still open: military and overseas ballots postmarked by Nov. 3 count if they arrive by noon Tuesday, Nov. 10."
+    },
+    {
+      "p": "The Nov. 3, 2026 election is over; these were its rules. Registration stays open year-round and closes 15 days before each election. The next election’s rules will be posted when the Secretary of State publishes them."
+    }
+  ],
+  "picksHint": "Your picks from the Nov. 3 election are saved only in this browser and are never sent anywhere. Results, when the Secretary of State posts them, are shown on each race.",
+  "picksEmpty": "No picks were saved in this browser.",
+  "spanish": {
+    "h": "Después de las elecciones",
+    "p": "Si estaba en la fila a las 7 p.m., quédese en la fila: todavía puede votar. Los resultados no oficiales los publica el Secretario de Estado (en inglés). Las juntas de los condados cuentan las boletas provisionales el martes 10 de noviembre y certifican los resultados el viernes 13 de noviembre. La junta estatal de escrutinio certifica a más tardar el miércoles 25 de noviembre. Si votó con una boleta provisional por no tener identificación con foto, presente una identificación válida ante la Junta de Registradores de su condado antes de las 5 p.m. del viernes 6 de noviembre. Los nuevos funcionarios estatales toman posesión el lunes 18 de enero de 2027.",
+    "switch": {
+      "at": "2026-11-04T00:00",
+      "p": "Los resultados no oficiales los publica el Secretario de Estado (en inglés). Las juntas de los condados cuentan las boletas provisionales el martes 10 de noviembre y certifican los resultados el viernes 13 de noviembre. La junta estatal de escrutinio certifica a más tardar el miércoles 25 de noviembre. Si votó con una boleta provisional por no tener identificación con foto, presente una identificación válida ante la Junta de Registradores de su condado antes de las 5 p.m. del viernes 6 de noviembre. Los nuevos funcionarios estatales toman posesión el lunes 18 de enero de 2027."
+    }
+  }
+}
