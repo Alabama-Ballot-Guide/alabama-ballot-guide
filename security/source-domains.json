@@ -70,19 +70,10 @@
     "campaign": {
       "includeSubdomains": false,
       "domains": [
-        "boozerfortreasurer.com",
         "clydeforcongress.com",
-        "mcneilforpsc2.com",
-        "palmerforalabama.com",
-        "phillipensler.com",
         "votejohnwahl.com",
         "wessforsenate.com",
-        "www.akinforcongress.com",
-        "www.coachforgovernor.com",
-        "www.dougjones.com",
-        "www.mclaughlinforag.com",
-        "www.rozforalabama.com",
-        "www.sneedforcongress.com"
+        "www.rozforalabama.com"
       ]
     }
   },
