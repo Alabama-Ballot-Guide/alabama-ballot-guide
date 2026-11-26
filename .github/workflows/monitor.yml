@@ -5,8 +5,11 @@
 name: Live site monitor
 
 on:
-  schedule:
-    - cron: "*/30 * * * *"    # remove after Nov. 10, 2026
+  # The 30-minute schedule was turned off after the State Canvassing Board certified the
+  # Nov. 3, 2026 results (Nov. 23). Run it by hand from the Actions tab, or restore
+  #   schedule:
+  #     - cron: "*/30 * * * *"
+  # before the next election.
   workflow_dispatch:
 
 permissions: {}

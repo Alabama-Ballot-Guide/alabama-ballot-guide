@@ -4,7 +4,7 @@ window.GUIDE = {
   "heroTitle": "Know who’s on your ballot.",
   "heroLede": "Plain-language summaries of the candidates in Alabama’s statewide and congressional races, and what each one says they will do. The number after each point links to its source.",
   "heroMeta": [
-    "Updated Nov. 4, 2026",
+    "Updated Nov. 26, 2026",
     "Independent and nonpartisan",
     "No ads or endorsements"
   ],
@@ -3935,6 +3935,14 @@ window.GUIDE = {
     "target": "photo-id"
   },
   "updates": [
+    {
+      "date": "2026-11-26",
+      "text": "Certified results, part 1 of 2 (state races): the State Canvassing Board certified the results of the Nov. 3 general election on Nov. 23, 2026, and the Secretary of State has posted the certification. Each figure is a share of all votes cast in that contest, write-ins included, from the certified statewide totals. Candidates are listed alphabetically. This guide does not call races. Governor: Doug Jones (D) 47.9%, Tommy Tuberville (R) 51.8%. Lieutenant governor: Phillip Ensler (D) 45.6%, John Wahl (R) 54.3%. Attorney general: Jeff McLaughlin (D) 45.0%, Katherine Robertson (R) 54.9%. Secretary of state: Caroleene Dobson (R) 54.5%, Wayne Rogers (D) 45.4%. State treasurer: Young Boozer (R) 55.0%, Rosilyn “Roz” Houston (D) 45.0%. State auditor: Violet Edwards (D) 44.8%, Andrew Sorrell (R) 55.2%. Agriculture and Industries: Corey Hill (R) 54.1%, Ron Sparks (D) 45.9%. Public Service Commission, Place 1: Matt Gentry (R) 55.1%, James Gordon (D) 44.9%. Place 2: Sheila McNeil (D) 45.2%, Jim Zeigler (R) 54.7%. Supreme Court, Place 8: AshLeigh Meyer Dunham (D) 45.3%, Greg Shaw (R) 54.6%. State Board of Education, District 2: Jamie McCurry (D) 38.5%, Tracie West (R) 61.4%. District 6: Cathi Bradford (R) 71.3%, Angela Morgan (D) 28.5%. District 8: Shatika Armstrong (D) 46.2%, Emily Jones (R) 53.7%. Unopposed: Brad Mendheim, Ben Bowden, Matt Fridy, Mary Windom, Riggs Walker and Yvette Richardson."
+    },
+    {
+      "date": "2026-11-26",
+      "text": "Certified results, part 2 of 2 (Congress and amendments), from the same Nov. 23 certification. U.S. Senate: Barry Moore (R) 54.7%, Everett Wess (D) 45.2%. U.S. House, District 1: Jerry Carl (R) 58.9%, Clyde Jones Jr. (D) 41.0%. District 2: Shomari Figures (D) 53.7%, Rhett Marques (R) 46.1%. District 3: Lee McInnis (D) 36.0%, Mike Rogers (R) 63.8%. District 4: Robert Aderholt (R) 74.8%, Amanda Pusczek (D) 25.1%. District 5: Andrew Sneed (D) 46.8%, Dale Strong (R) 53.1%. District 6: Maurice Mercer (D) 42.5%, Gary Palmer (R) 57.4%. District 7: Ammie Akin (R) 30.5%, Terri Sewell (D) 69.5%. Statewide Amendment 1 (lieutenant governor vacancy): Yes 65.4%, No 34.6%. Amendment 2 (merging neighboring county school systems): Yes 50.9%, No 49.1%. Amendment 3 (daily Pledge and student-led prayer): Yes 62.6%, No 37.4%. Amendment 4 (weekly national anthem): Yes 58.6%, No 41.4%."
+    },
     {
       "date": "2026-11-04",
       "text": "After Election Day: the absentee, emergency and Spanish sections and Key dates now describe the Nov. 2 and Nov. 3 deadlines as passed, and Key dates points provisional voters to the 5 p.m. Fri, Nov. 6 photo ID deadline."
